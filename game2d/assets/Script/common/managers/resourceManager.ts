@@ -1,19 +1,18 @@
 /**
  * 
  * 资源管理器 单例
- * 用于加载bundle资源
  * 
  */
-export class ResourceManager {
+ export class ResourceManager {
+    
     /**
      * 加载本地bundle
      * @param  {string} bundleName bundle名称
      * @returns Promise<cc.AssetManager.Bundle>
      */
-    public async loadBundle(bundleName: string = 'resources') {
-        if(!cc.assetManager) return;
+    public async loadBundle(bundleName: string = 'resources'): Promise<cc.AssetManager.Bundle> {
         return new Promise((resolve,reject) => {
-            cc.assetManager && cc.assetManager.loadBundle(bundleName,(err: Error,bundle: cc.AssetManager.Bundle) => {
+            cc.assetManager.loadBundle(bundleName,(err: Error,bundle: cc.AssetManager.Bundle) => {
                 if(err) {
                     reject(err);
                     return;
@@ -24,22 +23,45 @@ export class ResourceManager {
     }
 
     /**
-     * 加载bundle里面的资源
+     * 加载bundle里面的资源 除去场景外的资源
      * @param  {cc.AssetManager.Bundle} bundle budnle资源
      * @param  {string} url 资源在bundle里面的路径
      * @param  {typeofcc.Asset} type 资源的类型
      * @returns Promise
      */
-    public async loadAssetInBundle<T extends cc.Asset>(url: string,type: typeof cc.Asset): Promise<T> {
+    public async loadAssetInBundle<T extends cc.Asset>(url: string,type: typeof cc.Asset,bundleName: string): Promise<T> {
         if(!url) return;
-
+        console.log('loadAssetInBundle url is ',url," type is ",type);
+        const bundle: cc.AssetManager.Bundle = await this.loadBundle(bundleName);
+        console.log('bundle is ',bundle);
+        
         return new Promise((resolve,reject) => {
-            cc.loader.loadRes(url,type,(err: Error,asset: T) => {
+            bundle.load(url,type,(err: Error,assets: T) => {
+                if(err) {
+                    reject(new Error('加载bundle内的资源失败'));
+                }
+                resolve(assets);
+            })
+        });
+        
+    }
+
+    /**
+     * 加载bundle里面的场景资源
+     * @param  {string} url
+     * @param  {string} bundleName
+     * @returns Promise
+     */
+    public async loadSceneInBundle(url: string,bundleName: string): Promise<cc.SceneAsset> {
+        const bundle: cc.AssetManager.Bundle = await this.loadBundle(bundleName);
+        return new Promise((resolve,reject) => {
+            bundle.loadScene(url,(err: Error,scene: cc.SceneAsset) => {
                 if(err) {
                     reject(err);
                     return;
                 }
-                resolve(asset);
+                // console.log();
+                resolve(scene);
             });
         });
     }
@@ -54,7 +76,7 @@ export class ResourceManager {
     public async loadAseetByBundleName<T extends cc.Asset>(url: string,type: typeof cc.Asset,bundleName: string = 'resources'): Promise<T> {
         if(!url) return;
         // if(!bundleName) return;
-        const asset = await this.loadAssetInBundle<T>(url,type);
+        const asset = await this.loadAssetInBundle<T>(url,type,bundleName);
         return asset;
     }
 
@@ -64,33 +86,32 @@ export class ResourceManager {
      * @param  {string} type 选项 png 告诉资源的后缀名是什么
      * @returns Promise
      */
-    public async loadRemoteAsset<T extends cc.Asset>(url: string,type: string = 'png'): Promise<cc.SpriteFrame> {
-        if(!url) return;
+    public async loadRemoteAsset<T extends cc.Asset>(url: string,type: string = '.png'): Promise<T> {
         const hasPng = url.indexOf('.png') >= 0;
+        
         return new Promise((resolve,reject) => {
             if(!hasPng) {
-                cc.loader.load({url,type},(err: Error,res: T) => {
+                cc.assetManager.loadRemote(url,{ext: type},(err: Error,res: T) => {
                     if(err) {
                         reject(err);
                         return;
                     }
                     if(res instanceof cc.Texture2D) {
                         res.packable = false;
-                        let frame = new cc.SpriteFrame(res);
-                        resolve(frame);
+                        return;
                     }
+                    resolve(res);
                 });
             } else {
-                cc.loader.load(url,(err: Error,res: T) => {
+                cc.assetManager.loadRemote(url,(err: Error,res: T) => {
                     if(err) {
                         reject(err);
                         return;
                     }
                     if(res instanceof cc.Texture2D) {
                         res.packable = false;
-                        let frame = new cc.SpriteFrame(res);
-                        resolve(frame);
                     }
+                    resolve(res);
                 });
             }
         })

@@ -1,11 +1,12 @@
 
 
+import MessageData, { GameType } from '../../../roomCommon/CommonScripts/Utils/MessageData';
+import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
+import MessageSoundManager from '../../../roomCommon/CommonScripts/Utils/MessageSoundManager';
+import MyEvent from '../../../roomCommon/CommonScripts/Utils/MyEvent';
+import ResourcesManager from '../../../roomCommon/CommonScripts/Utils/ResourcesManager';
 import Global from '../Global/Ludo_GlobalGameData';
-import MessageSoundManager from '../../../../Common/CommonScripts/Utils/MessageSoundManager';
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
-import ResourcesManager from '../../../../Common/CommonScripts/Utils/ResourcesManager';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
-import MessageData, { GameType } from '../../../../Common/CommonScripts/Utils/MessageData';
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass

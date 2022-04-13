@@ -1044,7 +1044,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "0",
     "_N$string": "0",
     "_fontSize": 24,
@@ -2261,7 +2262,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "",
     "_N$string": "",
     "_fontSize": 28,
@@ -2429,7 +2431,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "30:00",
     "_N$string": "30:00",
     "_fontSize": 32,
@@ -2552,7 +2555,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "QUICK",
     "_N$string": "QUICK",
     "_fontSize": 24,
@@ -3028,7 +3032,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "3",
     "_N$string": "3",
     "_fontSize": 24,
@@ -4056,7 +4061,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "nickName",
     "_N$string": "nickName",
     "_fontSize": 24,
@@ -5671,7 +5677,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "nickName",
     "_N$string": "nickName",
     "_fontSize": 24,
@@ -7201,7 +7208,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "nickName",
     "_N$string": "nickName",
     "_fontSize": 24,
@@ -8731,7 +8739,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "nickName",
     "_N$string": "nickName",
     "_fontSize": 24,
@@ -13908,14 +13917,14 @@
     "_id": "213eU1EPBO0ZNk5EwhXyLf"
   },
   {
-    "__type__": "73664jGfUNDI6W23vDRuYWE",
+    "__type__": "d9fbazjXs1FJrjNRcKompsg",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 285
     },
     "_enabled": true,
-    "_id": "07CeReYG5BP6cDrQNwZfeZ"
+    "_id": "a7gvRY4bRAbLl78LeBfTNT"
   },
   {
     "__type__": "cc.Node",
@@ -14086,14 +14095,14 @@
     "_id": "34UblhultElokkrXHoYcZl"
   },
   {
-    "__type__": "73664jGfUNDI6W23vDRuYWE",
+    "__type__": "d9fbazjXs1FJrjNRcKompsg",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 288
     },
     "_enabled": true,
-    "_id": "8fsOLTII1CtqE/5OOGtGYt"
+    "_id": "89RIoPKONH07QV2k2uxpL7"
   },
   {
     "__type__": "cc.Node",
@@ -14429,14 +14438,14 @@
     "_id": "51RK+aj11O5qwIXb/4397S"
   },
   {
-    "__type__": "73664jGfUNDI6W23vDRuYWE",
+    "__type__": "d9fbazjXs1FJrjNRcKompsg",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 294
     },
     "_enabled": true,
-    "_id": "05hA6ASQZPZKj0pO+7gism"
+    "_id": "faRjzDiHFJO6VYEegUTLWW"
   },
   {
     "__type__": "cc.Node",
@@ -16082,9 +16091,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "856db419-1404-454f-a938-0f2c7b940fef"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -16096,9 +16103,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "1a398b04-cb61-48f7-bc37-b82d4145a260"
-    },
+    "_atlas": null,
     "_id": "dcCYKt3b1F25DoEJiEhyEo"
   },
   {
@@ -16223,9 +16228,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "b33131f7-36af-47be-a375-c8baa2d395e1"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -16237,9 +16240,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "1a398b04-cb61-48f7-bc37-b82d4145a260"
-    },
+    "_atlas": null,
     "_id": "acSdfPI7VCjrnd9CPoTwZg"
   },
   {
@@ -16296,7 +16297,7 @@
         "__id__": 365
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 370
@@ -16597,9 +16598,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "ea5d97b4-5c4f-4b21-9c8d-808746c43a00"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -16611,9 +16610,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "8ee841ca-0b2b-4b1c-9447-b2d0222499f6"
-    },
+    "_atlas": null,
     "_id": "46nXBiTHNMJLm6dZFIQd9e"
   },
   {
@@ -16791,9 +16788,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "bf740e3f-fa6f-4a33-84cf-582af83f5f7a"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -16805,9 +16800,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "8ee841ca-0b2b-4b1c-9447-b2d0222499f6"
-    },
+    "_atlas": null,
     "_id": "fecYTCsUVDp5GqiBotyYKe"
   },
   {
@@ -16985,9 +16978,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "81860c86-4779-4574-99f6-73fb98a5f99e"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -16999,9 +16990,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "8ee841ca-0b2b-4b1c-9447-b2d0222499f6"
-    },
+    "_atlas": null,
     "_id": "bevFa7Vu5OH6UkGx5zY07Z"
   },
   {
@@ -17179,9 +17168,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "62150de2-6ff3-401b-a25a-08e0a8c87508"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -17193,9 +17180,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "8ee841ca-0b2b-4b1c-9447-b2d0222499f6"
-    },
+    "_atlas": null,
     "_id": "45kB1r22tNg7fyJlKsgyGN"
   },
   {
@@ -17373,9 +17358,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "76bb7e81-a864-428b-9aa6-a06e3bc4f435"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -17387,9 +17370,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "8ee841ca-0b2b-4b1c-9447-b2d0222499f6"
-    },
+    "_atlas": null,
     "_id": "21EzE2JzdFrrU7DxlSlcs7"
   },
   {
@@ -17567,9 +17548,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "e7bcfbaf-fde7-4e02-b06b-b14661ceaaee"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -17581,9 +17560,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "8ee841ca-0b2b-4b1c-9447-b2d0222499f6"
-    },
+    "_atlas": null,
     "_id": "fbGaST4thIUoHVLvHo7uXt"
   },
   {
@@ -17694,9 +17671,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "b98f9c9e-b335-4846-bdaf-1648b22a7a46"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -17708,9 +17683,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_atlas": {
-      "__uuid__": "8ee841ca-0b2b-4b1c-9447-b2d0222499f6"
-    },
+    "_atlas": null,
     "_id": "12XFZzEdFAE6X3UDW38vKy"
   },
   {
@@ -18007,7 +17980,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Tap the screen to control",
     "_N$string": "Tap the screen to control",
     "_fontSize": 24,
@@ -18056,14 +18030,14 @@
     "_id": "37b2BOEUxKbKgBUkbYK4Ck"
   },
   {
-    "__type__": "1327dw2rstHHKsgp4inDEDS",
+    "__type__": "ea8f5cJAWpBtZPrlcLbY/gQ",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 374
     },
     "_enabled": true,
-    "_id": "7b+Niw42BNhrAciHODCrma"
+    "_id": "6dRAQnXDZLH5kv+KRE8BNh"
   },
   {
     "__type__": "cc.Node",
@@ -18611,7 +18585,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "RULES",
     "_N$string": "RULES",
     "_fontSize": 32,
@@ -18720,7 +18695,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "WINNING THE GAME",
     "_N$string": "WINNING THE GAME",
     "_fontSize": 36,
@@ -18832,7 +18808,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Each player wins when 2 tokens reach the end.",
     "_N$string": "Each player wins when 2 tokens reach the end.",
     "_fontSize": 24,
@@ -18971,7 +18948,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "SPECIAL ITEMS",
     "_N$string": "SPECIAL ITEMS",
     "_fontSize": 36,
@@ -19110,7 +19088,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "1. UFO",
     "_N$string": "1. UFO",
     "_fontSize": 30,
@@ -19249,7 +19228,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Pawns can randomly advance 3 to 8 squares.",
     "_N$string": "Pawns can randomly advance 3 to 8 squares.",
     "_fontSize": 24,
@@ -19388,7 +19368,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "2. Super Dice",
     "_N$string": "2. Super Dice",
     "_fontSize": 30,
@@ -19527,7 +19508,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "The next time you roll the dice, there must be a six.",
     "_N$string": "The next time you roll the dice, there must be a six.",
     "_fontSize": 24,
@@ -19666,7 +19648,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "3.Invisibility",
     "_N$string": "3.Invisibility",
     "_fontSize": 30,
@@ -19805,7 +19788,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "The token will not be kicked home by any other pieces or items for 2 rounds.",
     "_N$string": "The token will not be kicked home by any other pieces or items for 2 rounds.",
     "_fontSize": 24,
@@ -19944,7 +19928,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "4.Missile",
     "_N$string": "4.Missile",
     "_fontSize": 30,
@@ -20080,7 +20065,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "The missile advances 5 squares, and the other pieces encountered midway will be kicked home.",
     "_N$string": "The missile advances 5 squares, and the other pieces encountered midway will be kicked home.",
     "_fontSize": 24,
@@ -20192,7 +20178,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Regret function",
     "_N$string": "Regret function",
     "_fontSize": 30,
@@ -20328,7 +20315,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Regret function - when you are not satisfied with the result of dice, you can use this function to roll dice again with game coins.",
     "_N$string": "Regret function - when you are not satisfied with the result of dice, you can use this function to roll dice again with game coins.",
     "_fontSize": 24,
@@ -21621,7 +21609,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Network abnormality!",
     "_N$string": "Network abnormality!",
     "_fontSize": 24,
@@ -21717,7 +21706,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "PlayAgain",
     "_N$string": "PlayAgain",
     "_fontSize": 32,
@@ -21850,7 +21840,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": " version15",
     "_N$string": " version15",
     "_fontSize": 40,

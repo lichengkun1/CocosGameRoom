@@ -182,7 +182,7 @@ export async function preloadAssetInBundle<T extends cc.Asset>(url: string, type
     // let bundle = null;
     // bundle = await resourceManager.loadBundle(bundleName);
     // if(!bundle) return;
-    const res = await resourceManager.loadAssetInBundle<T>(url, type) as T;
+    const res = await resourceManager.loadAssetInBundle<T>(url, type,bundleName) as T;
     if (!res) return;
     return res;
 }

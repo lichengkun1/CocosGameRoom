@@ -1,30 +1,28 @@
 import Global from '../Global/Ludo_GlobalGameData';
 import Ludo_userNodeList from './Ludo_userNodeList';
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
-import MessageSoundManager from '../../../../Common/CommonScripts/Utils/MessageSoundManager';
-import MessageForRoom from '../../../../Common/CommonScripts/Utils/MessageForRoom';
-import NDB from '../../../../Common/CommonScripts/Utils/NDBTS';
 import LudoPlayerLogic from './Ludo_playerLogic';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
-import MessageData, { GameType } from '../../../../Common/CommonScripts/Utils/MessageData';
-import MessageForSingle from '../../../../Common/CommonScripts/Utils/MessageForSingle';
-import ResourcesManager from '../../../../Common/CommonScripts/Utils/ResourcesManager';
 import Ludo_MessageType from '../Utils/Ludo_MessageType';
 import Ludo_propsLogic from './Ludo_propsLogic';
-import Message from '../../../../Common/CommonScripts/Utils/Message';
 import Ludo_ExitPopup from './Ludo_ExitPopup';
-import { GameConfig } from '../../../../Jsons/GameConfig';
 import Ludo_coinmoveLogic from './Ludo_coinmoveLogic';
 import Ludo_userNodeLogic from './Ludo_userNodeLogic';
 import Ludo_settlementLogic from './Ludo_settlementLogic';
 import Ludo_GameMode from '../ModeSceneScripts/Ludo_GameMode';
 import PlayerModel from '../models/player';
-import { resolve } from 'path';
 import { dataCacheManager } from '../models/dataCache';
 import { ToolsData } from '../models/serverDataInterface';
 import Ludo_GlobalGameData from '../Global/Ludo_GlobalGameData';
-import { constants, transcode } from 'buffer';
-import BgmSettings from '../../../../Common/CommonScripts/bgmSettings';
+import MessageSoundManager from '../../../roomCommon/CommonScripts/Utils/MessageSoundManager';
+import BgmSettings from '../../../roomCommon/CommonScripts/bgmSettings';
+import { getUrlParameterValue } from '../../../Script/common/utils/util';
+import { GameConfig } from '../../../gameConfig';
+import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
+import MyEvent from '../../../roomCommon/CommonScripts/Utils/MyEvent';
+import NDB from '../../../roomCommon/CommonScripts/Utils/NDBTS';
+import MessageData from '../../../roomCommon/CommonScripts/Utils/MessageData';
+import MessageForRoom from '../../../roomCommon/CommonScripts/Utils/MessageForRoom';
+import ResourcesManager from '../../../roomCommon/CommonScripts/Utils/ResourcesManager';
+import Message from '../../../roomCommon/CommonScripts/Utils/Message';
 
 const { ccclass, property } = cc._decorator;
 
@@ -234,7 +232,7 @@ export default class Ludo_gameLogic extends cc.Component {
     start() {
         window['Global'] = Global;
 
-        let vcode = MessageManager.getUrlParameterValue('vcode');
+        let vcode = getUrlParameterValue('vcode');
         if ((cc.sys.os === cc.sys.OS_ANDROID && Number(vcode) < 17300) || (cc.sys.os === cc.sys.OS_IOS && Number(vcode) <= 16200) && GameConfig.gameName == 'ludo') {
             cc.find('Canvas/BG').active = true;
         }

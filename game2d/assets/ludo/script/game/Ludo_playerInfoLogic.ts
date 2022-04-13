@@ -1,6 +1,7 @@
+import MessageSoundManager from "../../../roomCommon/CommonScripts/Utils/MessageSoundManager";
+import ResourcesManager from "../../../roomCommon/CommonScripts/Utils/ResourcesManager";
 
-import ResourcesManager from '../../../../Common/CommonScripts/Utils/ResourcesManager';
-import MessageSoundManager from '../../../../Common/CommonScripts/Utils/MessageSoundManager';
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass

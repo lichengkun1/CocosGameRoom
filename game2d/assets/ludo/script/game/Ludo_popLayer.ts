@@ -1,6 +1,4 @@
-import MessageData from '../../../../Common/CommonScripts/Utils/MessageData';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
-
+import MessageData from "../../../roomCommon/CommonScripts/Utils/MessageData";
 
 const { ccclass, property } = cc._decorator;
 

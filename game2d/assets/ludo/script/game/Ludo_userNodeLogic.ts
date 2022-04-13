@@ -14,11 +14,11 @@ const ANIMATIONNAME = {
     NONE: '',
 }
 
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
-import Global from '../Global/Ludo_GlobalGameData';
-import MessageSoundManager from '../../../../Common/CommonScripts/Utils/MessageSoundManager';
 import Ludo_userNodeList from './Ludo_userNodeList';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
+import Global from '../Global/Ludo_GlobalGameData';
+import MyEvent from '../../../roomCommon/CommonScripts/Utils/MyEvent';
+import MessageSoundManager from '../../../roomCommon/CommonScripts/Utils/MessageSoundManager';
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass

@@ -1,6 +1,6 @@
 
+import MyEvent from '../../../roomCommon/CommonScripts/Utils/MyEvent';
 import GlobalGameData from '../Global/Ludo_GlobalGameData';
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
 const { ccclass, property } = cc._decorator;
 
 @ccclass

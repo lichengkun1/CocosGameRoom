@@ -5,8 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import MatchSetBets from "../../../../Common/CommonScripts/MatchSceneScripts/MatchSetBets";
-import MessageData, { GameType } from "../../../../Common/CommonScripts/Utils/MessageData";
+import MatchSetBets from "../../../roomCommon/CommonScripts/MatchSceneScripts/MatchSetBets";
+import MessageData, { GameType } from "../../../roomCommon/CommonScripts/Utils/MessageData";
 
 const { ccclass, property } = cc._decorator;
 

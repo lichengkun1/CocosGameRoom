@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Cocos Creator | ludoRoom</title>
+
+  <!--http://www.html5rocks.com/en/mobile/mobifying/-->
+  <meta name="viewport"
+    content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1" />
+
+  <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- force webkit on 360 -->
+  <meta name="renderer" content="webkit" />
+  <meta name="force-rendering" content="webkit" />
+  <!-- force edge on IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- force full screen on some browser -->
+  <meta name="full-screen" content="yes" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="360-fullscreen" content="true" />
+
+  <!-- force screen orientation on some browser -->
+  <meta name="screen-orientation" content="landscape" />
+  <meta name="x5-orientation" content="landscape">
+
+  <!--fix fireball/issues/3568 -->
+  <!--<meta name="browsermode" content="application">-->
+  <meta name="x5-page-mode" content="app">
+
+  <!--<link rel="apple-touch-icon" href=".png" />-->
+  <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
+
+  <link rel="stylesheet" type="text/css" href="style-mobile.css" />
+
+</head>
+
+<body>
+  <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+  <div id="splash">
+    <div class="loadingBG"></div>
+    <div class="loadingIconBG"></div>
+    <div class="progress">
+      <div class="hull">
+        <div class="section section_left">
+          <div class="box box_left" id="box_left">
+            <div class="circle circle_left"></div>
+          </div>
+        </div>
+        <div class="section section_right">
+          <div class="box box_right" id="box_right">
+            <div class="circle circle_right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="loadingIcon"></div>
+    <div class="updateText">
+      <p id="updateTost" style="font-size: 120%;color: #ffffff;"><b>Guess my draw</b></p>
+    </div>
+    <div class="toastBG" id="toastDiv" style="visibility:hidden;z-index:10;">
+      <p id="toast">Sorry, the game system cannot support mobile phones below Android 6.0. Please upgrade your mobile
+        phone’s Android version to 6.0 and above.</p>
+    </div>
+    <div id="close_pop" class="close_pop" style="visibility:hidden;z-index:10;">
+      <p id="close_text" class="close_text" style="font-size: 100%;color: #333333;">
+        Are you sure you quit the game?</p>
+      <button id="close_yes" class="close_yes" style="font-size: 100%;"> Yes </button>
+      <button id="close_no" class="close_no" style="font-size: 100%;"> Cancel </button>
+    </div>
+  </div>
+  <script src="./jszip.js" charset="utf-8"></script>
+  <script src="./ndb.js" charset="utf-8"></script>
+
+  <script src="./close.js" charset="utf-8"> </script>
+
+  <script src="./webglCheck.js" charset="utf-8"></script>
+
+  <script src="src/settings.ee4f3.js" charset="utf-8"></script>
+
+  <script src="main.js" charset="utf-8"></script>
+
+  <script type="text/javascript" src="./loadCocos.js" charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+html {
+  -ms-touch-action: none;
+}
+
+body,
+canvas,
+div {
+  display: block;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Remove spin of input type number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  touch-action: none;
+
+  cursor: default;
+  color: rgba(136, 136, 136, 0);
+  background-color: rgba(51, 51, 51, 0);
+  text-align: center;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  
+
+  /* fix bug: https://github.com/cocos-creator/2d-tasks/issues/791 */
+  /* overflow cannot be applied in Cocos2dGameContainer, 
+  otherwise child elements will be hidden when Cocos2dGameContainer rotated 90 deg */
+  overflow: hidden;
+}
+
+#Cocos2dGameContainer {
+  position: absolute;
+  margin: 0;
+  left: 0px;
+  top: 0px;
+
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+
+  touch-action: none;
+}
+
+canvas {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+a:link,
+a:visited {
+  color: #666;
+}
+
+a:active,
+a:hover {
+  color: #666;
+}
+
+p.header {
+  font-size: small;
+}
+
+p.footer {
+  font-size: x-small;
+}
+
+#splash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: transparent;
+}
+
+.loadingBG {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 300%;
+  background: url(./loadBG.0161b.png) no-repeat center;
+  background-size: 750%;
+  opacity: 0;
+}
+
+.loadingIcon {
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  width: 90px;
+  height: 90px;
+  margin: -250px 0 0 -50px;
+  background: url(./loadicon.703e9.png) no-repeat center;
+  background-size: 100%;
+}
+
+.loadingIconBG {
+  width: 100px;
+  height: 100px;
+  /* margin: auto; */
+  /* text-align: center; */
+  background: url(./iconBG.8b20c.png) no-repeat center;
+  background-size: 100%;
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  /* transform: translate(-50%,-50%); */
+  margin: -255px 0 0 -55px;
+}
+
+
+
+
+@keyframes loadinge {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.progress-bar {
+  position: absolute;
+  left: 12.5%;
+  top: 50%;
+  height: 8px;
+  padding: 2px;
+  width: 75%;
+  border-radius: 7px;
+  /* background-color: #9EDFDA; */
+  background-color: transparent;
+  box-shadow: 0 1px 5px transparent,0 1px transparent;
+
+  /* box-shadow: 0 1px 5px #9EDFDA inset, 0 1px 0 #444;            */
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+  transition: width .4s ease-in-out;
+  /* background-color: #FF4E4E; */
+  background-color: transparent;
+}
+
+.stripes span {
+  background-size: 30px 30px;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+      transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+      transparent 75%, transparent);
+
+  animation: animate-stripes 1s linear infinite;
+}
+
+.toastBG {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: 50px;
+  width: 285px;
+  min-height: 100px;
+  transform: translate(-50%, -50%);
+  background: url(./bg.73095.png) no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  padding: 0 10px;
+}
+
+.updateText {
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  width: 285px;
+  margin: -160px 0 0 -145px;
+  color: #000;
+}
+
+.close_pop {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  margin-top: 50px;
+  width: 285px;
+  min-height: 200px;
+  transform: translate(-50%, -50%);
+  background: url(./bg.73095.png) no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  padding: 0 10px;
+}
+
+.close_no {
+  position: absolute;
+  right: 30px;
+  top: 120px;
+  width: 110px;
+  height: 40px;
+  background: url("./deposit.7c56d.png") no-repeat;
+  background-size: contain;
+  border-style: none;
+  outline: none;
+}
+
+.close_yes {
+  position: absolute;
+  left: 30px;
+  top: 120px;
+  width: 110px;
+  height: 40px;
+  background: url("./cancalBtn.78240.png") no-repeat;
+  background-size: contain;
+  border-style: none;
+  outline: none;
+}
+
+.close_btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 32px;
+  height: 32px;
+  background: url("./btn_exit.ce895.png") no-repeat;
+  background-size: contain;
+  border-style: none;
+  outline: none;
+}
+
+.close_text {
+  position: relative;
+  top: 40px;
+  margin: auto;
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+
+/* progress */
+.progress {
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  /* transform: translate(-50%,-50%); */
+  margin: -255px 0 0 -55px;
+}
+
+.progress div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+.progress .hull {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform: rotate(0deg)
+    /* 控制初始角度 */
+}
+
+.progress .section {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.progress .section_right {
+  width: 50%;
+  left: 50%;
+  transform: rotate(180deg);
+}
+
+.progress .section_left {
+  width: 50%;
+  transform-origin: right center;
+}
+
+.progress .box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.progress .box_left {
+  transform-origin: right center;
+  transform: rotate(180deg);
+  /*扇形<180°时，box_left值为180°,扇形>180°时，这个控制*/
+  animation: box_left 2s linear;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+.progress .box_right {
+  left: 100%;
+  transform-origin: left center;
+  transform: rotate(0deg);
+  /*扇形<180°时，box_right控制,扇形>180°时，值为180°*/
+  animation: box_right 2s linear;
+  animation-fill-mode: forwards;
+}
+
+.progress .circle {
+  width: 200%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.progress .circle_left {
+  /* background-color: red; */
+  border: 10px solid #4EECE3;
+}
+
+.progress .circle_right {
+  left: -100%;
+  /* background-color: red; */
+  border: 10px solid #4EECE3;
+}
+
