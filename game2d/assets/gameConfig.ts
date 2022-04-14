@@ -8,6 +8,5 @@ export class GameConfig {
     /** 游戏bundle名称 */
     public static readonly gameName = "ludo";
 
-    
 
 }
