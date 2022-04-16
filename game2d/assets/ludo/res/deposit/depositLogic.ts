@@ -1,5 +1,6 @@
 
-import MKMessageManager from'../../../../Common/CommonScripts/Utils/MessageManager';
+import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
+import { getUrlParameterValue } from '../../../Script/common/utils/util';
 import Ludo_GlobalGameData from '../../script/Global/Ludo_GlobalGameData';
 
 
@@ -16,7 +17,7 @@ export default class depositLogic extends cc.Component {
 
     start () {
         this.node.on(cc.Node.EventType.TOUCH_START,(event)=>{event.stopPropagation()},this);
-        let lang = MKMessageManager.getUrlParameterValue('ui_lang');
+        let lang = getUrlParameterValue('ui_lang');
         let labelJson = 'Insufficient Game Coins,please recharge';
         const langJson = this.langJson.json;
         if(!langJson[lang]){
@@ -35,7 +36,8 @@ export default class depositLogic extends cc.Component {
     }
 
     deposit_callback(){
-        MKMessageManager.buyGameCion();
+        
+        MessageManager.buyGameCion();
         this.node.destroy();
     }
 }

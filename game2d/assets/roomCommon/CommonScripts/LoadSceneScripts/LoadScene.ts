@@ -1,5 +1,6 @@
 import { GameConfig } from "../../../gameConfig";
-import { getUrlParameterValue } from "../../../Script/common/utils/util";
+import { resourceManager } from "../../../Script/common/managers/resourceManager";
+import { debugLog, getUrlParameterValue } from "../../../Script/common/utils/util";
 import FrameImageManager from "../../Component/FrameImageComponent/FrameImageManager";
 import MatchResData from "../MatchSceneScripts/MatchResData";
 import MessageData, { GameCoinType, GameType } from "../Utils/MessageData";
@@ -41,6 +42,7 @@ export default class LoadScene extends cc.Component {
         console.log('开启动态合图');
         cc.dynamicAtlasManager.enabled = true;
         cc.macro.CLEANUP_IMAGE_CACHE = false;
+        this.loadBundleByGameName();
 
         this.initNode();
         this.setMessageData();
@@ -61,6 +63,18 @@ export default class LoadScene extends cc.Component {
             const bgNode = this.node.getChildByName('bg_dominoe');
             MessageData.gameType = GameType.room;
             bgNode.active = true;
+        }
+    }
+
+    private loadBundleByGameName() {
+        if(GameConfig.gameName === 'ludo' || GameConfig.gameName === 'dominoe') {
+            resourceManager.loadSceneInBundle('CommonScene/MatchScene','roomCommon');
+            if(GameConfig.gameName === 'ludo') {
+                resourceManager.loadBundle('ludo');
+            } 
+            if(GameConfig.gameName === 'dominoe') {
+                resourceManager.loadBundle('dominoe');
+            }
         }
     }
 
@@ -229,7 +243,7 @@ export default class LoadScene extends cc.Component {
         }
         this.showProgressLabelIsShow();
         this.isChange = true;
-        cc.director.preloadScene('MatchScene', (completedCount, totalCount, item) => {
+        resourceManager.loadSceneInBundle('CommonScene/MatchScene','roomCommon',(completedCount, totalCount, item) => {
             let comple = Math.floor(completedCount / totalCount * 25);
             if (flag) {
                 let lerp = comple - this.lastnum1;
@@ -241,41 +255,47 @@ export default class LoadScene extends cc.Component {
                 this.changeSceneIndex = this.changeSceneIndex + lerp;
             }
             if (comple == 25) {
+                debugLog('加载匹配场景完成');
                 this.matchSceneIsLoad = true;
             }
 
-        }, (error) => {
         });
     }
 
     private loadGameScene() {
-        cc.director.preloadScene(`${MessageData.gameName}_GameScene`, (completedCount, totalCount, item) => {
+        resourceManager.loadSceneInBundle(`scene/${GameConfig.gameName}_GameScene`,GameConfig.gameName,(completedCount, totalCount, item) => {
             let comple = Math.floor(completedCount / totalCount * 20);
             let lerp = comple - this.lastnum2;
             this.lastnum2 = comple;
             this.changeSceneIndex = this.changeSceneIndex + lerp;
             if (comple == 20) {
+                debugLog('加载游戏场景完成');
                 this.gameSceneIsLoad = true;
             }
-        }, (error) => {
         });
-        cc.loader.loadResDir(`GamesRes/${MessageData.gameName}_matchingScene_Res`, (completedCount, totalCount, item) => {
+
+        // resourceManager.loadAssetInBundle(``,)
+        resourceManager.loadBundleDir(GameConfig.gameName,`resources_${GameConfig.gameName}/${GameConfig.gameName}_matchingScene_Res`,cc.Prefab,(completedCount, totalCount, item) => {
             let comple = Math.floor(completedCount / totalCount * 5);
             let lerp = comple - this.lastnum3;
             this.lastnum3 = comple;
             this.changeSceneIndex = this.changeSceneIndex + lerp;
             if (comple == 5) {
+                debugLog(`加载${GameConfig.gameName}游戏完成`);
                 this.matchingResIsLoad = true;
             }
-        }, (err, resource, urls) => {
+        }, (err, resource) => {
+            debugLog('加载匹配场景预制体完毕',resource);
+            this.matchingResIsLoad = true;
             MatchResData.matchSceneResource = resource
-        })
+        });
     }
     private loadLanguage() {
         let lang = MessageManager.getUrlParameterValue('ui_lang');
         console.log("lang is ",lang);
         // lang = 'ar';
-        cc.loader.loadResDir(`CommonRes/language/${GameConfig.gameName}`, (err, res) => {
+        resourceManager.loadBundleDir(GameConfig.gameName,'lang',cc.JsonAsset,null,(err,res) => {
+            debugLog('拉取语言bundle',res);
             for (let i = 0; i < res.length; i++) {
                 const element = res[i];
                 if (element._name == lang) {
@@ -289,7 +309,7 @@ export default class LoadScene extends cc.Component {
                     return;
                 }
             }
-        })
+        });
     }
     private showProgressLabelIsShow() {
         if (this.progressLabelIsShow) {

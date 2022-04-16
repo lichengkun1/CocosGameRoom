@@ -4,6 +4,9 @@
  * 音效管理类
  */
 
+import { GameConfig } from "../../../gameConfig";
+import { resourceManager } from "../../../Script/common/managers/resourceManager";
+
 export default class MessageSoundManager {
     public static audioEngineOn:boolean = true;                 //音乐开关，默认打开的;
     public static bgAudioId:number = -1;                        //背景音乐ID;
@@ -11,12 +14,7 @@ export default class MessageSoundManager {
 
     public static playBGEngine(url,callback?: Function){
         if(this.audioEngineOn){
-            cc.loader.loadRes(url,cc.AudioClip,(err,clip)=>{
-                if(err){
-                    console.log(`load ${url} err ${err}`);
-                    return;
-                }
-                //双重验证;
+            MessageSoundManager.loadAudioClip(url).then((clip: cc.AudioClip) => {
                 if(this.audioEngineOn){
                     this.bgAudioId = cc.audioEngine.playMusic(clip,true);
                     cc.audioEngine.setFinishCallback(this.bgAudioId,() => {
@@ -24,8 +22,34 @@ export default class MessageSoundManager {
                     });
                     callback && callback(this.bgAudioId);
                 }
-            });
+            }).catch();
+            // resourceManager.loadAssetInBundle(url,cc.AudioClip,GameConfig.gameName).then((clip: cc.AudioClip) => {
+            //     //双重验证;
+            //     c
+            // }).catch(err => {
+            //     console.log(`load ${url}`);
+            // });
+            
         }
+    }
+
+    public static async loadAudioClip(url: string) {
+        return new Promise((resolve,reject) => {
+            resourceManager.loadAssetInBundle(url,cc.AudioClip,GameConfig.gameName).then((clip: cc.AudioClip) => {
+                //双重验证;
+                resolve(clip);
+                // if(this.audioEngineOn){
+                //     this.bgAudioId = cc.audioEngine.playMusic(clip,true);
+                //     cc.audioEngine.setFinishCallback(this.bgAudioId,() => {
+                //         console.log('背景音乐异常结束');
+                //     });
+                //     callback && callback(this.bgAudioId);
+                // }
+            }).catch(err => {
+                console.log(`load ${url}`);
+                reject(new Error('加载资源失败'));
+            });
+        })
     }
     
     public static updateMusic(){
@@ -42,11 +66,14 @@ export default class MessageSoundManager {
 
     public static playEffect(url){
         if(this.audioEngineOn){
-            cc.loader.loadRes(url,cc.AudioClip,(err,clip)=>{
-                if(err){
-                    console.log(`load ${url} err ${err}`);
-                    return;
-                }
+            // cc.loader.loadRes(url,cc.AudioClip,(err,clip)=>{
+            //     if(err){
+            //         console.log(`load ${url} err ${err}`);
+            //         return;
+            //     }
+                
+            // });
+            MessageSoundManager.loadAudioClip(url).then((clip: cc.AudioClip) => {
                 cc.audioEngine.playEffect(clip,false);
             });
         }

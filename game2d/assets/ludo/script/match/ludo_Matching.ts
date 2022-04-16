@@ -12,6 +12,7 @@ import MyEvent from "../../../roomCommon/CommonScripts/Utils/MyEvent";
 import NDB from "../../../roomCommon/CommonScripts/Utils/NDBTS";
 import ResourcesManager from "../../../roomCommon/CommonScripts/Utils/ResourcesManager";
 import TopUINode from "../../../roomCommon/Component/RoomTop/scripts/TopUINode";
+import { resourceManager } from "../../../Script/common/managers/resourceManager";
 import Ludo_BetsConfig from "../game/Ludo_BetsConfig";
 import Global from "../Global/Ludo_GlobalGameData";
 import Ludo_GameMode from "../ModeSceneScripts/Ludo_GameMode";
@@ -194,12 +195,15 @@ export default class ludo_Matching extends cc.Component {
     }
 
     preloadMap() {
-        ResourcesManager.loadDragonBonesRes('chengbaocheckerboard/background_chengbao',() => {
-            console.log('预加载游戏地图完成');
-        });
-        ResourcesManager.loadSpriteAtlas('isLandCheckerboard/island_checkerboardPlist',() => {
-            console.log('预加载地图图片完成');
-        });
+        // resourceManager.
+        if(GameConfig.gameName === 'ludo') {
+            resourceManager.loadAssetInBundle(`${GameConfig.gameName}/resources_${GameConfig.gameName}/store/chengbaocheckerboard/background_chengbao`,null,GameConfig.gameName).then(() => {
+                console.log('预加载游戏地图完成');
+            });
+            resourceManager.loadAssetInBundle(`${GameConfig.gameName}/resources_${GameConfig.gameName}/store/isLandCheckerboard/island_checkerboardPlist`,null,GameConfig.gameName).then(() => {
+                console.log('预加载地图图片完成');
+            });
+        }
     }
 
     //游戏页面加载完成打点；

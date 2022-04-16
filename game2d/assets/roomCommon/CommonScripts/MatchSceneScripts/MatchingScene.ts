@@ -1,5 +1,6 @@
 import { join } from "path";
 import { GameConfig } from "../../../gameConfig";
+import { debugLog } from "../../../Script/common/utils/util";
 import FrameImage from "../../Component/FrameImageComponent/FrameImage";
 import FrameImageController from "../../Component/FrameImageComponent/FrameImageController";
 import FrameImageManager from "../../Component/FrameImageComponent/FrameImageManager";
@@ -211,6 +212,7 @@ export default class MatchingScene extends cc.Component {
         this.onEvent();
         this.initNode();
         this.initData();
+
         this.isstartChronography = true;
         MyEvent.I.on("joinErrMessage", this.joinErr.bind(this), this.node);
         MyEvent.I.on("insufficientBalance", this.joinErr2.bind(this), this.node);
@@ -401,6 +403,7 @@ export default class MatchingScene extends cc.Component {
     /**加载UI资源 */
     private loadUIRes() {
         let playerIndex = 0;
+        debugLog('matchSceneResource is ',MatchResData.matchSceneResource);
         for (let i = 0; i < MatchResData.matchSceneResource.length; i++) {
             const element = MatchResData.matchSceneResource[i];
             if (element.name != "player") {

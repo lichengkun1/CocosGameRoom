@@ -1,3 +1,5 @@
+import { debugLog } from "../utils/util";
+
 /**
  * 
  * 资源管理器 单例
@@ -22,21 +24,30 @@
         })
     }
 
+    public async loadBundleDir(bundleName: string,url: string,type: typeof cc.Asset,progressFunc: (finished,total,item) => void,finishFunc: (err,res) => void) {
+        const bundle = await this.loadBundle(bundleName);
+        debugLog('加载bundle dir: ',bundle);
+        bundle.loadDir(url,type,progressFunc,finishFunc);
+    }
+
     /**
      * 加载bundle里面的资源 除去场景外的资源
      * @param  {cc.AssetManager.Bundle} bundle budnle资源
      * @param  {string} url 资源在bundle里面的路径
      * @param  {typeofcc.Asset} type 资源的类型
+     * @param  {Function} progressFunc 进度方法
      * @returns Promise
      */
-    public async loadAssetInBundle<T extends cc.Asset>(url: string,type: typeof cc.Asset,bundleName: string): Promise<T> {
+    public async loadAssetInBundle<T extends cc.Asset>(url: string,type: typeof cc.Asset,bundleName: string,progressFunc?: (finished,total,item) => {}): Promise<T> {
         if(!url) return;
         console.log('loadAssetInBundle url is ',url," type is ",type);
         const bundle: cc.AssetManager.Bundle = await this.loadBundle(bundleName);
         console.log('bundle is ',bundle);
+
+        // bundle.load()
         
         return new Promise((resolve,reject) => {
-            bundle.load(url,type,(err: Error,assets: T) => {
+            bundle.load(url,type,progressFunc,(err: Error,assets: T) => {
                 if(err) {
                     reject(new Error('加载bundle内的资源失败'));
                 }
@@ -52,10 +63,10 @@
      * @param  {string} bundleName
      * @returns Promise
      */
-    public async loadSceneInBundle(url: string,bundleName: string): Promise<cc.SceneAsset> {
+    public async loadSceneInBundle(url: string,bundleName: string,progressFunc?: Function): Promise<cc.SceneAsset> {
         const bundle: cc.AssetManager.Bundle = await this.loadBundle(bundleName);
         return new Promise((resolve,reject) => {
-            bundle.loadScene(url,(err: Error,scene: cc.SceneAsset) => {
+            bundle.loadScene(url,progressFunc,(err: Error,scene: cc.SceneAsset) => {
                 if(err) {
                     reject(err);
                     return;

@@ -56,7 +56,7 @@ import MyEvent from "./MyEvent";
 import MessageManager from "./MessageManager";
 import MessageSoundManager from "./MessageSoundManager";
 import MessageData, { GameType } from "./MessageData";
-import { GameConfig } from "../../../../gameConfig";
+import { GameConfig } from "../../../gameConfig";
 
 
 interface IAction {
