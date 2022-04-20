@@ -1,8 +1,9 @@
 
 
 
-import MessageSoundManager from '../../../roomCommon/CommonScripts/Utils/MessageSoundManager';
-import MyEvent from '../../../roomCommon/CommonScripts/Utils/MyEvent';
+
+import MessageSoundManager from '../../../Script/CommonScripts/Utils/MessageSoundManager';
+import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
 import Global from '../Utils/Dominoe_GlobalGameData';
 
 /**

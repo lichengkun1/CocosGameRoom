@@ -32,23 +32,20 @@ Dominoe_POSTYPE.BOTTOMRIGHT, Dominoe_POSTYPE.RIGHT, Dominoe_POSTYPE.RIGHT, Domin
 Dominoe_POSTYPE.RIGHTBOTTOM, Dominoe_POSTYPE.BOTTOM,
 Dominoe_POSTYPE.BOTTOMLEFT, Dominoe_POSTYPE.LEFT, Dominoe_POSTYPE.LEFT, Dominoe_POSTYPE.LEFT, Dominoe_POSTYPE.LEFT, Dominoe_POSTYPE.LEFT, Dominoe_POSTYPE.LEFT];
 
-import { globalAgent } from 'http';
 import { GameConfig } from '../../../gameConfig';
-
-import PlayerModel from '../../../ludo/script/models/player';
-import BgmSettings from '../../../roomCommon/CommonScripts/bgmSettings';
-import Message from '../../../roomCommon/CommonScripts/Utils/Message';
-import MessageData, { GameType } from '../../../roomCommon/CommonScripts/Utils/MessageData';
-import MessageForRoom from '../../../roomCommon/CommonScripts/Utils/MessageForRoom';
-import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
-import MessageSoundManager from '../../../roomCommon/CommonScripts/Utils/MessageSoundManager';
-import MessageType from '../../../roomCommon/CommonScripts/Utils/MessageType';
-import MyEvent from '../../../roomCommon/CommonScripts/Utils/MyEvent';
-import NDB from '../../../roomCommon/CommonScripts/Utils/NDBTS';
+import { getUrlParameterValue } from '../../../Script/common/utils/util';
+import BgmSettings from '../../../Script/CommonScripts/bgmSettings';
+import Message from '../../../Script/CommonScripts/Utils/Message';
+import MessageData, { GameType } from '../../../Script/CommonScripts/Utils/MessageData';
+import MessageForRoom from '../../../Script/CommonScripts/Utils/MessageForRoom';
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
+import MessageSoundManager from '../../../Script/CommonScripts/Utils/MessageSoundManager';
+import MessageType from '../../../Script/CommonScripts/Utils/MessageType';
+import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
+import NDB from '../../../Script/CommonScripts/Utils/NDBTS';
 import { GameStatusModel, PlayerInfoModel } from '../models/gameStatusModel';
 import RankComp from '../rank/rankComp';
 import { PockerObj } from '../rank/rankItem';
-import { mockRankData } from '../testRank';
 import Global, { GameModeDominoe } from '../Utils/Dominoe_GlobalGameData';
 import Dominoe_ExitPopup from './Dominoe_ExitPopup';
 import Dominoe_paiLayerLogic from './Dominoe_paiLayerLogic';
@@ -254,7 +251,7 @@ export default class Dominoe_gameLogic extends cc.Component {
         this.gameStartEvent();
         this.joinError();
 
-        let vcode = MessageManager.getUrlParameterValue('vcode');
+        let vcode = getUrlParameterValue('vcode');
         const bgDominoe = cc.find("Canvas/bg_dominoe");
 
         if ((cc.sys.os === cc.sys.OS_ANDROID && Number(vcode) < 17300) || (cc.sys.os === cc.sys.OS_IOS && Number(vcode) <= 16200) && GameConfig.gameName == 'dominoe') {

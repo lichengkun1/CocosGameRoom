@@ -1,6 +1,8 @@
-import MessageData, { GameType } from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import MessageManager from "../../../roomCommon/CommonScripts/Utils/MessageManager";
-import Global from "../..//script/Utils/Dominoe_GlobalGameData";
+
+
+import MessageData, { GameType } from "../../../Script/CommonScripts/Utils/MessageData";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
+import Global from "../../script/Utils/Dominoe_GlobalGameData";
 const { ccclass, property } = cc._decorator;
 
 const betsUrl = 'v1/dominoe/bets/config/chatroom/';

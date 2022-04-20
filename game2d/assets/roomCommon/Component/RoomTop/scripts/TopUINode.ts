@@ -1,8 +1,9 @@
-import Message from "../../../CommonScripts/Utils/Message";
-import MessageData, { GameCoinType } from "../../../CommonScripts/Utils/MessageData";
-import MessageManager from "../../../CommonScripts/Utils/MessageManager";
-import MyEvent from "../../../CommonScripts/Utils/MyEvent";
-import ResourcesManager from "../../../CommonScripts/Utils/ResourcesManager";
+import Message from "../../../../Script/CommonScripts/Utils/Message";
+import MessageData, { GameCoinType } from "../../../../Script/CommonScripts/Utils/MessageData";
+import MessageManager from "../../../../Script/CommonScripts/Utils/MessageManager";
+import MyEvent from "../../../../Script/CommonScripts/Utils/MyEvent";
+import ResourcesManager from "../../../../Script/CommonScripts/Utils/ResourcesManager";
+
 
 const { ccclass, property } = cc._decorator;
 

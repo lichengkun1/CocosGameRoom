@@ -288,7 +288,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
           // eventManager.emit('onDownloadFinish');
           var isProd = window.location.href.indexOf('prod') >= 0 ? true : false;
 
-          let cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
+          let cocosUrl = 'https://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
           if(isProd) {
             cocosUrl = 'https://a.fslk.co/games/cocos-source/staging/web-mobile/cocos2d-min-js-2.4.8.js.zip';
           }

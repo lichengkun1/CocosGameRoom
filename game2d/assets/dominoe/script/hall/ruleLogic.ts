@@ -1,4 +1,4 @@
-import MessageManager from "../../../roomCommon/CommonScripts/Utils/MessageManager";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
 
 const { ccclass, property } = cc._decorator;
 

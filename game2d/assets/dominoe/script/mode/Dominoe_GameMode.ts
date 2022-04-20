@@ -1,8 +1,9 @@
 
 import { GameConfig } from "../../../gameConfig";
-import MessageData, { GameCoinType, GameType } from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import MessageManager from "../../../roomCommon/CommonScripts/Utils/MessageManager";
-import NDB from "../../../roomCommon/CommonScripts/Utils/NDBTS";
+import MessageData, { GameCoinType, GameType } from "../../../Script/CommonScripts/Utils/MessageData";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
+import NDB from "../../../Script/CommonScripts/Utils/NDBTS";
+
 import Dominoe_BetsConfig from "../bets/Dominoe_BetsConfig";
 import Dominoe_GlobalGameData, { GameModeDominoe } from "../Utils/Dominoe_GlobalGameData";
 // import Ludo_BetsConfig from "../game/Ludo_BetsConfig";

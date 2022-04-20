@@ -1,14 +1,7 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+import Message from "../../../../Script/CommonScripts/Utils/Message";
+import MessageData from "../../../../Script/CommonScripts/Utils/MessageData";
+import MessageManager from "../../../../Script/CommonScripts/Utils/MessageManager";
 
-import Message from "../../../CommonScripts/Utils/Message";
-import MessageData from "../../../CommonScripts/Utils/MessageData";
-import MessageForRoom from "../../../CommonScripts/Utils/MessageForRoom";
-import MessageManager from "../../../CommonScripts/Utils/MessageManager";
 
 const { ccclass, property } = cc._decorator;
 

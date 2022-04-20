@@ -1,13 +1,14 @@
-import { GameConfig } from "../../../gameConfig";
-import { resourceManager } from "../../../Script/common/managers/resourceManager";
-import { debugLog, getUrlParameterValue } from "../../../Script/common/utils/util";
-import FrameImageManager from "../../Component/FrameImageComponent/FrameImageManager";
-import MatchResData from "../MatchSceneScripts/MatchResData";
-import MessageData, { GameCoinType, GameType } from "../Utils/MessageData";
-import MessageManager from "../Utils/MessageManager";
-import MessageType from "../Utils/MessageType";
-import MyEvent from "../Utils/MyEvent";
-import NDB from "../Utils/NDBTS";
+
+import { GameConfig } from "../../gameConfig";
+import { resourceManager } from "../common/managers/resourceManager";
+import { debugLog, getUrlParameterValue } from "../common/utils/util";
+import MathcResData from "../CommonScripts/MatchSceneScripts/MatchResData";
+import MessageData, { GameType } from "../CommonScripts/Utils/MessageData";
+import MessageManager from "../CommonScripts/Utils/MessageManager";
+import MessageType from "../CommonScripts/Utils/MessageType";
+import MyEvent from "../CommonScripts/Utils/MyEvent";
+import NDB from "../CommonScripts/Utils/NDBTS";
+import FrameImageManager from "../FrameImageComponent/FrameImageManager";
 
 
 const { ccclass, property } = cc._decorator;
@@ -24,7 +25,7 @@ export default class LoadScene extends cc.Component {
     private versionLabel: cc.Node = null;
     private coinType: cc.Sprite = null;
 
-    /**是否切换到匹配场景 */
+    /** 是否切换到匹配场景 */
     public isGotoMatchScene = true;
 
     private isChange: boolean = false;
@@ -68,7 +69,7 @@ export default class LoadScene extends cc.Component {
 
     private loadBundleByGameName() {
         if(GameConfig.gameName === 'ludo' || GameConfig.gameName === 'dominoe') {
-            resourceManager.loadSceneInBundle('CommonScene/MatchScene','roomCommon');
+            resourceManager.loadSceneInBundle('MatchScene','roomCommon');
             if(GameConfig.gameName === 'ludo') {
                 resourceManager.loadBundle('ludo');
             } 
@@ -287,7 +288,7 @@ export default class LoadScene extends cc.Component {
         }, (err, resource) => {
             debugLog('加载匹配场景预制体完毕',resource);
             this.matchingResIsLoad = true;
-            MatchResData.matchSceneResource = resource
+            MathcResData.matchSceneResource = resource
         });
     }
     private loadLanguage() {

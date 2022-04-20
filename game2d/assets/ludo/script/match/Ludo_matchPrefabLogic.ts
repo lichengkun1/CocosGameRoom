@@ -1,7 +1,8 @@
 
-import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
-import MyEvent from '../../../roomCommon/CommonScripts/Utils/MyEvent';
-import ResourcesManager from '../../../roomCommon/CommonScripts/Utils/ResourcesManager';
+
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
+import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
+import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
 import Global from '../Global/Ludo_GlobalGameData';
 import Ludo_MessageType from '../Utils/Ludo_MessageType';
 

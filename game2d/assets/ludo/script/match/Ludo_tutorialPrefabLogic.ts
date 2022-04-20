@@ -1,4 +1,4 @@
-import MyEvent from "../../../roomCommon/CommonScripts/Utils/MyEvent";
+import MyEvent from "../../../Script/CommonScripts/Utils/MyEvent";
 
 const {ccclass, property} = cc._decorator;
 

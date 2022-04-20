@@ -1,7 +1,7 @@
 
 import PlayerModel from "../../../ludo/script/models/player";
-import MessageData from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import BaseComp from "../baseComp";
+import BaseComp from "../../../Script/common/ui/baseComp";
+import MessageData from "../../../Script/CommonScripts/Utils/MessageData";
 import { PlayerInfoModel } from "../models/gameStatusModel";
 import Dominoe_GlobalGameData from "../Utils/Dominoe_GlobalGameData";
 

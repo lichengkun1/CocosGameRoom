@@ -5,12 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import FrameImage from "../../Component/FrameImageComponent/FrameImage";
+import FrameImage from "../../FrameImageComponent/FrameImage";
 import MessageData, { GameType } from "../Utils/MessageData";
-import MessageForRoom from "../Utils/MessageForRoom";
 import MessageManager from "../Utils/MessageManager";
 import ResourcesManager from "../Utils/ResourcesManager";
-import MatchResData from "./MatchResData";
 
 const { ccclass, property } = cc._decorator;
 

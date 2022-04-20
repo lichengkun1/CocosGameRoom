@@ -1,6 +1,6 @@
 
-import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
 import { getUrlParameterValue } from '../../../Script/common/utils/util';
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
 import Ludo_GlobalGameData from '../../script/Global/Ludo_GlobalGameData';
 
 

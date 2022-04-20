@@ -1,0 +1,13 @@
+#!/bin/bash
+GAME=$1;
+ENV="staging";
+
+if [[ $GAME == "" ]]; then
+    echo "请输入游戏名称"
+    exit 1
+fi
+
+
+node build.js $GAME
+cd ../build/web-mobile
+../../scripts/publish $GAME $ENV

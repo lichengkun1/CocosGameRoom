@@ -1,7 +1,6 @@
 
-import MessageData from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import BaseComp from "../baseComp";
-import Dominoe_GameMode from "../mode/Dominoe_GameMode";
+import BaseComp from "../../../Script/common/ui/baseComp";
+import MessageData from "../../../Script/CommonScripts/Utils/MessageData";
 import Dominoe_GlobalGameData, { GameModeDominoe } from "../Utils/Dominoe_GlobalGameData";
 
 const { ccclass, property } = cc._decorator;
@@ -121,6 +120,7 @@ export default class Dominoe_ruleLogic extends BaseComp {
 
 
     langText() {
+        MessageData
         // let uiLang = MessageManager.getUrlParameterValue('ui_lang');
         this.targetRuleNode.active = true;
         const currentLangJson = MessageData.langDominoe;

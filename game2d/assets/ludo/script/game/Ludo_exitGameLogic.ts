@@ -1,6 +1,7 @@
-import MessageData from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import MyEvent from "../../../roomCommon/CommonScripts/Utils/MyEvent";
+
 import { getUrlParameterValue } from "../../../Script/common/utils/util";
+import MessageData from "../../../Script/CommonScripts/Utils/MessageData";
+import MyEvent from "../../../Script/CommonScripts/Utils/MyEvent";
 
 
 const {ccclass, property} = cc._decorator;

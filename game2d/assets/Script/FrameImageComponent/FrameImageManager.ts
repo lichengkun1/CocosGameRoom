@@ -1,6 +1,7 @@
-import MessageType from "../../CommonScripts/Utils/MessageType";
-import MyEvent from "../../CommonScripts/Utils/MyEvent";
-import ResourcesManager from "../../CommonScripts/Utils/ResourcesManager";
+
+import MessageType from "../CommonScripts/Utils/MessageType";
+import MyEvent from "../CommonScripts/Utils/MyEvent";
+import ResourcesManager from "../CommonScripts/Utils/ResourcesManager";
 import FrameImageData from "./FrameImageData";
 
 const { ccclass, property } = cc._decorator;

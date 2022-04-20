@@ -148,14 +148,14 @@ export default class MessageSoundManager {
     }
 
     public static preLoadRes(url:string,count = 2){
-        cc.loader.loadRes(url,cc.AudioClip,(err,clip)=>{
-            if(err){
-                if(count >= 0){
-                    this.preLoadRes(url,--count);
-                }
-                return;
-            }
-        });
+        // cc.loader.loadRes(url,cc.AudioClip,(err,clip)=>{
+        //     if(err){
+        //         if(count >= 0){
+        //             this.preLoadRes(url,--count);
+        //         }
+        //         return;
+        //     }
+        // });
     }
 }
 

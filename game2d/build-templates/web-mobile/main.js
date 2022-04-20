@@ -7,17 +7,22 @@ window.boot = function () {
     var INTERNAL = cc.AssetManager.BuiltinBundleName.INTERNAL;
     var MAIN = cc.AssetManager.BuiltinBundleName.MAIN;
     function setLoadingDisplay () {
-        // Loading splash scene
         var splash = document.getElementById('splash');
-        var progressBar = splash.querySelector('.progress-bar span');
-        onProgress = function (finish, total) {
-            var percent = 100 * finish / total;
-            if (progressBar) {
-                progressBar.style.width = percent.toFixed(2) + '%';
+        var box_right = document.getElementById("box_right");
+        var box_left = document.getElementById("box_left");
+        onProgress = function (completedCount, totalCount, item) {
+            if (totalCount > 10) {
+                var percent = 100 * completedCount / totalCount;
+                var ro = percent / 50 * 180;
+                if (percent < 50) {
+                    box_right.style.transform = `rotate(${ro}deg)`;
+                } else {
+                    box_right.style.transform = `rotate(${180}deg)`;
+                    box_left.style.transform = `rotate(${ro}deg)`;
+                }
             }
         };
         splash.style.display = 'block';
-        progressBar.style.width = '0%';
 
         cc.director.once(cc.Director.EVENT_AFTER_SCENE_LAUNCH, function () {
             splash.style.display = 'none';

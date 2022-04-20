@@ -16,6 +16,7 @@ import { debugLog } from "../utils/util";
         return new Promise((resolve,reject) => {
             cc.assetManager.loadBundle(bundleName,(err: Error,bundle: cc.AssetManager.Bundle) => {
                 if(err) {
+                    console.warn('加载bundle出错');
                     reject(err);
                     return;
                 }
@@ -40,12 +41,9 @@ import { debugLog } from "../utils/util";
      */
     public async loadAssetInBundle<T extends cc.Asset>(url: string,type: typeof cc.Asset,bundleName: string,progressFunc?: (finished,total,item) => {}): Promise<T> {
         if(!url) return;
-        console.log('loadAssetInBundle url is ',url," type is ",type);
         const bundle: cc.AssetManager.Bundle = await this.loadBundle(bundleName);
-        console.log('bundle is ',bundle);
+        debugLog('bundle is ',bundle);
 
-        // bundle.load()
-        
         return new Promise((resolve,reject) => {
             bundle.load(url,type,progressFunc,(err: Error,assets: T) => {
                 if(err) {
@@ -65,9 +63,13 @@ import { debugLog } from "../utils/util";
      */
     public async loadSceneInBundle(url: string,bundleName: string,progressFunc?: Function): Promise<cc.SceneAsset> {
         const bundle: cc.AssetManager.Bundle = await this.loadBundle(bundleName);
+        if(!bundle) {
+            console.warn(`bundle ${bundleName} 不存在`);
+        }
         return new Promise((resolve,reject) => {
             bundle.loadScene(url,progressFunc,(err: Error,scene: cc.SceneAsset) => {
                 if(err) {
+                    console.warn(`加载bundle里面的场景err is bundleName: ${bundleName},url: ${url}`);
                     reject(err);
                     return;
                 }

@@ -7,19 +7,7 @@
 
 
 import { GameConfig } from "../../../gameConfig";
-import BgmSettings from "../../../roomCommon/CommonScripts/bgmSettings";
-import MatchingScene from "../../../roomCommon/CommonScripts/MatchSceneScripts/MatchingScene";
-import MathcResData from "../../../roomCommon/CommonScripts/MatchSceneScripts/MatchResData";
-import MatchSetBets from "../../../roomCommon/CommonScripts/MatchSceneScripts/MatchSetBets";
-import timeManager from "../../../roomCommon/CommonScripts/MatchSceneScripts/timeManager";
-import Message from "../../../roomCommon/CommonScripts/Utils/Message";
-import MessageData, { GameCoinType, GameType } from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import MessageForRoom from "../../../roomCommon/CommonScripts/Utils/MessageForRoom";
-import MessageManager from "../../../roomCommon/CommonScripts/Utils/MessageManager";
-import MessageSoundManager from "../../../roomCommon/CommonScripts/Utils/MessageSoundManager";
-import MessageType from "../../../roomCommon/CommonScripts/Utils/MessageType";
-import MyEvent from "../../../roomCommon/CommonScripts/Utils/MyEvent";
-import NDB from "../../../roomCommon/CommonScripts/Utils/NDBTS";
+
 import Dominoe_BetsConfig from "../bets/Dominoe_BetsConfig";
 import Dominoe_GameMode from "../mode/Dominoe_GameMode";
 import Global, { GameModeDominoe } from "../Utils/Dominoe_GlobalGameData";
@@ -233,7 +221,7 @@ export default class dominoe_Matching extends cc.Component {
             this.modeLabel.string = MessageData.langDominoe.score_100 ? MessageData.langDominoe.score_100 : 'SCORE_100';
         }
         
-        MessageSoundManager.playBGEngine('GamesRes/sound/hallBGM');
+        MessageSoundManager.playBGEngine(`resources_${GameConfig.gameName}/sound/hallBGM`);
     }
 
     eventDispatchFunc() {

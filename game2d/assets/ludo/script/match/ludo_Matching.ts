@@ -1,18 +1,19 @@
 
 import { GameConfig } from "../../../gameConfig";
-import BgmSettings from "../../../roomCommon/CommonScripts/bgmSettings";
-import MatchingScene from "../../../roomCommon/CommonScripts/MatchSceneScripts/MatchingScene";
-import MatchSetBets from "../../../roomCommon/CommonScripts/MatchSceneScripts/MatchSetBets";
-import timeManager from "../../../roomCommon/CommonScripts/MatchSceneScripts/timeManager";
-import MessageData, { GameCoinType, GameType } from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import MessageForRoom from "../../../roomCommon/CommonScripts/Utils/MessageForRoom";
-import MessageManager from "../../../roomCommon/CommonScripts/Utils/MessageManager";
-import MessageSoundManager from "../../../roomCommon/CommonScripts/Utils/MessageSoundManager";
-import MyEvent from "../../../roomCommon/CommonScripts/Utils/MyEvent";
-import NDB from "../../../roomCommon/CommonScripts/Utils/NDBTS";
-import ResourcesManager from "../../../roomCommon/CommonScripts/Utils/ResourcesManager";
+
 import TopUINode from "../../../roomCommon/Component/RoomTop/scripts/TopUINode";
 import { resourceManager } from "../../../Script/common/managers/resourceManager";
+import BgmSettings from "../../../Script/CommonScripts/bgmSettings";
+import MatchingScene from "../../../Script/CommonScripts/MatchSceneScripts/MatchingScene";
+import MatchSetBets from "../../../Script/CommonScripts/MatchSceneScripts/MatchSetBets";
+import timeManager from "../../../Script/CommonScripts/MatchSceneScripts/timeManager";
+import MessageData, { GameCoinType, GameType } from "../../../Script/CommonScripts/Utils/MessageData";
+import MessageForRoom from "../../../Script/CommonScripts/Utils/MessageForRoom";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
+import MessageSoundManager from "../../../Script/CommonScripts/Utils/MessageSoundManager";
+import MyEvent from "../../../Script/CommonScripts/Utils/MyEvent";
+import NDB from "../../../Script/CommonScripts/Utils/NDBTS";
+
 import Ludo_BetsConfig from "../game/Ludo_BetsConfig";
 import Global from "../Global/Ludo_GlobalGameData";
 import Ludo_GameMode from "../ModeSceneScripts/Ludo_GameMode";
@@ -113,6 +114,17 @@ export default class ludo_Matching extends cc.Component {
     onLoad() {
         Global.enterGameScene = false;
         MessageManager.setNetworkConfiguration();
+        // toastManager.addToast(`resources_ludo/ludo_matchingScene_Res/TipPopup`,GameConfig.gameName,Layers.TOASTLAYERONE,PanelType.TOAST_WITHBTN,ToastBtnType.TWO).then((res: ToastPanel) => {
+        //     console.timeEnd('加载弹窗结束');
+        //     res.yesBtnEvent = () => {
+        //         console.log('yes');
+        //         res.confirmBtnEvent();
+        //     }
+        //     res.noBtnEvent = () => {
+        //         console.log('no');
+        //         res.confirmBtnEvent();
+        //     }
+        // });
         if (Global.isFirstLoad) {
             Global.isFirstLoad = false;
             let nowTime = new Date().getTime();
@@ -179,7 +191,7 @@ export default class ludo_Matching extends cc.Component {
         this.getGameCoin();
         this.loadScene();
         if (MessageSoundManager.audioEngineOn) {
-            MessageSoundManager.playBGEngine('GamesRes/sound/hallMusic',(id: number) => {
+            MessageSoundManager.playBGEngine(`resources_${GameConfig.gameName}/sound/hallMusic`,(id: number) => {
                 console.log('大厅的背景音乐id is ',id);
                 if(Global.enterGameScene) {
                     // 已经进入到游戏场景了直接停止该音频
@@ -197,10 +209,10 @@ export default class ludo_Matching extends cc.Component {
     preloadMap() {
         // resourceManager.
         if(GameConfig.gameName === 'ludo') {
-            resourceManager.loadAssetInBundle(`${GameConfig.gameName}/resources_${GameConfig.gameName}/store/chengbaocheckerboard/background_chengbao`,null,GameConfig.gameName).then(() => {
+            resourceManager.loadAssetInBundle(`resources_${GameConfig.gameName}/store/chengbaocheckerboard/background_chengbao_ske`,null,GameConfig.gameName).then(() => {
                 console.log('预加载游戏地图完成');
             });
-            resourceManager.loadAssetInBundle(`${GameConfig.gameName}/resources_${GameConfig.gameName}/store/isLandCheckerboard/island_checkerboardPlist`,null,GameConfig.gameName).then(() => {
+            resourceManager.loadAssetInBundle(`resources_${GameConfig.gameName}/store/isLandCheckerboard/island_checkerboardPlist`,null,GameConfig.gameName).then(() => {
                 console.log('预加载地图图片完成');
             });
         }

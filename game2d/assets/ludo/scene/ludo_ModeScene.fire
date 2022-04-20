@@ -1035,7 +1035,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -1218,7 +1218,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -1401,7 +1401,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -2041,7 +2041,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "QUICK",
     "_N$string": "QUICK",
     "_fontSize": 30,
@@ -2322,7 +2323,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "CLASSICAL",
     "_N$string": "CLASSICAL",
     "_fontSize": 30,
@@ -2488,7 +2490,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 460,
-      "height": 112
+      "height": 111
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2687,7 +2689,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -2870,7 +2872,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -3337,7 +3339,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "QUICK",
     "_N$string": "QUICK",
     "_fontSize": 30,
@@ -3533,7 +3536,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "CLASSICAL",
     "_N$string": "CLASSICAL",
     "_fontSize": 30,
@@ -4047,7 +4051,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "100",
     "_N$string": "100",
     "_fontSize": 30,
@@ -4335,7 +4340,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Select Mode",
     "_N$string": "Select Mode",
     "_fontSize": 40,
@@ -4431,7 +4437,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Magic",
     "_N$string": "Magic",
     "_fontSize": 40,
@@ -4527,7 +4534,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "CONFIRM",
     "_N$string": "CONFIRM",
     "_fontSize": 32,
@@ -4623,7 +4631,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Choose Bets",
     "_N$string": "Choose Bets",
     "_fontSize": 40,
@@ -6080,7 +6089,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Magic Mode",
     "_N$string": "Magic Mode",
     "_fontSize": 34,
@@ -6176,7 +6186,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "UFO",
     "_N$string": "UFO",
     "_fontSize": 34,
@@ -6272,7 +6283,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Super Dice",
     "_N$string": "Super Dice",
     "_fontSize": 34,
@@ -6368,7 +6380,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Invisibility",
     "_N$string": "Invisibility",
     "_fontSize": 34,
@@ -6464,7 +6477,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Missile",
     "_N$string": "Missile",
     "_fontSize": 34,
@@ -6560,7 +6574,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Items will appear randomly in the map.",
     "_N$string": "Items will appear randomly in the map.",
     "_fontSize": 24,
@@ -6656,7 +6671,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Pawns can randomly advance 3 to 8 squares.",
     "_N$string": "Pawns can randomly advance 3 to 8 squares.",
     "_fontSize": 24,
@@ -6752,7 +6768,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "The next time you roll the dice, there must be a six.",
     "_N$string": "The next time you roll the dice, there must be a six.",
     "_fontSize": 24,
@@ -6848,7 +6865,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "The token will not be kicked home by any other pieces or items for 2 rounds.",
     "_N$string": "The token will not be kicked home by any other pieces or items for 2 rounds.",
     "_fontSize": 24,
@@ -6944,7 +6962,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "The missile advances 5 squares, and the other pieces encountered midway will be kicked home.",
     "_N$string": "The missile advances 5 squares, and the other pieces encountered midway will be kicked home.",
     "_fontSize": 24,
@@ -7171,7 +7190,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Game Mode",
     "_N$string": "Game Mode",
     "_fontSize": 40,
@@ -7267,7 +7287,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "QUICK",
     "_N$string": "QUICK",
     "_fontSize": 34,
@@ -7363,7 +7384,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "CLASSICAL",
     "_N$string": "CLASSICAL",
     "_fontSize": 34,
@@ -7459,7 +7481,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Each player has 2 tokens and wins when they reach the end.",
     "_N$string": "Each player has 2 tokens and wins when they reach the end.",
     "_fontSize": 24,
@@ -7555,7 +7578,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Each player has 4 tokens and wins when they reach the end.",
     "_N$string": "Each player has 4 tokens and wins when they reach the end.",
     "_fontSize": 24,

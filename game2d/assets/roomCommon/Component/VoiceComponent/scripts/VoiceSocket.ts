@@ -1,5 +1,6 @@
-import MessageType from "../../../CommonScripts/Utils/MessageType";
-import MyEvent from "../../../CommonScripts/Utils/MyEvent";
+
+import MessageType from "../../../../Script/CommonScripts/Utils/MessageType";
+import MyEvent from "../../../../Script/CommonScripts/Utils/MyEvent";
 import VoiceManager from "./VoiceManager";
 
 const { ccclass, property } = cc._decorator;

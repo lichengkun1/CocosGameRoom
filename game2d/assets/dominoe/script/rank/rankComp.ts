@@ -6,9 +6,8 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 
-import MessageData from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import BaseComp from "../baseComp";
-import Dominoe_gameLogic from "../game/Dominoe_gameLogic";
+import BaseComp from "../../../Script/common/ui/baseComp";
+import MessageData from "../../../Script/CommonScripts/Utils/MessageData";
 import { PlayerInfoModel } from "../models/gameStatusModel";
 import RankItem from "./rankItem";
 

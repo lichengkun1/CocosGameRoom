@@ -6,8 +6,10 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import { notDeepEqual } from "assert";
-import MessageData, { GameType } from "../../../roomCommon/CommonScripts/Utils/MessageData";
-import MessageManager from "../../../roomCommon/CommonScripts/Utils/MessageManager";
+import { getUrlParameterValue } from "../../../Script/common/utils/util";
+import MessageData, { GameType } from "../../../Script/CommonScripts/Utils/MessageData";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
+
 
 const { ccclass, property } = cc._decorator;
 
@@ -39,7 +41,7 @@ export default class Dominoe_ExitPopup extends cc.Component {
         this.yesBtn = this.node.getChildByName("yesBtn")
         this.titleLabel = this.node.getChildByName("titleLabel").getComponent(cc.Label);
         this.yesLabel = this.node.getChildByName("yesLabel").getComponent(cc.Label);
-        let l = MessageManager.getUrlParameterValue("ui_lang");
+        let l = getUrlParameterValue("ui_lang");
         this.titleLabel.string = this.lang[l];
         console.log(this.lang, this.lang[l]);
         console.log("==============================");

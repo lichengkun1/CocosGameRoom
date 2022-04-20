@@ -6,7 +6,7 @@
 //   1. 在场景里添加一个Node, 把这个组件拖进去
 //   2. 在需要截图的地方，import, 然后调用：ScreenShotNode.take()
 
-import MessageManager from "../../../roomCommon/CommonScripts/Utils/MessageManager";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
 import Dominoe_settingLayerLogic from "../game/Dominoe_settingLayerLogic";
 
 // Screenshot component

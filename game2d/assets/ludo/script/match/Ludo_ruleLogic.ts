@@ -1,6 +1,4 @@
-import MessageData, { LudoLangType } from "../../../roomCommon/CommonScripts/Utils/MessageData";
-
-
+import MessageData, { LudoLangType } from "../../../Script/CommonScripts/Utils/MessageData";
 
 const { ccclass, property } = cc._decorator;
 

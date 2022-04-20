@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import BaseComp from "./baseComp";
+import BaseComp from "../../Script/common/ui/baseComp";
 import { PlayerInfoModel } from "./models/gameStatusModel";
 import RankComp from "./rank/rankComp";
 import RankItem, { RankObj } from "./rank/rankItem";

@@ -1,10 +1,9 @@
 
-
-import MessageData, { GameType } from '../../../roomCommon/CommonScripts/Utils/MessageData';
-import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
-import MessageSoundManager from '../../../roomCommon/CommonScripts/Utils/MessageSoundManager';
-import ResourcesManager from '../../../roomCommon/CommonScripts/Utils/ResourcesManager';
-import FrameImage from '../../../roomCommon/Component/FrameImageComponent/FrameImage';
+import MessageData, { GameType } from '../../../Script/CommonScripts/Utils/MessageData';
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
+import MessageSoundManager from '../../../Script/CommonScripts/Utils/MessageSoundManager';
+import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
+import FrameImage from '../../../Script/FrameImageComponent/FrameImage';
 import Global, { GameModeDominoe } from '../Utils/Dominoe_GlobalGameData';
 import Dominoe_ExitPopup from './Dominoe_ExitPopup';
 import Dominoe_gameLogic from './Dominoe_gameLogic';

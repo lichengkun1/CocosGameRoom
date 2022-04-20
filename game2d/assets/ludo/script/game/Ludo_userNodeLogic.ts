@@ -16,8 +16,9 @@ const ANIMATIONNAME = {
 
 import Ludo_userNodeList from './Ludo_userNodeList';
 import Global from '../Global/Ludo_GlobalGameData';
-import MyEvent from '../../../roomCommon/CommonScripts/Utils/MyEvent';
-import MessageSoundManager from '../../../roomCommon/CommonScripts/Utils/MessageSoundManager';
+import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
+import MessageSoundManager from '../../../Script/CommonScripts/Utils/MessageSoundManager';
+
 
 const { ccclass, property } = cc._decorator;
 

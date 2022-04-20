@@ -1,4 +1,4 @@
-import MessageData, { GameType } from "../../../roomCommon/CommonScripts/Utils/MessageData";
+import MessageData, { GameType } from "../../../Script/CommonScripts/Utils/MessageData";
 
 const {ccclass, property} = cc._decorator;
 

@@ -5,14 +5,15 @@ import Ludo_BetsConfig from './Ludo_BetsConfig';
 import Ludo_gameLogic from './Ludo_gameLogic';
 import Ludo_playerLogic from './Ludo_playerLogic';
 import Ludo_GameMode from '../ModeSceneScripts/Ludo_GameMode';
-import MessageData, { GameType } from '../../../roomCommon/CommonScripts/Utils/MessageData';
-import MessageForRoom from '../../../roomCommon/CommonScripts/Utils/MessageForRoom';
-import Message from '../../../roomCommon/CommonScripts/Utils/Message';
-import FrameImage from '../../../roomCommon/Component/FrameImageComponent/FrameImage';
-import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
-import ResourcesManager from '../../../roomCommon/CommonScripts/Utils/ResourcesManager';
+
 import { GameConfig } from '../../../gameConfig';
-import NDB from '../../../roomCommon/CommonScripts/Utils/NDBTS';
+import MessageData, { GameType } from '../../../Script/CommonScripts/Utils/MessageData';
+import MessageForRoom from '../../../Script/CommonScripts/Utils/MessageForRoom';
+import Message from '../../../Script/CommonScripts/Utils/Message';
+import FrameImage from '../../../Script/FrameImageComponent/FrameImage';
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
+import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
+import NDB from '../../../Script/CommonScripts/Utils/NDBTS';
 
 const { ccclass, property } = cc._decorator;
 

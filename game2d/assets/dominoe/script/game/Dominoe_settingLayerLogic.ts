@@ -1,15 +1,14 @@
 
 import { GameConfig } from '../../../gameConfig';
-import MatchingScene from '../../../roomCommon/CommonScripts/MatchSceneScripts/MatchingScene';
-import Message from '../../../roomCommon/CommonScripts/Utils/Message';
-import MessageData, { GameType } from '../../../roomCommon/CommonScripts/Utils/MessageData';
-import MessageForRoom from '../../../roomCommon/CommonScripts/Utils/MessageForRoom';
-import MessageManager from '../../../roomCommon/CommonScripts/Utils/MessageManager';
-import NDB from '../../../roomCommon/CommonScripts/Utils/NDBTS';
-import ResourcesManager from '../../../roomCommon/CommonScripts/Utils/ResourcesManager';
-import FrameImage from '../../../roomCommon/Component/FrameImageComponent/FrameImage';
-import FrameImageController from '../../../roomCommon/Component/FrameImageComponent/FrameImageController';
-import { ResourceManager } from '../../../Script/common/managers/resourceManager';
+import MatchingScene from '../../../Script/CommonScripts/MatchSceneScripts/MatchingScene';
+import Message from '../../../Script/CommonScripts/Utils/Message';
+import MessageData, { GameType } from '../../../Script/CommonScripts/Utils/MessageData';
+import MessageForRoom from '../../../Script/CommonScripts/Utils/MessageForRoom';
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
+import NDB from '../../../Script/CommonScripts/Utils/NDBTS';
+import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
+import FrameImage from '../../../Script/FrameImageComponent/FrameImage';
+import FrameImageController from '../../../Script/FrameImageComponent/FrameImageController';
 import Global, { GameModeDominoe } from '../Utils/Dominoe_GlobalGameData';
 
 /**

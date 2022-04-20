@@ -1,7 +1,7 @@
-import MessageManager from "../../../CommonScripts/Utils/MessageManager";
-import NDB from "../../../CommonScripts/Utils/NDBTS";
+
+import MessageManager from "../../../../Script/CommonScripts/Utils/MessageManager";
+import NDB from "../../../../Script/CommonScripts/Utils/NDBTS";
 import VoiceController from "./VoiceController";
-import VoiceSocket from "./VoiceSocket";
 
 const { ccclass, property } = cc._decorator;
 
