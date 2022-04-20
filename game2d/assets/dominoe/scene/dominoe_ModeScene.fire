@@ -206,7 +206,7 @@
     },
     "_enabled": true,
     "_cullingMask": 4294967295,
-    "_clearFlags": 7,
+    "_clearFlags": 6,
     "_backgroundColor": {
       "__type__": "cc.Color",
       "r": 0,
@@ -911,7 +911,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -1545,7 +1545,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "ONE ROUND",
     "_N$string": "ONE ROUND",
     "_fontSize": 30,
@@ -1824,7 +1825,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "SCORE 100",
     "_N$string": "SCORE 100",
     "_fontSize": 30,
@@ -2187,7 +2189,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -2368,7 +2370,7 @@
         1,
         1,
         1,
-        1
+        0
       ]
     },
     "_eulerAngles": {
@@ -2737,7 +2739,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "ONE ROUND",
     "_N$string": "ONE ROUND",
     "_fontSize": 30,
@@ -2931,7 +2934,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "SCORE 100",
     "_N$string": "SCORE 100",
     "_fontSize": 30,
@@ -3662,7 +3666,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "200",
     "_N$string": "200",
     "_fontSize": 30,
@@ -3698,7 +3703,6 @@
     },
     "_resize": 1,
     "_N$layoutType": 1,
-    "_N$padding": 0,
     "_N$cellSize": {
       "__type__": "cc.Size",
       "width": 40,
@@ -3791,7 +3795,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Select Mode",
     "_N$string": "Select Mode",
     "_fontSize": 40,
@@ -3887,7 +3892,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "CONFIRM",
     "_N$string": "CONFIRM",
     "_fontSize": 32,
@@ -3983,7 +3989,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Choose Bets",
     "_N$string": "Choose Bets",
     "_fontSize": 40,
@@ -5076,7 +5083,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Game Mode",
     "_N$string": "Game Mode",
     "_fontSize": 40,
@@ -5172,7 +5180,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "QUICK",
     "_N$string": "QUICK",
     "_fontSize": 34,
@@ -5268,7 +5277,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "CLASSICAL",
     "_N$string": "CLASSICAL",
     "_fontSize": 34,
@@ -5364,7 +5374,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "After a round of cards, the game ends and the player with the lowest score wins. Calculate the number of winning and losing game coins according to the score.",
     "_N$string": "After a round of cards, the game ends and the player with the lowest score wins. Calculate the number of winning and losing game coins according to the score.",
     "_fontSize": 24,
@@ -5460,7 +5471,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "After the end of a round of card games, start accumulating the scores of this round into their total scores. If someone's total score exceeds 100, the game is over. Users with more than 100 points win.",
     "_N$string": "After the end of a round of card games, start accumulating the scores of this round into their total scores. If someone's total score exceeds 100, the game is over. Users with more than 100 points win.",
     "_fontSize": 24,
@@ -5556,7 +5568,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "200 Limits/Round",
     "_N$string": "200 Limits/Round",
     "_fontSize": 24,

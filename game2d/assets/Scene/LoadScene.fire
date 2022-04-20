@@ -174,7 +174,7 @@
       }
     ],
     "_prefab": null,
-    "_opacity": 0,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -230,7 +230,7 @@
     },
     "_enabled": true,
     "_cullingMask": 4294967295,
-    "_clearFlags": 7,
+    "_clearFlags": 6,
     "_backgroundColor": {
       "__type__": "cc.Color",
       "r": 0,
@@ -431,9 +431,7 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "7cec8c17-9884-402e-9116-d14562c2c14a"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -1227,7 +1225,7 @@
       "__id__": 2
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 29
@@ -1240,14 +1238,14 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 51,
-      "g": 51,
-      "b": 51,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 94.08,
+      "width": 56.7,
       "height": 22.68
     },
     "_anchorPoint": {
@@ -1259,8 +1257,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        322.96,
-        -456.66,
+        250.61100000000002,
+        375.3579999999993,
         0,
         0,
         0,
@@ -1299,9 +1297,9 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "v2.0.0",
-    "_N$string": "v2.0.0",
-    "_fontSize": 18,
+    "_string": "v2.2",
+    "_N$string": "v2.2",
+    "_fontSize": 30,
     "_lineHeight": 18,
     "_enableWrapText": true,
     "_N$file": null,
@@ -1313,7 +1311,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 2,
+    "_N$overflow": 0,
     "_N$cacheMode": 0,
     "_id": "e2T4vian9JAbQSe0NmSwpS"
   },
@@ -1329,9 +1327,9 @@
     "_target": null,
     "_alignFlags": 36,
     "_left": 0,
-    "_right": 5,
+    "_right": 96.03899999999999,
     "_top": 0,
-    "_bottom": 5,
+    "_bottom": 837.0179999999993,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,

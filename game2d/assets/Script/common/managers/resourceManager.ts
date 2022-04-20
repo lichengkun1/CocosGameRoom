@@ -66,6 +66,7 @@ import { debugLog } from "../utils/util";
         if(!bundle) {
             console.warn(`bundle ${bundleName} 不存在`);
         }
+        console.log('loadSceneInBundle bundle is ',bundle);
         return new Promise((resolve,reject) => {
             bundle.loadScene(url,progressFunc,(err: Error,scene: cc.SceneAsset) => {
                 if(err) {

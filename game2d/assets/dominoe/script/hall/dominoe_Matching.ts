@@ -7,6 +7,20 @@
 
 
 import { GameConfig } from "../../../gameConfig";
+import { getUrlParameterValue } from "../../../Script/common/utils/util";
+import BgmSettings from "../../../Script/CommonScripts/bgmSettings";
+import MatchingScene from "../../../Script/CommonScripts/MatchSceneScripts/MatchingScene";
+import MathcResData from "../../../Script/CommonScripts/MatchSceneScripts/MatchResData";
+import MatchSetBets from "../../../Script/CommonScripts/MatchSceneScripts/MatchSetBets";
+import timeManager from "../../../Script/CommonScripts/MatchSceneScripts/timeManager";
+import Message from "../../../Script/CommonScripts/Utils/Message";
+import MessageData, { GameCoinType, GameType } from "../../../Script/CommonScripts/Utils/MessageData";
+import MessageForRoom from "../../../Script/CommonScripts/Utils/MessageForRoom";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
+import MessageSoundManager from "../../../Script/CommonScripts/Utils/MessageSoundManager";
+import MessageType from "../../../Script/CommonScripts/Utils/MessageType";
+import MyEvent from "../../../Script/CommonScripts/Utils/MyEvent";
+import NDB from "../../../Script/CommonScripts/Utils/NDBTS";
 
 import Dominoe_BetsConfig from "../bets/Dominoe_BetsConfig";
 import Dominoe_GameMode from "../mode/Dominoe_GameMode";
@@ -61,7 +75,7 @@ export default class dominoe_Matching extends cc.Component {
             let time = NDB.startTime;
             let t = ((nowTime - time) / 1000).toFixed(1);
 
-            let gameType = MessageManager.getUrlParameterValue('is_lobby') == "true" ? "Lobby" : "Room";
+            let gameType = getUrlParameterValue('is_lobby') == "true" ? "Lobby" : "Room";
             let obj = {
                 eventName: "game_load_complete",
                 name: `${GameConfig.gameName}${gameType}`,

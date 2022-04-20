@@ -37,6 +37,8 @@ export default class LoadScene extends cc.Component {
     private lastnum2 = 0;
     private lastnum3 = 0;
     private changeSceneIndex = 0;
+    /** 游戏资源bundle是否加载完毕 */
+    private gameBundleIsLoadedOver = false;
 
     onLoad() {
         /** 开启动态合图 */
@@ -67,14 +69,17 @@ export default class LoadScene extends cc.Component {
         }
     }
 
-    private loadBundleByGameName() {
+    private async loadBundleByGameName() {
         if(GameConfig.gameName === 'ludo' || GameConfig.gameName === 'dominoe') {
-            resourceManager.loadSceneInBundle('MatchScene','roomCommon');
             if(GameConfig.gameName === 'ludo') {
-                resourceManager.loadBundle('ludo');
+                resourceManager.loadBundle('ludo').then(() => {
+                    this.gameBundleIsLoadedOver = true;
+                });
             } 
             if(GameConfig.gameName === 'dominoe') {
-                resourceManager.loadBundle('dominoe');
+                resourceManager.loadBundle('dominoe').then(() => {
+                    this.gameBundleIsLoadedOver = true;
+                });
             }
         }
     }
@@ -244,27 +249,33 @@ export default class LoadScene extends cc.Component {
         }
         this.showProgressLabelIsShow();
         this.isChange = true;
-        resourceManager.loadSceneInBundle('CommonScene/MatchScene','roomCommon',(completedCount, totalCount, item) => {
-            let comple = Math.floor(completedCount / totalCount * 25);
-            if (flag) {
-                let lerp = comple - this.lastnum1;
-                this.lastnum1 = comple;
-                this.changeSceneIndex = this.changeSceneIndex + lerp;
-            } else {
-                let lerp = comple * 3 - this.lastnum1;
-                this.lastnum1 = comple * 3;
-                this.changeSceneIndex = this.changeSceneIndex + lerp;
-            }
-            if (comple == 25) {
-                debugLog('加载匹配场景完成');
-                this.matchSceneIsLoad = true;
-            }
+        this.matchSceneIsLoad = true;
+        // resourceManager.loadSceneInBundle('MatchScene','roomCommon',(completedCount, totalCount, item) => {
+        //     console.log(`total is ${totalCount} completed is ${completedCount} item is `,item);
+        //     let comple = Math.floor(completedCount / totalCount * 25);
+        //     if (flag) {
+        //         let lerp = comple - this.lastnum1;
+        //         this.lastnum1 = comple;
+        //         this.changeSceneIndex = this.changeSceneIndex + lerp;
+        //     } else {
+        //         let lerp = comple * 3 - this.lastnum1;
+        //         this.lastnum1 = comple * 3;
+        //         this.changeSceneIndex = this.changeSceneIndex + lerp;
+        //     }
+        //     if (comple == 25) {
+        //         debugLog('加载匹配场景完成');
+        //         this.matchSceneIsLoad = true;
+        //     }
 
-        });
+        // });
     }
 
-    private loadGameScene() {
-        resourceManager.loadSceneInBundle(`scene/${GameConfig.gameName}_GameScene`,GameConfig.gameName,(completedCount, totalCount, item) => {
+    private async loadGameScene() {
+        if(!this.gameBundleIsLoadedOver) {
+            await resourceManager.loadBundle(GameConfig.gameName);
+        }
+        
+        resourceManager.loadSceneInBundle(`${GameConfig.gameName}_GameScene`,GameConfig.gameName,(completedCount, totalCount, item) => {
             let comple = Math.floor(completedCount / totalCount * 20);
             let lerp = comple - this.lastnum2;
             this.lastnum2 = comple;
@@ -327,13 +338,14 @@ export default class LoadScene extends cc.Component {
             this.progressBar.progress = this.changeSceneIndex / 100;
         
         // 匹配资源预加载完成 && 匹配场景预加载完成 && 游戏场景预加载完毕 
-        if (this.isGotoMatchScene && this.matchingResIsLoad && this.matchSceneIsLoad && this.gameSceneIsLoad) {
+        if (this.isGotoMatchScene && this.matchingResIsLoad && this.matchSceneIsLoad && this.gameSceneIsLoad && this.gameBundleIsLoadedOver) {
             this.isGotoMatchScene = false;
             if (MessageData.gameType == GameType.single && (MessageData.gameName == "ludo" || MessageData.gameName === 'dominoe')) {
                 // ludo和多米诺都进入模式选择场景
                 cc.director.loadScene(`${MessageData.gameName}_ModeScene`);
             } else {
                 cc.director.loadScene('MatchScene');
+                
             }
         }
     }

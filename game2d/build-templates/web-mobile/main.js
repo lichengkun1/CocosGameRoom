@@ -113,6 +113,7 @@ window.boot = function () {
         count++;
         if (count === bundleRoot.length + 1) {
             cc.assetManager.loadBundle(MAIN, function (err) {
+                cc.macro.ENABLE_TRANSPARENT_CANVAS = true;
                 if (!err) cc.game.run(option, onStart);
             });
         }
@@ -143,7 +144,7 @@ if (window.jsb) {
         }
         require('jsb-adapter/jsb-engine.js');
     }
-
+    cc.macro.ENABLE_TRANSPARENT_CANVAS = true;
     cc.macro.CLEANUP_IMAGE_CACHE = true;
     window.boot();
 }
