@@ -1,3 +1,4 @@
+import { GetServerData } from "../../../uno/Scripts/Common/Server/GetServerData";
 import MessageData, { GameType } from "./MessageData";
 import MessageType from "./MessageType";
 import MyEvent from "./MyEvent";
@@ -329,4 +330,9 @@ export default class MessageManager {
         node1.runAction(cc.sequence(scaleF0, callfunc, scaleF1, scaleF2, scaleF3));
     }
 
+    public static getStatus(roomId: string,callback: Function) {
+        GetServerData.SendMessage('',(res: any) => {
+            callback && callback(res);
+        });
+    }
 }

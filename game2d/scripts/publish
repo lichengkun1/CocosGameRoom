@@ -10,7 +10,7 @@ ENV="staging"
 
 # web-mobile文件夹下的路径
 DIRABSPATH=$(greadlink -f ../)
-TARGETDIR="/Users/lck/Desktop/allWebmobile/"
+TARGETDIR="~/Desktop/allWebmobile/"
 
 echo "================Start deal zip files=================="
 cd ..

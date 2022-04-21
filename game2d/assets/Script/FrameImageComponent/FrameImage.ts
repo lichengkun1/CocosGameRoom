@@ -9,6 +9,9 @@ export default class FrameImage extends cc.Component {
     sizeX = 0.31;
     @property(cc.Float)
     sizeY = 0.31;
+    @property(cc.Node)
+    icon: cc.Node = null;
+
     InitFrameImage(uid: number) {
         let userData = FrameImageManager.GetDataForUid(uid);
         if (userData) {
@@ -24,6 +27,9 @@ export default class FrameImage extends cc.Component {
                         sprite.trim = false;
                         sprite.node.scaleX = this.sizeX;
                         sprite.node.scaleY = this.sizeY;
+                        if(this.icon) {
+                            this.node.position = this.icon.position;
+                        }
                     })
                 }
             } else {
@@ -32,6 +38,9 @@ export default class FrameImage extends cc.Component {
                 sprite.trim = false;
                 sprite.node.scaleX = this.sizeX;
                 sprite.node.scaleY = this.sizeY;
+                if(this.icon) {
+                    this.node.position = this.icon.position;
+                }
             }
         }
     }
