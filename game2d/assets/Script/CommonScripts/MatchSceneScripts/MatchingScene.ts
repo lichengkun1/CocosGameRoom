@@ -305,8 +305,10 @@ export default class MatchingScene extends cc.Component {
 
     private chatroomStatus(data) {
         console.log('@房间状态改变时候改变麦位',data);
+        if(data && data.status && data.status.err_code) return;
+
         if (data.statusData.players && MessageData.gameType == GameType.room) {
-            this.allCountDownTime = data.statusData.countdown_duration;
+            this.allCountDownTime = data.statusData.countdown_duration || data.statusData.countdown;
             this.isCountDownStart = false;
             this.setPlayersData(data.statusData.players, true);
         }
@@ -338,7 +340,7 @@ export default class MatchingScene extends cc.Component {
     private matchingDataUpDate(data) {
         console.log("@matcting 改变麦位",data);
         if (data.data.data.players && MessageData.gameType == GameType.room) {
-            this.allCountDownTime = data.data.data.countdown_duration;
+            this.allCountDownTime = data.data.data.countdown_duration || data.data.data.countdown;
             this.isCountDownStart = false;
             this.setPlayersData(data.data.data.players, true);
         }
@@ -552,28 +554,29 @@ export default class MatchingScene extends cc.Component {
     /**设置麦位上的人 */
     setMcPlayer(players, keys, nowPlayerIsJoin) {
         for (let i = 0; i < this.joinPlayers.length; i++) {
+            debugLog('设置麦位上的人 i is ',i);
             const element = players[keys[i]];
             if (!element) {
                 this.joinPlayers[i].clearPlayerData(i + 1);
                 continue;
             }
-            if (element.id == MessageData.userId) {
+            if ((element.id || element.user_id) == MessageData.userId) {
                 nowPlayerIsJoin = true;
                 this.isJoinGameSetBtn();
             }
             let playerData = {
-                avatar: element.avatar,
-                name: element.name,
-                id: element.id
+                avatar: element.avatar || element.user_avatar,
+                name: element.name || element.user_name,
+                id: element.id || element.user_id
             }
             this.joinPlayers[i].setPlayerData(playerData);
 
             this.joinPlayers[i].node.off(cc.Node.EventType.TOUCH_START);
             this.joinPlayers[i].node.on(cc.Node.EventType.TOUCH_START, () => {
-                MessageManager.showPlayerInfo(element.id);
+                MessageManager.showPlayerInfo(element.id || element.user_id);
             });
-            if (this.allJoinPlayerID.indexOf(element.id) < 0)
-                this.allJoinPlayerID.push(element.id);
+            if (this.allJoinPlayerID.indexOf(element.id || element.user_id) < 0)
+                this.allJoinPlayerID.push(element.id || element.user_id);
         }
 
         if (!nowPlayerIsJoin) {
@@ -671,6 +674,7 @@ export default class MatchingScene extends cc.Component {
             this.countDownTime = 0;
             this.stopCountDown(false);
         }
+        debugLog('countDowntime : ',this.countDownTime);
         this.countDownLabel.string = this.countDownTime + "";
     }
     /**停止倒计时 */

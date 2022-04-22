@@ -1,16 +1,10 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import Player from "../../../MatchingScene/Scripts/Players/Player";
-import PlayerManager from "../../../MatchingScene/Scripts/Players/PlayerManager";
-import GlobalGameData from "../../../MatchingScene/Scripts/Utils/GlobalGameData";
 import { GameData } from "../../Common/Game/GameData";
 import { PopupManager } from "../../Common/Popup/PopupManager";
 import SoundManager from "../../Common/Sound/SoundManager";
+import GlobalGameData from "../../GlobalGameData";
+import Player from "../../Players/Player";
+import PlayerManager from "../../Players/PlayerManager";
 import GameSceneManager from "../GameScene/GameSceneManager";
 import GameSceneUIManager from "../GameScene/GameSceneUIManager";
 import Socket from "../Socket/Socket";

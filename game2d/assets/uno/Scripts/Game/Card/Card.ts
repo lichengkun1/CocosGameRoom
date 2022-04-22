@@ -1,6 +1,4 @@
-import PlayerManager from "../../../MatchingScene/Scripts/Players/PlayerManager";
 import { MyComponent } from "../../Common/Game/MyComponent";
-import GameSceneManager from "../GameScene/GameSceneManager";
 import CardManager, { CardColor, CardType } from "./CardManager";
 
 const { ccclass, property } = cc._decorator;

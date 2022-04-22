@@ -1,4 +1,5 @@
 
+import MessageData from "../../../../Script/CommonScripts/Utils/MessageData";
 import MessageManager from "../../../../Script/CommonScripts/Utils/MessageManager";
 import Card from "../../Game/Card/Card";
 import CardManager, { CardColor } from "../../Game/Card/CardManager";
@@ -47,7 +48,7 @@ export class GetServerData {
      * @param err 获取失败
      */
     public static SendMessage(gameid: string, success: Function = null, err: Function = null): void {
-        let url = GetServerData.GAMEINFO + "?" + "game_id=" + gameid + "&source=chatroom&source_id=" + GlobalGameData.roomId
+        let url = GetServerData.GAMEINFO + "?" + "game_id=" + gameid + "&source=chatroom&source_id=" + MessageData.gameRoomId
         console.log("获取游戏信息");
         MessageManager.httpResult('get', url, {}, (res) => {
             console.log(res);

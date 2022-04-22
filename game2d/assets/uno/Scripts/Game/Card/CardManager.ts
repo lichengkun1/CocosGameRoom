@@ -1,7 +1,7 @@
-import Player from "../../../MatchingScene/Scripts/Players/Player";
+import { randToAngle } from "../../../../Script/common/utils/util";
 import { MyComponent } from "../../Common/Game/MyComponent";
 import Pool from "../../Common/Pool/Pool";
-import { angleToRand, randToAngle } from "../../util";
+import Player from "../../Players/Player";
 import GameSceneUIManager from "../GameScene/GameSceneUIManager";
 import Card from "./Card";
 

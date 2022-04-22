@@ -2,7 +2,7 @@ import { resourceManager } from "../../../Script/common/managers/resourceManager
 import BaseComp from "../../../Script/common/ui/baseComp";
 import { usernameSlice } from "../../../Script/common/utils/util";
 import GlobalGameData from "../GlobalGameData";
-import UNOMatching from "./UNOMatching";
+import UNOMatching from "./uno_Matching";
 
 export interface MatchingPlayerInfo {
     user_id: number,

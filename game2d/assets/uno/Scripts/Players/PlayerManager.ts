@@ -19,7 +19,7 @@ export default class PlayerManager {
         this.players.set(user_id, player);
     }
     static GetPlayer(user_id: number): Player {
-        user_id = user_id;
+        // user_id = user_id;
         let player = this.players.get(user_id);
         // if (!player)
         //     console.error("不存在user_id为：" + user_id + "的Player,请检查");

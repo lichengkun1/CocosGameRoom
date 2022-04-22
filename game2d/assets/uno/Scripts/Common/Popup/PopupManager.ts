@@ -1,3 +1,4 @@
+import { resourceManager } from '../../../../Script/common/managers/resourceManager';
 import { Popup } from './Popup';
 const { ccclass, property } = cc._decorator;
 
@@ -16,25 +17,25 @@ export class PopupManager {
     static TwoPopupsNode: cc.Node[] = [];
     static TwoPopupsArg: any[] = [];
 
+    private static popPrefabUrls = ['prefabs/SettlementPopup','resources_uno/uno_matchingScene_Res/RulePrefab','resources_uno/uno_matchingScene_Res/TipPopup'];
 
     /**加载弹窗的预制体，并初始化PopupManager中的popups数组*/
     public static LoadPopups(func?: Function) {
         // this.CreatePopupParent();
         console.log("++++++++++加载弹窗资源");
-        cc.loader.loadResDir("PopupsPrefab", function (err: any, assets: any) {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            for (let i = 0; i < assets.length; i++) {
-                const element = assets[i];
-                PopupManager.popups.push(element);
-            }
-            if (func)
-                func();
-            console.log(PopupManager.popups);
+        let i = 0;
+        this.popPrefabUrls.forEach(item => {
+            resourceManager.loadAssetInBundle(item,cc.Prefab,'uno').then((res: cc.Prefab) => {
+                i++;
+                PopupManager.popups.push(res);
+                if(i >= this.popPrefabUrls.length) {
+                    func && func();
+                }
+            })
         });
+
     }
+    
     /**展示弹窗 */
     public static ShowPopup(popupName: string, arg?: any, isLevel2Popup: boolean = false) {
         this.AddPopup(popupName, arg, isLevel2Popup);

@@ -1,6 +1,6 @@
 import { LanguageManager } from "../../Common/Language/LanguageManager";
 import { PopupManager } from "../../Common/Popup/PopupManager";
-import UNOMatching from "../../Match/UNOMatching";
+import UNOMatching from "../../Match/uno_Matching";
 
 const { ccclass, property } = cc._decorator;
 

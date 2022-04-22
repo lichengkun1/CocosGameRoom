@@ -19,9 +19,9 @@ export enum GamePlayerCount {
 }
 
 export interface PlayerInfo {
-    user_id: number,
-    user_name: string,
-    user_avatar: string,
+    id: number,
+    name: string,
+    avatar: string,
     poker_remain: number[],
     poker_remain_count: number,
     status: string,
@@ -58,6 +58,18 @@ export interface LatestGameInfo {
 
 }
 export default class GlobalGameData {
+    /** 是否进入游戏场景 */
+    public static enterGameScene: boolean = false;
+    public static isGotoMatchScene: boolean = false;
+
+    public static isCanAutoJoinGame: boolean = true;
+
+    public static roomBetsType: string = ''
+
+    public static isFirstLoad: boolean = true;
+
+    public static userInfo: any = null;
+
     /** 是否是房间类型的游戏 */
     public static isRoom: boolean = false;
     /** 是否可以发送表情 */

@@ -202,6 +202,16 @@ export default class MessageManager {
             MyEvent.I.emit(MessageType.MESSAGE_COMPLETED, { data: message });
         }
 
+        if (method == `uno_match`) {
+            MyEvent.I.emit(MessageType.MESSAGE_MATCHING, { data: message });
+        }
+        if (method == `uno_play`) {
+            MyEvent.I.emit(MessageType.MESSAGE_PLAYER, { data: message });
+        }
+        if (method == `uno_completed`) {
+            MyEvent.I.emit(MessageType.MESSAGE_COMPLETED, { data: message });
+        }
+
         if(method == `group_info`) {
             console.log('group_info');
             MyEvent.I.emit(MessageType.GROUP_INFO,{data: message});

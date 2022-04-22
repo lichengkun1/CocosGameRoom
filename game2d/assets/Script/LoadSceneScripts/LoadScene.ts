@@ -70,18 +70,10 @@ export default class LoadScene extends cc.Component {
     }
 
     private async loadBundleByGameName() {
-        if(GameConfig.gameName === 'ludo' || GameConfig.gameName === 'dominoe') {
-            if(GameConfig.gameName === 'ludo') {
-                resourceManager.loadBundle('ludo').then(() => {
-                    this.gameBundleIsLoadedOver = true;
-                });
-            } 
-            if(GameConfig.gameName === 'dominoe') {
-                resourceManager.loadBundle('dominoe').then(() => {
-                    this.gameBundleIsLoadedOver = true;
-                });
-            }
-        }
+        resourceManager.loadBundle(GameConfig.gameName).then(() => {
+            // 资源加载完毕
+            this.gameBundleIsLoadedOver = true;
+        });
     }
 
     private initNode() {

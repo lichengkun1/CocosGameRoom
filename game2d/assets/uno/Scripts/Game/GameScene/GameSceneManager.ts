@@ -1,16 +1,17 @@
 
-import { getUrlParameterValue, usernameSlice } from "../../../../Script/common/utils/util";
+import { debugLog, getUrlParameterValue, usernameSlice } from "../../../../Script/common/utils/util";
+import MessageData from "../../../../Script/CommonScripts/Utils/MessageData";
 import MyEvent from "../../../../Script/CommonScripts/Utils/MyEvent";
 import ResourcesManager from "../../../../Script/CommonScripts/Utils/ResourcesManager";
 import FrameImageController from "../../../../Script/FrameImageComponent/FrameImageController";
 import FrameImageManager from "../../../../Script/FrameImageComponent/FrameImageManager";
-import VoiceManager from "../../../yuyin/scripts/VoiceManager";
 import { GameData } from "../../Common/Game/GameData";
 import Pool from "../../Common/Pool/Pool";
 import { PopupManager } from "../../Common/Popup/PopupManager";
 import { GetServerData } from "../../Common/Server/GetServerData";
 import SoundManager from "../../Common/Sound/SoundManager";
 import GlobalGameData, { GamePlayerCount, PlayerInfo } from "../../GlobalGameData";
+import Player from "../../Players/Player";
 import PlayerManager from "../../Players/PlayerManager";
 import Card from "../Card/Card";
 import CardEffectManager from "../Card/CardEffectManager";
@@ -76,7 +77,7 @@ export default class GameSceneManager extends cc.Component {
         console.log('开始游戏的消息是：',GameData.message.data);
         this.StartRound(GameData.message.data.player_now);
         // 更新倒计时
-        GameSceneUIManager.I.UpdateCountdown(GameData.message.data.countdown);
+        GameSceneUIManager.I.UpdateCountdown(GameData.message.data.countdown_duration);
         this.scheduleOnce(() => {
             this.StartGameFirstOutCard(GameData.message.data.poker_output[GameData.message.data.poker_output.length - 1]);
         }, 2);
@@ -88,8 +89,9 @@ export default class GameSceneManager extends cc.Component {
         let index = 0;
         if(!GlobalGameData.isGod) {
             let thisplayerindex = this.ThisPlayerIndex();
+            debugLog('thisPlayerIndex is ',thisplayerindex);
             const thisPlayer = GameData.message.data.players[thisplayerindex];
-            let thisplayer = PlayerManager.GetPlayer(thisPlayer.user_id);
+            let thisplayer = PlayerManager.GetPlayer(thisPlayer.id);
             console.log("++++++++++++++++++++++++++++++++++++++++++\n", 0, thisplayer);
     
             // GameSceneUIManager.I.playerNode
@@ -126,24 +128,26 @@ export default class GameSceneManager extends cc.Component {
             idIndex = GlobalGameData.isGod ? 0 : idIndex + 1;
         const playersData = GameData.message.data.players;
 
-        let isTwo = playersData.filter(item => item.user_id).length == 2;
-        let isThree = playersData.filter(item => item.user_id).length == 3;
+        let isTwo = playersData.filter(item => item.id).length == 2;
+        let isThree = playersData.filter(item => item.id).length == 3;
         
         if(isTwo) {
             GlobalGameData.playerCount = GamePlayerCount.TWO;
             // 两人局过滤掉无效用户 位置排到对面
-            let twoPlayers = playersData.filter(item => item.user_id);
-            let otherPlayer = twoPlayers.find(item => item.user_id != GlobalGameData.userId);
+            let twoPlayers = playersData.filter(item => item.id);
+            debugLog('自己用户的id: ',MessageData.userId);
+            let otherPlayer = twoPlayers.find(item => item.id != MessageData.userId);
+
             let inx = 0;
             playersData.forEach((it,ix) => {
-                if(it.user_id == otherPlayer.user_id) {
+                if(it.id == otherPlayer.id) {
                     inx = ix;
                 }
             });
             this.SetOtherPlayerData(inx,2,frameImageUids);
         } else if(isThree) {
             GlobalGameData.playerCount = GamePlayerCount.THREE;
-            let threePlayers = playersData.filter(item => item.user_id);
+            let threePlayers = playersData.filter(item => item.id);
             while (true) {
                 if (index == thisplayerindex || idIndex > 2) {
                     break;
@@ -181,7 +185,7 @@ export default class GameSceneManager extends cc.Component {
             this.initPlayersWithGodMode(GameData.message.data.players as PlayerInfo[],frameImageUids);
         }
         
-        VoiceManager.voiceController.Init(frameImageUids);
+        // VoiceManager.voiceController.Init(frameImageUids);
         FrameImageController.I.SetAllUsersFrame(frameImageUids);
     }
 
@@ -202,7 +206,7 @@ export default class GameSceneManager extends cc.Component {
 
     private SetOtherPlayerData(index: number, idIndex: number, frameImageUids: number[]) {
         const element = GameData.message.data.players[index];
-        let player = PlayerManager.GetPlayer(element.user_id);
+        let player = PlayerManager.GetPlayer(element.id);
         if(!player) return;
 
         player.id = idIndex;
@@ -224,14 +228,14 @@ export default class GameSceneManager extends cc.Component {
         console.log("frameImageUids++++++++", frameImageUids);
 
         // if (!player.user_headImage) {
-        MKResourcesManager.loadHeadImag(player.user_avatar, player.user_id, 3, (res: cc.Texture2D) => {
+        ResourcesManager.loadHeadImag(player.user_avatar, player.user_id, 3, (res: cc.Texture2D) => {
             console.log('请求到headImage',index,idIndex);
             res.packable = false;
             let HeadImage = new cc.SpriteFrame(res);
             PlayerManager.GetPlayer(player.user_id).user_headImage = HeadImage;
             PlayerManager.GetPlayer(player.user_id).headImage.spriteFrame = PlayerManager.GetPlayer(player.user_id).user_headImage;
         });
-        player.userName.string = Matching.subNickName(player.user_name);
+        player.userName.string = usernameSlice(player.user_name,8);
 
         console.log("++++++++++++++++++++++++++++++++++++++++++\n", index, player, GameSceneUIManager.I.otherPlayerNode[idIndex].headImage);
 
@@ -239,9 +243,10 @@ export default class GameSceneManager extends cc.Component {
 
     /**设置玩家座位编号 */
     private ThisPlayerIndex() {
+        debugLog('thisPlayerId is ',PlayerManager.thisPlayer_user_id);
         for (let i = 0; i < GameData.message.data.players.length; i++) {
             const element = GameData.message.data.players[i];
-            if (element.user_id == PlayerManager.thisPlayer_user_id) {
+            if (element.id == PlayerManager.thisPlayer_user_id) {
                 return i;
             }
         }
@@ -251,11 +256,11 @@ export default class GameSceneManager extends cc.Component {
     public StartGameInCards() {
         for (let i = 0; i < GameData.message.data.players.length; i++) {
             const element = GameData.message.data.players[i];
-            if (element.user_id == PlayerManager.thisPlayer_user_id) {
+            if (element.id == PlayerManager.thisPlayer_user_id) {
                 this.ThisPlayerInCards(element.poker_remain);
             }
             else {
-                this.InCards(element.user_id, element.poker_remain_count);
+                this.InCards(element.id, element.poker_remain_count);
             }
         }
     }
@@ -349,7 +354,7 @@ export default class GameSceneManager extends cc.Component {
         if (player.id == 3) time = 0.75;
         let rot = (Math.random() < 0.5 ? 1 : -1) * Math.random() * 20;
         cc.tween(cardNode)
-            .to(time, { position: pos, scale: GlobalGameData.RoomSigleScale.outPockScale[GlobalGameData.roomType], angle: rot },{easing: 'easeOutCubic'})
+            .to(time, { position: pos, scale: GlobalGameData.RoomSigleScale.outPockScale[GlobalGameData.roomType], angle: rot })
             // .parallel(cc.tween(cardNode)
             //     .to(time / 2, { scale: 1.2 })
             //     .start())
@@ -375,8 +380,7 @@ export default class GameSceneManager extends cc.Component {
             for (let i = 0; i < player.cards.length; i++) {
                 const element = player.cards[i];
                 if (element.cardid == cardId[cardid]) {
-                    console.log("已经有了相同的牌");
-
+                    debugLog("已经有了相同的牌");
                     return;
                 }
             }
@@ -390,8 +394,10 @@ export default class GameSceneManager extends cc.Component {
             console.log("自己发牌缩放比例：",cardNode.scale," 房间类型：",GlobalGameData.roomType);
             card.node.zIndex = 2;
             console.log("playerZIndex is ",GameSceneUIManager.I.playerLight.zIndex);
-            if (GameSceneUIManager.I.ThisPlayerCardsParent.children.indexOf(cardNode) < 0)
+            if (GameSceneUIManager.I.ThisPlayerCardsParent.children.indexOf(cardNode) < 0) {
+                debugLog('摸牌之后的节点：：',GameSceneUIManager.I.ThisPlayerCardsParent);
                 GameSceneUIManager.I.ThisPlayerCardsParent.addChild(cardNode);
+            }
             cardNode.position = GameSceneUIManager.I.backCardPos.position;
             // 目的坐标
             let pos = GameSceneUIManager.I.ThisPlayerCardsPos1.position;
@@ -472,7 +478,7 @@ export default class GameSceneManager extends cc.Component {
 
         cc.tween(card.node)
             .stop()
-            .to(0.5, { position: pos, scale: GlobalGameData.RoomSigleScale.outPockScale[GlobalGameData.roomType], angle: rot },{easing: "easeOutCubic"})
+            .to(0.5, { position: pos, scale: GlobalGameData.RoomSigleScale.outPockScale[GlobalGameData.roomType], angle: rot })
             .start();
         this.scheduleOnce(() => {
             card.node.zIndex = 0;
@@ -667,13 +673,13 @@ export default class GameSceneManager extends cc.Component {
         const updateOtherPlayerPokerNumber = () => {
             const gameInfo = GameData.gameInfo;
             
-            const userfulPlayers = gameInfo.players.filter(item => item.user_id);
+            const userfulPlayers = gameInfo.players.filter(item => item.id);
 
             for(let userItem of userfulPlayers) {
-                if(userItem.user_id == PlayerManager.thisPlayer_user_id) continue;
+                if(userItem.id == PlayerManager.thisPlayer_user_id) continue;
                 const poker_remain_count = userItem.poker_remain_count;
                 // 找到对应的用户数据
-                const targetPlayer = PlayerManager.GetPlayer(userItem.user_id);
+                const targetPlayer = PlayerManager.GetPlayer(userItem.id);
                 targetPlayer && (targetPlayer.cardNumberNode.string = poker_remain_count.toString());
             }
         }
@@ -731,7 +737,7 @@ export default class GameSceneManager extends cc.Component {
             }
 
             // 更新时间
-            GameData.gameInfo.status == 'playing' && GameSceneUIManager.I.UpdateCountdown(GameData.gameInfo.countdown);
+            GameData.gameInfo.status == 'playing' && GameSceneUIManager.I.UpdateCountdown(GameData.gameInfo.countdown_duration);
 
             if (!GameSceneManager.IsShowSettlement) {
                 if (GameData.gameInfo.status == "completed") {
@@ -773,7 +779,7 @@ export default class GameSceneManager extends cc.Component {
 
         for (let i = 0; i < GameData.gameInfo.players.length; i++) {
             const element = GameData.gameInfo.players[i];
-            if (element.user_id == user_id) {
+            if (element.id == user_id) {
                 return element;
             }
         }

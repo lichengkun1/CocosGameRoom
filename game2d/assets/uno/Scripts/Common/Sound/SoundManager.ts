@@ -1,3 +1,5 @@
+import { GameConfig } from "../../../../gameConfig";
+import { resourceManager } from "../../../../Script/common/managers/resourceManager";
 import { MyComponent } from "../Game/MyComponent";
 import AndroidGoback from "../Server/AndroidGoback";
 
@@ -19,8 +21,7 @@ export default class SoundManager {
      * 加载音效，并初始化SoundManager.I.audios
      */
     public static LoadSound(func?: Function) {
-
-        cc.loader.loadResDir("Sounds", function (err: any, assets: any) {
+        resourceManager.loadBundleDir(GameConfig.gameName,`resources_${GameConfig.gameName}/sounds`,cc.AudioClip,null,(err: Error,assets: cc.AudioClip[]) => {
             if (err) {
                 console.error(err);
                 return;

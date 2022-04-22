@@ -2,14 +2,13 @@ import Message from "../../../../Script/CommonScripts/Utils/Message";
 import MessageType from "../../../../Script/CommonScripts/Utils/MessageType";
 import MyEvent from "../../../../Script/CommonScripts/Utils/MyEvent";
 import FrameImageManager from "../../../../Script/FrameImageComponent/FrameImageManager";
-import VoiceSocket from "../../../yuyin/scripts/VoiceSocket";
 import { GameData } from "../../Common/Game/GameData";
 import { LanguageManager } from "../../Common/Language/LanguageManager";
 import AndroidGoback from "../../Common/Server/AndroidGoback";
 import { GetServerData } from "../../Common/Server/GetServerData";
 import SoundManager from "../../Common/Sound/SoundManager";
 import GlobalGameData, { GamePlayerCount, RoomType } from "../../GlobalGameData";
-import UNOMatching from "../../Match/UNOMatching";
+import UNOMatching from "../../Match/uno_Matching";
 import PlayerManager from "../../Players/PlayerManager";
 import CardEffectManager from "../Card/CardEffectManager";
 import CardManager, { CardColor, CardType } from "../Card/CardManager";
@@ -23,7 +22,7 @@ export default class Socket {
     static node: cc.Node = new cc.Node();
     /**初始化Socket 注册监听事件 */
     static Init() {
-        VoiceSocket.Init();
+        // VoiceSocket.Init();
         if (!this.IsAddEvent) {
             MyEvent.I.on('emit_message', this.messageFunc.bind(this), this.node);
             MyEvent.I.on(MessageType.MESSAGE_REQUEST_WS_STATUS,this.responseFunc.bind(this),this.node);
@@ -46,7 +45,7 @@ export default class Socket {
             GlobalGameData.roomId = data.data.data.source_id;
         }
 
-        let playerCount = GameData.message.data.players.filter(item => item.user_id != 0).length;
+        let playerCount = GameData.message.data.players.filter(item => item.id != 0).length;
         GlobalGameData.playerCount = playerCount == 2 ? GamePlayerCount.TWO : playerCount == 3 ? GamePlayerCount.THREE : GamePlayerCount.FOUR;
         
         if (data.data.data.player_now == PlayerManager.thisPlayer_user_id) {
@@ -83,7 +82,7 @@ export default class Socket {
             let uids = [];
             for (let i = 0; i < GameData.message.data.players.length; i++) {
                 const element = GameData.message.data.players[i];
-                uids.push(element.user_id);
+                uids.push(element.id);
             }
             FrameImageManager.initWithUids(uids);
 
@@ -142,7 +141,7 @@ export default class Socket {
         console.log('更新用户状态信息');
         const players = GameData.message.data.players;
         for(let playerItem of players) {
-            let player = PlayerManager.GetPlayer(playerItem.user_id);
+            let player = PlayerManager.GetPlayer(playerItem.id);
             if(!player) {
                 console.log('没有找到用户');
                 continue;
@@ -376,20 +375,20 @@ export default class Socket {
     static ShowUNO() {
         for (let i = 0; i < GameData.message.data.players.length; i++) {
             const element = GameData.message.data.players[i];
-            if(!element.user_id) continue;
+            if(!element.id) continue;
             if (element.poker_remain_count == 1) {
-                let index = this.unoplayers.indexOf(element.user_id)
+                let index = this.unoplayers.indexOf(element.id)
                 if (index < 0) {
-                    this.unoplayers.push(element.user_id);
+                    this.unoplayers.push(element.id);
                     CardEffectManager.I.PlayUNO();
-                    PlayerManager.GetPlayer(element.user_id).UNO.active = true;
+                    PlayerManager.GetPlayer(element.id).UNO.active = true;
                 }
             } else {
-                let index = this.unoplayers.indexOf(element.user_id);
+                let index = this.unoplayers.indexOf(element.id);
                 if (index >= 0) {
                     this.unoplayers.splice(index, 1);
                 }
-                PlayerManager.GetPlayer(element.user_id).UNO.active = false;
+                PlayerManager.GetPlayer(element.id).UNO.active = false;
             }
         }
     }
@@ -398,17 +397,17 @@ export default class Socket {
     static ShowRank() {
         for (let i = 0; i < GameData.message.data.players.length; i++) {
             const element = GameData.message.data.players[i];
-            if(!element.user_id) continue;
+            if(!element.id) continue;
 
             if (element.rank == 1) {
-                PlayerManager.GetPlayer(element.user_id).rankNode.getChildByName('1').active = true;
-                PlayerManager.GetPlayer(element.user_id).rankNode.getChildByName('2').active = false;
+                PlayerManager.GetPlayer(element.id).rankNode.getChildByName('1').active = true;
+                PlayerManager.GetPlayer(element.id).rankNode.getChildByName('2').active = false;
             } else if (element.rank == 2) {
-                PlayerManager.GetPlayer(element.user_id).rankNode.getChildByName('1').active = false;
-                PlayerManager.GetPlayer(element.user_id).rankNode.getChildByName('2').active = true;
+                PlayerManager.GetPlayer(element.id).rankNode.getChildByName('1').active = false;
+                PlayerManager.GetPlayer(element.id).rankNode.getChildByName('2').active = true;
             } else {
-                PlayerManager.GetPlayer(element.user_id).rankNode.getChildByName('1').active = false;
-                PlayerManager.GetPlayer(element.user_id).rankNode.getChildByName('2').active = false;
+                PlayerManager.GetPlayer(element.id).rankNode.getChildByName('1').active = false;
+                PlayerManager.GetPlayer(element.id).rankNode.getChildByName('2').active = false;
             }
         }
     }
@@ -417,11 +416,11 @@ export default class Socket {
     static ShowAbandon() {
         for (let i = 0; i < GameData.message.data.players.length; i++) {
             const element = GameData.message.data.players[i];
-            if(!element.user_id) continue;
+            if(!element.id) continue;
             if (element.status == "abandon") {
-                PlayerManager.GetPlayer(element.user_id).abandonNode.active = true;
+                PlayerManager.GetPlayer(element.id).abandonNode.active = true;
             } else {
-                PlayerManager.GetPlayer(element.user_id).abandonNode.active = false;
+                PlayerManager.GetPlayer(element.id).abandonNode.active = false;
             }
         }
     }
@@ -494,7 +493,7 @@ export default class Socket {
         Socket.IsAgent();
         //开始当前回合的倒计时显示
         GameSceneManager.I.StartRound(GameData.message.data.player_now);
-        GameSceneUIManager.I.RestTime(GameData.message.data.countdown);
+        GameSceneUIManager.I.RestTime(GameData.message.data.countdown_duration);
 
 
 
@@ -514,9 +513,9 @@ export default class Socket {
     private static SetOtherPlayerCardNumber() {
         for (let i = 0; i < GameData.message.data.players.length; i++) {
             const element = GameData.message.data.players[i];
-            if(!element.user_id) continue;
-            if (element.user_id != PlayerManager.thisPlayer_user_id) {
-                let player = PlayerManager.GetPlayer(element.user_id);
+            if(!element.id) continue;
+            if (element.id != PlayerManager.thisPlayer_user_id) {
+                let player = PlayerManager.GetPlayer(element.id);
                 if(!player) {
                     console.log('设置其他玩家的牌数时候 player is null');
                     continue;
@@ -534,7 +533,7 @@ export default class Socket {
     private static StartGame() {
         console.log('游戏开始');
         UNOMatching.I.InitGameData(GameData.message);
-        UNOMatching.I.JumpScene();
+        UNOMatching.I.loadChangeScene();
     }
 
     /**
@@ -604,10 +603,10 @@ export default class Socket {
         for (let i = 0; i < GameData.lastMessage.data.players.length; i++) {
             const element = GameData.lastMessage.data.players[i];
             // if (element.user_id != PlayerManager.thisPlayer_user_id) {
-            let playernowData = this.FindPlayerData(GameData.message, element.user_id);
+            let playernowData = this.FindPlayerData(GameData.message, element.id);
             let num = playernowData.poker_remain_count - element.poker_remain_count;
             if (num > 0) {
-                return { user_id: element.user_id, count: num };
+                return { user_id: element.id, count: num };
             }
             // }
         }

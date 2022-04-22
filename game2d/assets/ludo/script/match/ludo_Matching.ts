@@ -1,7 +1,6 @@
 
 import { GameConfig } from "../../../gameConfig";
 
-import TopUINode from "../../../roomCommon/Component/RoomTop/scripts/TopUINode";
 import { resourceManager } from "../../../Script/common/managers/resourceManager";
 import BgmSettings from "../../../Script/CommonScripts/bgmSettings";
 import MatchingScene from "../../../Script/CommonScripts/MatchSceneScripts/MatchingScene";
@@ -13,6 +12,7 @@ import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
 import MessageSoundManager from "../../../Script/CommonScripts/Utils/MessageSoundManager";
 import MyEvent from "../../../Script/CommonScripts/Utils/MyEvent";
 import NDB from "../../../Script/CommonScripts/Utils/NDBTS";
+import TopUINode from "../../../Script/Component/RoomTop/scripts/TopUINode";
 
 import Ludo_BetsConfig from "../game/Ludo_BetsConfig";
 import Global from "../Global/Ludo_GlobalGameData";

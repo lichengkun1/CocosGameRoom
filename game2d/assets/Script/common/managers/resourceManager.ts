@@ -101,6 +101,7 @@ import { debugLog } from "../utils/util";
      * @returns Promise
      */
     public async loadRemoteAsset<T extends cc.Asset>(url: string,type: string = '.png'): Promise<T> {
+        if(!url) return;
         const hasPng = url.indexOf('.png') >= 0;
         
         return new Promise((resolve,reject) => {

@@ -25,7 +25,7 @@ export class GameData {
             /**enum(playing, completed)*/
             status: "",
             /**还有多少秒结束*/
-            countdown: -1,
+            countdown_duration: -1,
             /**enum(red, yellow, green, blue)*/
             color: "",
             /**enum(aes, desc)*/
@@ -48,11 +48,11 @@ export class GameData {
             player_skipped: 0,
             players: [{
                 /**UID*/
-                user_id: -1,
+                id: -1,
                 /**昵称*/
-                user_name: "",
+                name: "",
                 /**头像*/
-                user_avatar: "",
+                avatar: "",
                 /**剩余牌数*/
                 poker_remain_count: -1,
                 /**仅能看到自己的牌*/
@@ -91,7 +91,7 @@ export class GameData {
             /**enum(playing, completed)*/
             status: "",
             /**还有多少秒结束*/
-            countdown: -1,
+            countdown_duration: -1,
             /**enum(red, yellow, green, blue)*/
             color: "",
             /**enum(aes, desc)*/
@@ -112,11 +112,11 @@ export class GameData {
             player_skipped: 0,
             players: [{
                 /**UID*/
-                user_id: -1,
+                id: -1,
                 /**昵称*/
-                user_name: "",
+                name: "",
                 /**头像*/
-                user_avatar: "",
+                avatar: "",
                 /**剩余牌数*/
                 poker_remain_count: -1,
                 /**仅能看到自己的牌*/
@@ -153,7 +153,7 @@ export class GameData {
             /**enum(playing, completed)*/
             status: "",
             /**还有多少秒结束*/
-            countdown: -1,
+            countdown_duration: -1,
             /**enum(red, yellow, green, blue)*/
             color: "",
             /**enum(aes, desc)*/
@@ -174,11 +174,11 @@ export class GameData {
             player_skipped: 0,
             players: [{
                 /**UID*/
-                user_id: -1,
+                id: -1,
                 /**昵称*/
-                user_name: "",
+                name: "",
                 /**头像*/
-                user_avatar: "",
+                avatar: "",
                 /**剩余牌数*/
                 poker_remain_count: -1,
                 /**仅能看到自己的牌*/
@@ -201,7 +201,7 @@ export class GameData {
         source: "single", //enum(single, chatroom)
         source_id: "xxxyyyzzz", //
         status: "playing", //enum(playing, completed)
-        countdown: 12132, //还有多少秒结束
+        countdown_duration: 12132, //还有多少秒结束
         color: "red", //enum(red, yellow, green, blue)
         order: "aes", //enum(aes, desc)
         poker_remain_count: 10, //剩余牌数
@@ -212,9 +212,9 @@ export class GameData {
         player_now: 23, //当前玩家的 UID
         player_now_should: ["play", "skip"],
         players: [{
-            user_id: 0, //UID
-            user_name: "", //昵称
-            user_avatar: "", //头像
+            id: 0, //UID
+            name: "", //昵称
+            avatar: "", //头像
             poker_remain_count: 4, //剩余牌数
             poker_remain: [108, 11, 12, 13], //仅能看到自己的牌
             status: "online", //enum(online, offline, abandon)

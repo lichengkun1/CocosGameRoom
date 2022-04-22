@@ -1,7 +1,7 @@
 import { GameData } from "../../Common/Game/GameData";
 import { LanguageManager } from "../../Common/Language/LanguageManager";
 import GlobalGameData, { GamePlayerCount } from "../../GlobalGameData";
-import UNOMatching from "../../Match/UNOMatching";
+import UNOMatching from "../../Match/uno_Matching";
 
 const { ccclass, property } = cc._decorator;
 
@@ -376,7 +376,7 @@ export default class GameSceneUIManager extends cc.Component {
 
     showPlayerInfoByPlayerCount() {
         console.log('-----two');
-        const realUsers = GameData.message.data.players.filter(item => item.user_id);
+        const realUsers = GameData.message.data.players.filter(item => item.id);
         GlobalGameData.playerCount = realUsers.length == 2 ? GamePlayerCount.TWO : realUsers.length == 3 ? GamePlayerCount.THREE : GamePlayerCount.FOUR;
         switch(GlobalGameData.playerCount) {
             case GamePlayerCount.TWO:
