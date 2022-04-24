@@ -404,6 +404,7 @@ export default class MatchingScene extends cc.Component {
             const element = MatchResData.matchSceneResource[i];
             if (element.name != "player") {
                 let elementNode: cc.Node = cc.instantiate(element);
+                
                 switch (element.name) {
                     case "BG":
                         let vcode = MessageManager.getUrlParameterValue('vcode');
