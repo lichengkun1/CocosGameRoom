@@ -1,12 +1,4 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
-import MessageData, { GameType } from "../../../../Common/CommonScripts/Utils/MessageData";
-import MessageManager from "../../../../Common/CommonScripts/Utils/MessageManager";
+import MessageData, { GameType } from "../../../Script/CommonScripts/Utils/MessageData";
 
 const {ccclass, property} = cc._decorator;
 
@@ -17,6 +9,8 @@ export default class Ludo_ExitPopup extends cc.Component {
     private titleLabel: cc.Label
     // private noLabel: cc.Label
     private yesLabel: cc.Label
+
+    
     lang = {
         en: "You have not made any action 3 times in a row,you hava been set to give up by the system.",
         ar: "لم تقم بأي إجراء 3 مرات متتالية ، لقد تم تعيينك للتخلي عن النظام.",

@@ -1,4 +1,6 @@
 import { resolve } from 'path';
+import { GameConfig } from '../../../gameConfig';
+import { resourceManager } from '../../../Script/common/managers/resourceManager';
 import Global from '../Global/Ludo_GlobalGameData';
 
 
@@ -142,15 +144,13 @@ export default class Ludo_MKPreLoad extends cc.Component {
     }
 
     static preLoad<T extends cc.Asset>(url: string, type: typeof cc.Asset, count: number = 2, cb?) {
-        cc.loader.loadRes(`GamesRes/store/${url}`, type, (err, res) => {
-            if (err) {
-                if (count >= 0) {
-                    this.preLoad(url, type, --count);
-                }
-                return;
-            }
-            console.log(`${url} Load succesce`);
+        resourceManager.loadAssetInBundle(`resources_${GameConfig.gameName}/store/${url}`,type,GameConfig.gameName,null).then((res) => {
             cb && cb(res);
+        }).catch(err => {
+            if (count >= 0) {
+                this.preLoad(url, type, --count);
+            }
         });
+        
     }
 }

@@ -1,7 +1,9 @@
-import MessageData, { GameType, GameCoinType } from "../../../../Common/CommonScripts/Utils/MessageData";
-import MessageManager from "../../../../Common/CommonScripts/Utils/MessageManager";
-import NDB from "../../../../Common/CommonScripts/Utils/NDBTS";
-import { GameConfig } from "../../../../Jsons/GameConfig";
+
+import { GameConfig } from "../../../gameConfig";
+import MessageData, { GameCoinType, GameType } from "../../../Script/CommonScripts/Utils/MessageData";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
+import NDB from "../../../Script/CommonScripts/Utils/NDBTS";
+
 import Ludo_BetsConfig from "../game/Ludo_BetsConfig";
 import Ludo_GlobalGameData from "../Global/Ludo_GlobalGameData";
 

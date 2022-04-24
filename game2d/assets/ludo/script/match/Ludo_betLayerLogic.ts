@@ -1,5 +1,5 @@
-import MessageData, { GameType, LudoLangType } from '../../../../Common/CommonScripts/Utils/MessageData';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
+
+import MessageData, { GameType, LudoLangType } from '../../../Script/CommonScripts/Utils/MessageData';
 import Ludo_BetsConfig from '../game/Ludo_BetsConfig';
 import GlobalGameData from '../Global/Ludo_GlobalGameData';
 import Ludo_MessageType from '../Utils/Ludo_MessageType';

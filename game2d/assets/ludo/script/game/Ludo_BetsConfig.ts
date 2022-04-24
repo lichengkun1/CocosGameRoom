@@ -1,5 +1,7 @@
-import MessageData, { GameType } from "../../../../Common/CommonScripts/Utils/MessageData";
-import MessageManager from "../../../../Common/CommonScripts/Utils/MessageManager";
+
+
+import MessageData, { GameType } from "../../../Script/CommonScripts/Utils/MessageData";
+import MessageManager from "../../../Script/CommonScripts/Utils/MessageManager";
 import Global from "../Global/Ludo_GlobalGameData";
 import Ludo_MessageType from "../Utils/Ludo_MessageType";
 const { ccclass, property } = cc._decorator;

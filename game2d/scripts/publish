@@ -1,0 +1,102 @@
+#!/bin/bash
+
+HOST="13.127.67.158"
+GAME=$1
+ENV=$2
+PWD=`pwd`
+BASE=`basename $PWD`
+
+ENV="staging"
+
+# web-mobile文件夹下的路径
+DIRABSPATH=$(greadlink -f ../)
+TARGETDIR="~/Desktop/allWebmobile/"
+
+echo "================Start deal zip files=================="
+cd ..
+zipFileIsExist=0
+
+# Check if the zip file exist
+if [[ -f "web-mobile.zip" ]]; then
+    zipFileIsExist=1
+fi
+
+movZipFileToTarget(){
+    zipFile=$DIRABSPATH"/web-mobile.zip"
+    echo "Path of zipFile is "$zipFile
+    echo "    ==============Start move zip File==============="
+    # mv 
+    targetDir=$TARGETDIR$GAME
+    if [[ ! -d $targetDir ]]; then
+        echo "不存在"$targetDir"文件夹,创建该文件夹"
+        mkdir $targetDir
+    fi
+
+    
+    # if [[ -f "$targetDir/web-mobile.zip" ]]; then
+    #     # delete old web-mobile.zip
+    #     echo "存在zip旧文件"
+    #     # rm -rf "$targetDir/web-mobile.zip"
+    # fi
+    # Move the zipFile to target path
+    mv $zipFile $TARGETDIR$GAME"/"
+    # Rename zipFile by current time
+    curTime=$(date "+%Y%m%d%H%M%S")
+    mv "$TARGETDIR$GAME/web-mobile.zip" "$TARGETDIR$GAME/web-mobile.$curTime.zip"
+    echo "    ==============Move zip File over==============="
+}
+
+movZipFileToTarget
+
+# Zip web-mobile dir
+zip -r web-mobile.zip web-mobile/
+echo "    ===========zipFileIsExist is $zipFileIsExist========"
+if [[ $zipFileIsExist == 0 ]]; then
+    # It's no any zip file before zip opration
+    movZipFileToTarget
+fi
+cd web-mobile/
+echo "================Deal zip files over=================="
+
+if [[ $BASE != "web-mobile" ]]; then
+    echo "请在 web-mobile 目录下执行"
+    exit 0
+fi
+echo "当前文件夹 is " $DIRABSPATH
+
+if [[ $GAME == "" ]]; then
+    echo "参数不正确(1), 示范: publish ludo staging"
+    exit 1
+fi
+
+if [[ $ENV != "staging" && $ENV != "prod" ]]; then
+    echo "参数不正确(2), 示范: publish ludo staging"
+    exit 0
+fi
+
+echo "确定发布" $GAME/$ENV/web-mobile "吗? 回答: yes/no"
+read
+
+if [[ $REPLY != "yes" ]]; then
+    exit 0
+fi
+
+
+
+echo "开始同步 s3://a.fslk.co/games/$GAME/$ENV/web-mobile"
+rsync -av --delete ./ $HOST:~/web-mobile
+
+# 完成上线发布
+ssh $HOST << eeooff
+cd ~/web-mobile
+echo
+echo "开始发布 s3://a.fslk.co/games/$GAME/$ENV/web-mobile"
+echo
+aws s3 sync ./ s3://a.fslk.co/games/$GAME/$ENV/web-mobile
+echo "发布完毕"
+echo
+echo "清理 CDN"
+cdn_purge "http://a.fslk.co/games/$GAME/$ENV/web-mobile/index.html"
+echo
+exit
+eeooff

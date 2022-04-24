@@ -1,7 +1,8 @@
 
-import MessageData from '../../../../Common/CommonScripts/Utils/MessageData';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
+import { getUrlParameterValue } from "../../../Script/common/utils/util";
+import MessageData from "../../../Script/CommonScripts/Utils/MessageData";
+import MyEvent from "../../../Script/CommonScripts/Utils/MyEvent";
+
 
 const {ccclass, property} = cc._decorator;
 
@@ -19,7 +20,7 @@ export default class Ludo_exitGameLogic extends cc.Component {
     
     start () {
         this.node.on(cc.Node.EventType.TOUCH_START,(event)=>{event.stopPropagation()},this);
-        let lang = MessageManager.getUrlParameterValue('ui_lang');
+        let lang = getUrlParameterValue('ui_lang');
 
         this.contentLabel.string = MessageData.lang.quit_ask_popup ? MessageData.lang.quit_ask_popup : MessageData.langEnglish.quit_ask_popup;
         this.yesLabel.string = MessageData.lang.yes ? MessageData.lang.yes : MessageData.langEnglish.yes;

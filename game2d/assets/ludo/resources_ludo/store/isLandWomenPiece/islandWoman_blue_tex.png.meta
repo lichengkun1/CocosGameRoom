@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "1e3e5e55-d0ce-4875-aeb4-95117d0e529a",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 256,
+  "height": 256,
+  "platformSettings": {},
+  "subMetas": {
+    "islandWoman_blue_tex": {
+      "ver": "1.0.6",
+      "uuid": "30171139-9c5f-4553-bdaa-b468c0d7922c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "1e3e5e55-d0ce-4875-aeb4-95117d0e529a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 254,
+      "height": 254,
+      "rawWidth": 256,
+      "rawHeight": 256,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

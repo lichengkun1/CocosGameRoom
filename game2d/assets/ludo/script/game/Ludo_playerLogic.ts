@@ -1,11 +1,14 @@
 
 
+import { GameConfig } from '../../../gameConfig';
+import MessageData, { GameType } from '../../../Script/CommonScripts/Utils/MessageData';
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
+import MessageSoundManager from '../../../Script/CommonScripts/Utils/MessageSoundManager';
+import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
+import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
+
 import Global from '../Global/Ludo_GlobalGameData';
-import MessageSoundManager from '../../../../Common/CommonScripts/Utils/MessageSoundManager';
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
-import ResourcesManager from '../../../../Common/CommonScripts/Utils/ResourcesManager';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
-import MessageData, { GameType } from '../../../../Common/CommonScripts/Utils/MessageData';
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -222,7 +225,7 @@ export default class Ludo_playerLogic extends cc.Component {
         //骑士骰子;
         // this.diceDragNode.active = true;
         if (diceAniName == 'knight_') {
-            ResourcesManager.loadDragonBonesRes('knightDice/knight_shaizi', (dragData) => {
+            ResourcesManager.loadDragonBonesRes(GameConfig.gameName,`resources_${GameConfig.gameName}/store/knightDice/knight_shaizi`, (dragData) => {
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAsset = dragData.asset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAtlasAsset = dragData.atlasAsset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).armatureName = 'Armature';
@@ -230,7 +233,7 @@ export default class Ludo_playerLogic extends cc.Component {
                 this.hintPlayName = 'knight';
             });
         } else if (diceAniName == 'island_') {
-            ResourcesManager.loadDragonBonesRes('isLandice/island_shaizi', (dragData) => {
+            ResourcesManager.loadDragonBonesRes(GameConfig.gameName,`resources_${GameConfig.gameName}/store/isLandice/island_shaizi`, (dragData) => {
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAsset = dragData.asset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAtlasAsset = dragData.atlasAsset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).armatureName = 'Armature';
@@ -238,7 +241,7 @@ export default class Ludo_playerLogic extends cc.Component {
                 this.hintPlayName = 'island';
             });
         } else if (diceAniName == 'dragonball_') {
-            ResourcesManager.loadDragonBonesRes('dice_dragon_ball/shaizi_long', (dragData) => {
+            ResourcesManager.loadDragonBonesRes(GameConfig.gameName,`resources_${GameConfig.gameName}/store/dice_dragon_ball/shaizi_long`, (dragData) => {
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAsset = dragData.asset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAtlasAsset = dragData.atlasAsset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).armatureName = 'Armature';
@@ -246,7 +249,7 @@ export default class Ludo_playerLogic extends cc.Component {
                 this.hintPlayName = 'newAnimation';
             });
         } else if (diceAniName == 'starry_') {
-            ResourcesManager.loadDragonBonesRes('dice_starry_sky/shaizi_xingxing', (dragData) => {
+            ResourcesManager.loadDragonBonesRes(GameConfig.gameName,`resources_${GameConfig.gameName}/store/dice_starry_sky/shaizi_xingxing`, (dragData) => {
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAsset = dragData.asset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAtlasAsset = dragData.atlasAsset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).armatureName = 'Armature';
@@ -254,7 +257,7 @@ export default class Ludo_playerLogic extends cc.Component {
                 this.hintPlayName = 'newAnimation';
             });
         } else if (diceAniName == 'electronic_') {
-            ResourcesManager.loadDragonBonesRes('dice_electronic/shaizi_electronic', (dragData) => {
+            ResourcesManager.loadDragonBonesRes(GameConfig.gameName,`resources_${GameConfig.gameName}/store/dice_electronic/shaizi_electronic`, (dragData) => {
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAsset = dragData.asset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAtlasAsset = dragData.atlasAsset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).armatureName = 'Armature';
@@ -263,7 +266,7 @@ export default class Ludo_playerLogic extends cc.Component {
             });
         }
         else if (diceAniName == 'warrior_') {
-            ResourcesManager.loadDragonBonesRes('dice_warrior/shaizi_zhanzheng', (dragData) => {
+            ResourcesManager.loadDragonBonesRes(GameConfig.gameName,`resources_${GameConfig.gameName}/store/dice_warrior/shaizi_zhanzheng`, (dragData) => {
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAsset = dragData.asset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).dragonAtlasAsset = dragData.atlasAsset;
                 this.diceDragNode.getComponent(dragonBones.ArmatureDisplay).armatureName = 'Armature';

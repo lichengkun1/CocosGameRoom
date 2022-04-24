@@ -1,10 +1,10 @@
 {
   "ver": "1.1.3",
-  "uuid": "de8b4d26-880d-4f4b-b775-33cf552051ba",
+  "uuid": "3a616e0a-8500-48d4-ab5d-a5dae6f79a3c",
   "importer": "folder",
-  "isBundle": false,
+  "isBundle": true,
   "bundleName": "",
-  "priority": 1,
+  "priority": "5",
   "compressionType": {},
   "optimizeHotUpdate": {},
   "inlineSpriteFrames": {},

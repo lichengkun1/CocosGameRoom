@@ -1,5 +1,5 @@
+import MyEvent from "../../../Script/CommonScripts/Utils/MyEvent";
 
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
 const {ccclass, property} = cc._decorator;
 
 @ccclass

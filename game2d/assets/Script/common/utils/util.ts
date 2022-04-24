@@ -182,7 +182,7 @@ export async function preloadAssetInBundle<T extends cc.Asset>(url: string, type
     // let bundle = null;
     // bundle = await resourceManager.loadBundle(bundleName);
     // if(!bundle) return;
-    const res = await resourceManager.loadAssetInBundle<T>(url, type) as T;
+    const res = await resourceManager.loadAssetInBundle<T>(url, type,bundleName) as T;
     if (!res) return;
     return res;
 }
@@ -368,4 +368,8 @@ export function angleToRand(angle: number) {
 export function isProd() {
     return window.location.href.indexOf('staging') >= 0 ? false : true;
 }
+
+// export function getColorByRGBWithOpacity(r: number,g: number,b: number,a: number) {
+//     let color = new cc.Color(r,g,b);
+// }
 

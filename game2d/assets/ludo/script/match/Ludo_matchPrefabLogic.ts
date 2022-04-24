@@ -1,9 +1,10 @@
 
-import Ludo_MessageType from '../Utils/Ludo_MessageType';
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
+
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
+import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
+import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
 import Global from '../Global/Ludo_GlobalGameData';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
-import ResourcesManager from '../../../../Common/CommonScripts/Utils/ResourcesManager';
+import Ludo_MessageType from '../Utils/Ludo_MessageType';
 
 const {ccclass, property} = cc._decorator;
 

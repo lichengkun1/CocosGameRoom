@@ -1,30 +1,30 @@
 import Global from '../Global/Ludo_GlobalGameData';
 import Ludo_userNodeList from './Ludo_userNodeList';
-import MyEvent from '../../../../Common/CommonScripts/Utils/MyEvent';
-import MessageSoundManager from '../../../../Common/CommonScripts/Utils/MessageSoundManager';
-import MessageForRoom from '../../../../Common/CommonScripts/Utils/MessageForRoom';
-import NDB from '../../../../Common/CommonScripts/Utils/NDBTS';
 import LudoPlayerLogic from './Ludo_playerLogic';
-import MessageManager from '../../../../Common/CommonScripts/Utils/MessageManager';
-import MessageData, { GameType } from '../../../../Common/CommonScripts/Utils/MessageData';
-import MessageForSingle from '../../../../Common/CommonScripts/Utils/MessageForSingle';
-import ResourcesManager from '../../../../Common/CommonScripts/Utils/ResourcesManager';
 import Ludo_MessageType from '../Utils/Ludo_MessageType';
 import Ludo_propsLogic from './Ludo_propsLogic';
-import Message from '../../../../Common/CommonScripts/Utils/Message';
 import Ludo_ExitPopup from './Ludo_ExitPopup';
-import { GameConfig } from '../../../../Jsons/GameConfig';
 import Ludo_coinmoveLogic from './Ludo_coinmoveLogic';
 import Ludo_userNodeLogic from './Ludo_userNodeLogic';
 import Ludo_settlementLogic from './Ludo_settlementLogic';
 import Ludo_GameMode from '../ModeSceneScripts/Ludo_GameMode';
 import PlayerModel from '../models/player';
-import { resolve } from 'path';
 import { dataCacheManager } from '../models/dataCache';
 import { ToolsData } from '../models/serverDataInterface';
 import Ludo_GlobalGameData from '../Global/Ludo_GlobalGameData';
-import { constants, transcode } from 'buffer';
-import BgmSettings from '../../../../Common/CommonScripts/bgmSettings';
+
+import { getUrlParameterValue } from '../../../Script/common/utils/util';
+import { GameConfig } from '../../../gameConfig';
+import MessageSoundManager from '../../../Script/CommonScripts/Utils/MessageSoundManager';
+import BgmSettings from '../../../Script/CommonScripts/bgmSettings';
+import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
+import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
+import NDB from '../../../Script/CommonScripts/Utils/NDBTS';
+import MessageData from '../../../Script/CommonScripts/Utils/MessageData';
+import MessageForRoom from '../../../Script/CommonScripts/Utils/MessageForRoom';
+import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
+import Message from '../../../Script/CommonScripts/Utils/Message';
+
 
 const { ccclass, property } = cc._decorator;
 
@@ -234,7 +234,7 @@ export default class Ludo_gameLogic extends cc.Component {
     start() {
         window['Global'] = Global;
 
-        let vcode = MessageManager.getUrlParameterValue('vcode');
+        let vcode = getUrlParameterValue('vcode');
         if ((cc.sys.os === cc.sys.OS_ANDROID && Number(vcode) < 17300) || (cc.sys.os === cc.sys.OS_IOS && Number(vcode) <= 16200) && GameConfig.gameName == 'ludo') {
             cc.find('Canvas/BG').active = true;
         }
@@ -501,7 +501,7 @@ export default class Ludo_gameLogic extends cc.Component {
             picePosskinName = 'chengbao';
             const loadMapTime = console.time('loadMap');
             //设置棋盘动画；
-            ResourcesManager.loadDragonBonesRes('chengbaocheckerboard/background_chengbao', (dragData) => {
+            ResourcesManager.loadDragonBonesRes(GameConfig.gameName, `resources_${GameConfig.gameName}/store/chengbaocheckerboard/background_chengbao`, (dragData) => {
                 this.showBG.active = true;
                 this.showBG.getComponent(dragonBones.ArmatureDisplay).dragonAsset = dragData.asset;
                 this.showBG.getComponent(dragonBones.ArmatureDisplay).dragonAtlasAsset = dragData.atlasAsset;
@@ -528,7 +528,7 @@ export default class Ludo_gameLogic extends cc.Component {
             }
 
             console.time('load585');
-            ResourcesManager.loadSpriteAtlas('isLandCheckerboard/island_checkerboardPlist', (atlas: cc.SpriteAtlas) => {
+            ResourcesManager.loadSpriteAtlas(GameConfig.gameName,`resources_${GameConfig.gameName}/store/isLandCheckerboard/island_checkerboardPlist`, (atlas: cc.SpriteAtlas) => {
                 console.timeEnd('load585');
                 this.checkerboard2.getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(spriteFrame);
             });
@@ -598,7 +598,7 @@ export default class Ludo_gameLogic extends cc.Component {
                 skinName = `${pieceName}yellow`;
                 break;
         }
-        ResourcesManager.loadDragonBonesRes(skinName, (dragData) => {
+        ResourcesManager.loadDragonBonesRes(GameConfig.gameName, skinName, (dragData) => {
             for (let i = 0; i < Ludo_GameMode.piceNum; i++) {
                 pieceArr[i].getComponent(dragonBones.ArmatureDisplay).dragonAsset = dragData.asset;
                 pieceArr[i].getComponent(dragonBones.ArmatureDisplay).dragonAtlasAsset = dragData.atlasAsset;
@@ -2786,7 +2786,7 @@ export default class Ludo_gameLogic extends cc.Component {
             this.settleLayer = pNode;
         } else {
             console.log(message, "执行setting界面～～～～～～～～～～～～～～～～～～333～");
-            ResourcesManager.loadPrefab('GamesRes/prefab/settleLayer', (pNode) => {
+            ResourcesManager.loadPrefab(`resources_${GameConfig.gameName}/prefab/settleLayer`, GameConfig.gameName, (pNode) => {
                 pNode.getComponent(Ludo_settlementLogic).setLayerData(message);
                 this.node.addChild(pNode);
                 this.isShowSettlementLayer = true;
@@ -2799,7 +2799,7 @@ export default class Ludo_gameLogic extends cc.Component {
     //预加载setting界面;
     loadSettingLayer() {
         if (!this.settingLayer) {
-            ResourcesManager.loadPrefab('GamesRes/prefab/settleLayer', (pNode) => {
+            ResourcesManager.loadPrefab(`resources_${GameConfig.gameName}/prefab/settleLayer`, GameConfig.gameName, (pNode) => {
                 this.settingLayer = pNode;
             });
         }
