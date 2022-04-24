@@ -193,9 +193,9 @@ export default class SettlementPopup extends Popup {
             }
             tagbg.getChildByName('MoneyNumber').getComponent(cc.Label).string = player.coin + "";
             if (player.coin > 0) {
-                tagbg.getChildByName('MoneyNumber').color = new cc.Color(255, 222, 59, 255);
+                tagbg.getChildByName('MoneyNumber').color = new cc.Color(255, 222, 59);
             } else {
-                tagbg.getChildByName('MoneyNumber').color = new cc.Color(5, 255, 24, 255);
+                tagbg.getChildByName('MoneyNumber').color = new cc.Color(5, 255, 24);
             }
             tagbg.getChildByName('gameIcon').active = true;
             tagbg.getChildByName('Icon').active = false;

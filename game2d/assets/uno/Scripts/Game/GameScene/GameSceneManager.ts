@@ -391,16 +391,11 @@ export default class GameSceneManager extends cc.Component {
             card.CreateCard(cardId[cardid]);
             cardNode.active = true;
             cardNode.scale = GlobalGameData.RoomSigleScale.selfPockScale[GlobalGameData.roomType];
-            console.log("自己发牌缩放比例：",cardNode.scale," 房间类型：",GlobalGameData.roomType);
             card.node.zIndex = 2;
-            console.log("playerZIndex is ",GameSceneUIManager.I.playerLight.zIndex);
             if (GameSceneUIManager.I.ThisPlayerCardsParent.children.indexOf(cardNode) < 0) {
-                console.log('card 是否显示：',cardNode.active);
                 GameSceneUIManager.I.ThisPlayerCardsParent.addChild(cardNode);
-                debugLog('摸牌之后的节点：：',GameSceneUIManager.I.ThisPlayerCardsParent.childrenCount);
             }
             cardNode.position = GameSceneUIManager.I.backCardPos.position;
-            cardNode.position = cc.v3(0,0,0);
             // 目的坐标
             let pos = GameSceneUIManager.I.ThisPlayerCardsPos1.position;
             let time = 0.5;

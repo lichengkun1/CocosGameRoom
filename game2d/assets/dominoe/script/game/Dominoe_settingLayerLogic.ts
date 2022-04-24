@@ -192,9 +192,9 @@ export default class Dominoe_settingLayerLogic extends cc.Component {
         }
         coinLabel.string = player.diamond;
         if (Number(player.diamond) > 0) {
-            coinLabel.node.color = new cc.Color(253, 239, 72, 255)
+            coinLabel.node.color = new cc.Color(253, 239, 72);
         } else {
-            coinLabel.node.color = new cc.Color(5, 255, 24, 255)
+            coinLabel.node.color = new cc.Color(5, 255, 24);
         }
         playerHead.off(cc.Node.EventType.TOUCH_START);
         playerHead.on(cc.Node.EventType.TOUCH_START, () => {

@@ -240,7 +240,6 @@ export default class Socket {
                 // } else {
                 // }
             } else {
-                console.log("");
                 Socket.OtherPlayerLastActionProcessing(nowCardId, nowCardColor, nowCardNumber);
             }
         } else {
@@ -433,24 +432,24 @@ export default class Socket {
             let player = PlayerManager.GetPlayer(GameData.message.data.player_now);
             player.challengeNode.active = true;
             player.challengeLabel.string = LanguageManager.GetType().challenge ? LanguageManager.GetType().challenge : enJson.challenge;
-            player.challengeLabel.node.color = new cc.Color(255, 255, 255, 255);
+            player.challengeLabel.node.color = new cc.Color(255, 255, 255);
         }
 
         if (GameData.message.data.player_last_action == "draw4") {
             let player = PlayerManager.GetPlayer(GameData.message.data.player_last);
             GameSceneUIManager.I.CloseChallenge(player.challengeNode, true);
             player.challengeLabel.string = LanguageManager.GetType().challenge_draw ? LanguageManager.GetType().challenge_draw : enJson.challenge_draw;
-            player.challengeLabel.node.color = new cc.Color(255, 241, 118, 255);
+            player.challengeLabel.node.color = new cc.Color(255, 241, 118);
         } else if (GameData.message.data.player_last_action == "draw6") {
             let data = Socket.WhoAddCards();
             let player = PlayerManager.GetPlayer(GameData.message.data.player_last);
             GameSceneUIManager.I.CloseChallenge(player.challengeNode, true);
             if (data.count == 6) {
                 player.challengeLabel.string = LanguageManager.GetType().challenge_failed ? LanguageManager.GetType().challenge_failed : enJson.challenge_failed;
-                player.challengeLabel.node.color = new cc.Color(255, 90, 90, 255);
+                player.challengeLabel.node.color = new cc.Color(255, 90, 90);
             } else if (data.count == 4) {
                 player.challengeLabel.string = LanguageManager.GetType().challenge_success ? LanguageManager.GetType().challenge_success : enJson.challenge_success;
-                player.challengeLabel.node.color = new cc.Color(62, 255, 112, 255);
+                player.challengeLabel.node.color = new cc.Color(62, 255, 112);
             }
         }
 
@@ -544,8 +543,8 @@ export default class Socket {
     static FindPlayerData(message, uid) {
         for (let i = 0; i < message.data.players.length; i++) {
             const element = message.data.players[i];
-            if(!element.user_id) continue;
-            if (element.user_id == uid) {
+            if(!element.id) continue;
+            if (element.id == uid) {
                 return element;
             }
         }

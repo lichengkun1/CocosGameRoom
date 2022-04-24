@@ -342,6 +342,7 @@ export default class MatchingScene extends cc.Component {
         if (data.data.data.players && MessageData.gameType == GameType.room) {
             this.allCountDownTime = data.data.data.countdown_duration || data.data.data.countdown;
             this.isCountDownStart = false;
+            debugLog('matching 消息设置玩家信息并开始倒计时');
             this.setPlayersData(data.data.data.players, true);
         }
         if(data.statusData && data.statusData.status === 'completed') {
@@ -399,7 +400,6 @@ export default class MatchingScene extends cc.Component {
     /**加载UI资源 */
     private loadUIRes() {
         let playerIndex = 0;
-        debugLog('matchSceneResource is ',MatchResData.matchSceneResource);
         for (let i = 0; i < MatchResData.matchSceneResource.length; i++) {
             const element = MatchResData.matchSceneResource[i];
             if (element.name != "player") {

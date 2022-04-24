@@ -365,9 +365,9 @@ export default class Dominoe_playerLogic extends cc.Component {
                 this.countDownNumber--;
                 if (this.countDownNumber <= 5 && this.countDownNumber > 0) {
                     MessageSoundManager.playLoadEffect(this.countTimeClip);
-                    this.countDown.node.color = new cc.Color(255, 71, 71, 255)
+                    this.countDown.node.color = new cc.Color(255, 71, 71);
                 } else {
-                    this.countDown.node.color = new cc.Color(116, 255, 49, 255)
+                    this.countDown.node.color = new cc.Color(116, 255, 49);
                 }
                 this.countTimeLabel.string = ""//String(this.countDownNumber);
                 this.countNum = 0;

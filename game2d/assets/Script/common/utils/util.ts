@@ -369,3 +369,7 @@ export function isProd() {
     return window.location.href.indexOf('staging') >= 0 ? false : true;
 }
 
+// export function getColorByRGBWithOpacity(r: number,g: number,b: number,a: number) {
+//     let color = new cc.Color(r,g,b);
+// }
+

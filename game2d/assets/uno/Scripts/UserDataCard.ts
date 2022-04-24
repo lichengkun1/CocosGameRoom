@@ -141,12 +141,12 @@ export default class UserDataCard extends cc.Component {
         if (this.thisPlayerID == uid || this.IsFollow(data)) {
             this.btn_follow.spriteFrame = this.UserAtlas.getSpriteFrame('btn_following');
             this.follwLabel.string = 'Following';
-            this.follwLabel.node.color = new cc.Color(83, 179, 185, 255);
+            this.follwLabel.node.color = new cc.Color(83, 179, 185);
         } else {
             //关注;
             this.btn_follow.spriteFrame = this.UserAtlas.getSpriteFrame('btn_follow');
             this.follwLabel.string = 'Follow';
-            this.follwLabel.node.color = new cc.Color(255, 255, 255, 255);
+            this.follwLabel.node.color = new cc.Color(255, 255, 255);
             this.btn_follow.node.off(cc.Node.EventType.TOUCH_START);
             this.btn_follow.node.once(cc.Node.EventType.TOUCH_START, () => {
                 FrameImageManager.FollowPoint();

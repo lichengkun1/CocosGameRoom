@@ -457,9 +457,11 @@ export default class GameSceneUIManager extends cc.Component {
 
         GameSceneUIManager.I.angleNumber -= 1 / (UNOMatching.GameConfig.turn_duration * 10)
         if (GameSceneUIManager.I.angleNumber <= 0.3) {
-            GameSceneUIManager.I.otherPlayerTime1.node.color = new cc.Color(255, 52, 52, 127);
+            GameSceneUIManager.I.otherPlayerTime1.node.color = new cc.Color(255, 52, 52);
+            GameSceneUIManager.I.otherPlayerTime1.node.opacity = 127;
         } else {
-            GameSceneUIManager.I.otherPlayerTime1.node.color = new cc.Color(58, 255, 52, 127);
+            GameSceneUIManager.I.otherPlayerTime1.node.color = new cc.Color(58, 255, 52);
+            GameSceneUIManager.I.otherPlayerTime1.node.opacity = 127;
         }
         if (GameSceneUIManager.I.angleNumber <= 0)
             GameSceneUIManager.I.angleNumber = 0;
@@ -479,9 +481,11 @@ export default class GameSceneUIManager extends cc.Component {
 
         GameSceneUIManager.I.angleNumber -= 1 / (UNOMatching.GameConfig.turn_duration * 10)
         if (GameSceneUIManager.I.angleNumber <= 0.3) {
-            GameSceneUIManager.I.otherPlayerTime2.node.color = new cc.Color(255, 52, 52, 127);
+            GameSceneUIManager.I.otherPlayerTime2.node.color = new cc.Color(255, 52, 52);
+            GameSceneUIManager.I.otherPlayerTime2.node.opacity = 127;
         } else {
-            GameSceneUIManager.I.otherPlayerTime2.node.color = new cc.Color(58, 255, 52, 127);
+            GameSceneUIManager.I.otherPlayerTime2.node.color = new cc.Color(58, 255, 52);
+            GameSceneUIManager.I.otherPlayerTime2.node.opacity = 127;
         }
         if (GameSceneUIManager.I.angleNumber <= 0)
             GameSceneUIManager.I.angleNumber = 0;
@@ -501,9 +505,11 @@ export default class GameSceneUIManager extends cc.Component {
 
         GameSceneUIManager.I.angleNumber -= 1 / (UNOMatching.GameConfig.turn_duration * 10)
         if (GameSceneUIManager.I.angleNumber <= 0.3) {
-            GameSceneUIManager.I.otherPlayerTime3.node.color = new cc.Color(255, 52, 52, 127);
+            GameSceneUIManager.I.otherPlayerTime3.node.color = new cc.Color(255, 52, 52);
+            GameSceneUIManager.I.otherPlayerTime3.node.opacity = 127;
         } else {
-            GameSceneUIManager.I.otherPlayerTime3.node.color = new cc.Color(58, 255, 52, 127);
+            GameSceneUIManager.I.otherPlayerTime3.node.color = new cc.Color(58, 255, 52);
+            GameSceneUIManager.I.otherPlayerTime3.node.opacity = 127;
         }
         if (GameSceneUIManager.I.angleNumber <= 0)
             GameSceneUIManager.I.angleNumber = 0;
@@ -523,9 +529,11 @@ export default class GameSceneUIManager extends cc.Component {
 
         GameSceneUIManager.I.angleNumber -= 1 / (UNOMatching.GameConfig.turn_duration * 10)
         if (GameSceneUIManager.I.angleNumber <= 0.3) {
-            GameSceneUIManager.I.playerTime.node.color = new cc.Color(255, 52, 52, 127);
+            GameSceneUIManager.I.playerTime.node.color = new cc.Color(255, 52, 52);
+            GameSceneUIManager.I.playerTime.node.opacity = 127;
         } else {
-            GameSceneUIManager.I.playerTime.node.color = new cc.Color(58, 255, 52, 127);
+            GameSceneUIManager.I.playerTime.node.color = new cc.Color(58, 255, 52);
+            GameSceneUIManager.I.playerTime.node.opacity = 127;
         }
         if (GameSceneUIManager.I.angleNumber <= 0)
             GameSceneUIManager.I.angleNumber = 0;
