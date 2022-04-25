@@ -82,13 +82,13 @@ const walkBundles = (targetBundleName,excludeRoomCommon) => {
 }   
 
 
-console.log('--------------修改GameConfig.gameName-------------');
+console.log('--------------modify GameConfig.gameName-------------');
 // 改变 GameConfig.ts里面的gameName
 fs.writeFileSync(assetsPath + 'gameConfig.ts',`export class GameConfig { public static readonly gameName = "${gameName}";}`,{encoding: 'utf-8'});
-console.log('--------------✅修改GameConfig.gameName ✅-------------\n\n');
+console.log('--------------✅modify GameConfig.gameName success ✅-------------\n\n');
 // 一开始默认各个游戏都会打包进游戏内，取消不是该游戏的bundle 设置为非bundle 防止游戏bundle过多
 
-console.log('--------------开始删除没有必要的bundle----------');
+console.log('--------------start delete unuseful bundle----------');
 // 修改非打包的bundle的meta文件
 if(roomGames.indexOf(gameName) >= 0) {
     walkBundles(gameName,true);
@@ -96,9 +96,9 @@ if(roomGames.indexOf(gameName) >= 0) {
     walkBundles(gameName,false);
 }
 
-console.log('--------------✅开始删除没有必要的bundle✅----------\n\n');
+console.log('--------------✅start delete unuseful bundle success✅----------\n\n');
 
-console.log('-------------移动web-mobile模板到构建模板中-----------');
+console.log('-------------move web-mobile model-----------');
 // 改变构建build-templates文件
 const targetGameTemplates = `../games-build-templates/${gameName}/web-mobile/`;
 // 删除原来的web-mobile
@@ -106,9 +106,9 @@ const templateUrl = '../build-templates/web-mobile/';
 unlinkDir(templateUrl);
 moveFileToTargetDir(targetGameTemplates,templateUrl);
 
-console.log('-------------✅移动web-mobile模板到构建模板中✅-----------\n\n');
+console.log('-------------✅move web-mobile model success✅-----------\n\n');
 
-console.log('--------------------开始构建项目------------------------');
+console.log('--------------------start build project------------------------');
 
 const cocosTerminal = spawn(cocosExePath,cocosExeArgs);
 cocosTerminal.stdout.on('data',(data) => {
@@ -121,8 +121,7 @@ cocosTerminal.stderr.on('data',(data) => {
 
 cocosTerminal.on('close',(code) => {
     console.log('code is ',code);
-    console.log('--------------------✅构建项目成功✅------------------------');
-
+    console.log('--------------------✅build success✅------------------------');
 });
 
 
