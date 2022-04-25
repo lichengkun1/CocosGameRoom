@@ -21,7 +21,9 @@ const bundlesPath = assetsPath;
 // path
 
 const projectPath = path.join(__dirname,"../");
-const cocosExePath = '/Applications/CocosCreator/Creator/2.4.8/CocosCreator.app/Contents/MacOS/CocosCreator'
+// '/Applications/CocosCreator/Creator/2.4.8/CocosCreator.app/Contents/MacOS/CocosCreator'
+// C:\\CocosDashboard_1.1.1\\resources\\.editors\\Creator\\2.4.8\\CocosCreator
+const cocosExePath = 'C:\\CocosDashboard_1.1.1\\resources\\.editors\\Creator\\2.4.8\\CocosCreator'
 const cocosExeArgs = ['--path',`${projectPath}`,'--build',"platform=web-mobile;debug=false"];
 
 const unlinkDir = (dirUrl) => {
