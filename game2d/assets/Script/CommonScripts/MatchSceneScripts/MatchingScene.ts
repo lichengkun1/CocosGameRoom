@@ -520,7 +520,6 @@ export default class MatchingScene extends cc.Component {
                 // this.getRoomInfo();
                 this.setTopUserData(userInfo);
             });
-            
         }
 
     }
