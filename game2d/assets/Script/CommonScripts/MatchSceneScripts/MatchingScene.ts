@@ -342,7 +342,7 @@ export default class MatchingScene extends cc.Component {
         if (data.data.data.players && MessageData.gameType == GameType.room) {
             this.allCountDownTime = data.data.data.countdown_duration || data.data.data.countdown;
             this.isCountDownStart = false;
-            debugLog('matching 消息设置玩家信息并开始倒计时');
+            debugLog('matching 消息设置玩家信息并开始倒计时',this.allCountDownTime);
             this.setPlayersData(data.data.data.players, true);
         }
         if(data.statusData && data.statusData.status === 'completed') {
@@ -546,6 +546,7 @@ export default class MatchingScene extends cc.Component {
         let keys = Object.keys(players);
         this.allJoinPlayerID.length = 0;
         this.setMcPlayer(players, keys, nowPlayerIsJoin);
+        console.log('设置完用户信息了开始倒计时');
         if (isCountDown && MessageData.gameType == GameType.room) {
             this.setCountDwon(players);
         }
@@ -555,8 +556,12 @@ export default class MatchingScene extends cc.Component {
     /**设置麦位上的人 */
     setMcPlayer(players, keys, nowPlayerIsJoin) {
         for (let i = 0; i < this.joinPlayers.length; i++) {
+            
+
             debugLog('设置麦位上的人 i is ',i);
             const element = players[keys[i]];
+            if(!element.id) continue;
+            
             if (!element) {
                 this.joinPlayers[i].clearPlayerData(i + 1);
                 continue;
