@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Cocos Creator | ludoRoom</title>
+  <title>Cocos Creator | ludo</title>
 
   <!--http://www.html5rocks.com/en/mobile/mobifying/-->
   <meta name="viewport"
@@ -30,6 +30,8 @@
   <!-- force screen orientation on some browser -->
   <meta name="screen-orientation" content="landscape" />
   <meta name="x5-orientation" content="landscape">
+  <meta name="viewport" box="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" box="ie=edge">
 
   <!--fix fireball/issues/3568 -->
   <!--<meta name="browsermode" content="application">-->
@@ -39,15 +41,16 @@
   <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
 
   <link rel="stylesheet" type="text/css" href="style-mobile.css" />
-  <link rel="icon" href="favicon.ico" />
-
+  <!-- <link rel="icon" href="favicon.ico" /> -->
 </head>
 
 <body>
   <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
   <div id="splash">
     <!-- <div class="loadingBG"></div> -->
+    <!-- <div class="loadingEarth"></div> -->
     <div class="loadingIconBG"></div>
+    <div class="circleprogress"></div>
     <div class="progress">
       <div class="hull">
         <div class="section section_left">
@@ -63,26 +66,21 @@
       </div>
     </div>
     <div class="loadingIcon"></div>
-    <div class="updateText">
-      <p id="updateTost" style="font-size: 120%;color: #ffffff;"><b>DOMINOES</b></p>
-    </div>
     <div class="toastBG" id="toastDiv" style="visibility:hidden;z-index:10;">
       <p id="toast">Sorry, the game system cannot support mobile phones below Android 6.0. Please upgrade your mobile
         phone’s Android version to 6.0 and above.</p>
     </div>
-    <!-- <div id="close_pop" class="close_pop" style="visibility:hidden;z-index:10;">
-      <p id="close_text" class="close_text" style="font-size: 100%;color: #333333;">
-        Are you sure you quit the game?</p>
-      <button id="close_yes" class="close_yes" style="font-size: 100%;"> Yes </button>
-      <button id="close_no" class="close_no" style="font-size: 100%;"> Cancel </button>
+    <!-- <div class="progress-bar stripes">
+      <span style="width: 0%"></span>
     </div> -->
   </div>
-
+  <!-- 解压cocos 2.4.8 源码压缩包 -->
   <script src="./jszip.js" charset="utf-8"></script>
   <script src="./ndb.js" charset="utf-8"></script>
+  <!-- ndb代码 全屏版需要改代码 -->
+  <!-- <script src="./close.js" charset="utf-8"></script> -->
   <script src="./webglCheck.js" charset="utf-8"></script>
   <script src="src/settings.js" charset="utf-8"></script>
-
   <script src="main.js" charset="utf-8"></script>
   <script src="./loadCocos.js" charset="utf-8"></script>
 

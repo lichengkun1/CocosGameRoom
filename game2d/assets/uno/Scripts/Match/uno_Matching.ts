@@ -14,6 +14,7 @@ import NDB from "../../../Script/CommonScripts/Utils/NDBTS";
 import { GameData } from "../Common/Game/GameData";
 import { logManager } from "../Common/LogManager";
 import { PopupManager } from "../Common/Popup/PopupManager";
+import { GetServerData } from "../Common/Server/GetServerData";
 import SoundManager from "../Common/Sound/SoundManager";
 import Socket from "../Game/Socket/Socket";
 import GlobalGameData, { GamePlayerCount, LatestGameInfo, RoomType } from "../GlobalGameData";
@@ -118,6 +119,7 @@ export default class UNOMatching extends cc.Component {
     }
 
     onLoad () {
+        MessageData.extra = {extra: "bet_type=diamond&bet_limit=100&player_count=4"};
         GlobalGameData.enterGameScene = false;
         MessageManager.setNetworkConfiguration();
         PopupManager.LoadPopups();
@@ -276,7 +278,7 @@ export default class UNOMatching extends cc.Component {
      */
     getRoomStatus() {
         // 获取房间状态
-        MessageManager.getStatus(GlobalGameData.roomId,(res: LatestGameInfo) => {
+        GetServerData.getStatus(GlobalGameData.roomId,(res: LatestGameInfo) => {
             this.updateStatus(res);
         });
     }

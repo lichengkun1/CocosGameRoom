@@ -68,6 +68,8 @@ window.boot = function () {
         var bundle = cc.assetManager.bundles.find(function (b) {
             return b.getSceneInfo(launchScene);
         });
+
+        cc.macro.ENABLE_TRANSPARENT_CANVAS = true;
         
         bundle.loadScene(launchScene, null, onProgress,
             function (err, scene) {
@@ -144,7 +146,9 @@ if (window.jsb) {
         }
         require('jsb-adapter/jsb-engine.js');
     }
+
     cc.macro.ENABLE_TRANSPARENT_CANVAS = true;
+    
     cc.macro.CLEANUP_IMAGE_CACHE = true;
     window.boot();
 }

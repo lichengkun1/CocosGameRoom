@@ -207,8 +207,6 @@ export default class LoadScene extends cc.Component {
             this.isChange = false;
             this.changeScene(false);
             this.loadGameScene();
-        } else {
-            console.log('');
         }
     }
 
@@ -265,17 +263,19 @@ export default class LoadScene extends cc.Component {
     private async loadGameScene() {
         if(!this.gameBundleIsLoadedOver) {
             await resourceManager.loadBundle(GameConfig.gameName);
+        } else {
+
         }
         
-        resourceManager.loadSceneInBundle(`${GameConfig.gameName}_GameScene`,GameConfig.gameName,(completedCount, totalCount, item) => {
+        resourceManager.loadSceneInBundle(`${GameConfig.gameName}_GameScene`,GameConfig.gameName,() => {
+            console.log('游戏场景加载完毕');
+            this.gameSceneIsLoad = true;
+        },(completedCount, totalCount, item) => {
             let comple = Math.floor(completedCount / totalCount * 20);
             let lerp = comple - this.lastnum2;
             this.lastnum2 = comple;
             this.changeSceneIndex = this.changeSceneIndex + lerp;
-            if (comple == 20) {
-                debugLog('加载游戏场景完成');
-                this.gameSceneIsLoad = true;
-            }
+            
         });
 
         // resourceManager.loadAssetInBundle(``,)

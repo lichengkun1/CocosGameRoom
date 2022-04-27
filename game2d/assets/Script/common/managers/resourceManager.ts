@@ -61,22 +61,24 @@ import { debugLog } from "../utils/util";
      * @param  {string} bundleName
      * @returns Promise
      */
-    public async loadSceneInBundle(url: string,bundleName: string,progressFunc?: Function): Promise<cc.SceneAsset> {
+    public async loadSceneInBundle(url: string,bundleName: string,completeFunc: Function,progressFunc?: Function): Promise<cc.SceneAsset> {
         const bundle: cc.AssetManager.Bundle = await this.loadBundle(bundleName);
         if(!bundle) {
             console.warn(`bundle ${bundleName} 不存在`);
+            return;
         }
         console.log('loadSceneInBundle bundle is ',bundle);
         return new Promise((resolve,reject) => {
-            bundle.loadScene(url,progressFunc,(err: Error,scene: cc.SceneAsset) => {
+            bundle.preloadScene(url,progressFunc,(err) => {
                 if(err) {
                     console.warn(`加载bundle里面的场景err is bundleName: ${bundleName},url: ${url}`);
                     reject(err);
                     return;
                 }
-                // console.log();
-                resolve(scene);
+                resolve(null);
+                completeFunc();
             });
+        
         });
     }
 

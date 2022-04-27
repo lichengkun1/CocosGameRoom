@@ -221,7 +221,7 @@ export default class GameSceneManager extends cc.Component {
         player.challengeLabel = player.challengeNode.getChildByName("label").getComponent(cc.Label);
         player.headImage.node.off(cc.Node.EventType.TOUCH_START);
         player.headImage.node.on(cc.Node.EventType.TOUCH_START, () => {
-            FrameImageManager.ShowUserDataCard(GameSceneUIManager.I.canvas, player.user_id, PlayerManager.thisPlayer_user_id);
+            GameData.ShowUserDataCard(GameSceneUIManager.I.canvas, player.user_id, PlayerManager.thisPlayer_user_id);
         })
         player.offlineNode = GameSceneUIManager.I.otherPlayerNode[idIndex].offlineIcon;
         frameImageUids.push(player.user_id);

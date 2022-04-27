@@ -202,7 +202,7 @@ export default class SettlementPopup extends Popup {
             tagbg.getChildByName("headImage").getComponent(cc.Sprite).spriteFrame = PlayerManager.GetPlayer(player.id).user_headImage;
             if (player.id != PlayerManager.thisPlayer_user_id) {
                 tagbg.getChildByName("headImage").on(cc.Node.EventType.TOUCH_START, () => {
-                    FrameImageManager.ShowUserDataCard(this.node, player.id, PlayerManager.thisPlayer_user_id)
+                    GameData.ShowUserDataCard(this.node, player.id, PlayerManager.thisPlayer_user_id)
                 });
             }
 

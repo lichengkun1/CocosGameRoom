@@ -247,4 +247,10 @@ export class GetServerData {
             }
         });
     }
+
+    public static getStatus(roomId: string,callback: Function) {
+        GetServerData.SendMessage('',(res: any) => {
+            callback && callback(res);
+        });
+    }
 }

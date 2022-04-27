@@ -1,3 +1,6 @@
+import FrameImageManager from "../../../../Script/FrameImageComponent/FrameImageManager";
+import UserDataCard from "../../UserDataCard";
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -223,5 +226,33 @@ export class GameData {
             coin: 100,  //赢币, 仅结束后有效
         }],
         stop_reason: "timeout", // 游戏结束原因
+    }
+
+    /**显示资料卡
+     * @param parentNode 指定资料卡需要加载到的父物体
+     * @param uid 需要显示资料的用户id
+     * @param thisPlayerId 当前用户的id
+     */
+     public static ShowUserDataCard(parentNode: cc.Node, uid: number, thisPlayerId: number) {
+        if (FrameImageManager.GetDataErr) return;
+        FrameImageManager.CardPoint();
+        if (FrameImageManager.UserDataCardNode) {
+            FrameImageManager.UserDataCardNode.active = true;
+            FrameImageManager.UserDataCardNode.getComponent(UserDataCard).Init(uid, thisPlayerId);
+        } else {
+            cc.loader.loadRes("UserDataCardPrefab/UserDataCard", function (err: any, prefab: cc.Prefab) {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                if (prefab) {
+                    let card = cc.instantiate(prefab);
+                    card.zIndex = 25;
+                    parentNode.addChild(card);
+                    card.getComponent(UserDataCard).Init(uid, thisPlayerId);
+                    FrameImageManager.UserDataCardNode = card;
+                }
+            });
+        }
     }
 }

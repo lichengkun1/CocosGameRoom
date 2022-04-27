@@ -1,7 +1,6 @@
 
 import { GameConfig } from "../../gameConfig";
-import { logManager } from "../../uno/Scripts/Common/LogManager";
-import UserDataCard from "../../uno/Scripts/UserDataCard";
+import MessageData from "../CommonScripts/Utils/MessageData";
 import MessageManager from "../CommonScripts/Utils/MessageManager";
 import MessageType from "../CommonScripts/Utils/MessageType";
 import MyEvent from "../CommonScripts/Utils/MyEvent";
@@ -105,41 +104,15 @@ export default class FrameImageManager {
         });
     }
 
-    /**显示资料卡
-     * @param parentNode 指定资料卡需要加载到的父物体
-     * @param uid 需要显示资料的用户id
-     * @param thisPlayerId 当前用户的id
-     */
-     public static ShowUserDataCard(parentNode: cc.Node, uid: number, thisPlayerId: number) {
-        if (FrameImageManager.GetDataErr) return;
-        FrameImageManager.CardPoint();
-        if (FrameImageManager.UserDataCardNode) {
-            FrameImageManager.UserDataCardNode.active = true;
-            FrameImageManager.UserDataCardNode.getComponent(UserDataCard).Init(uid, thisPlayerId);
-        } else {
-            cc.loader.loadRes("UserDataCardPrefab/UserDataCard", function (err: any, prefab: cc.Prefab) {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-                if (prefab) {
-                    let card = cc.instantiate(prefab);
-                    card.zIndex = 25;
-                    parentNode.addChild(card);
-                    card.getComponent(UserDataCard).Init(uid, thisPlayerId);
-                    FrameImageManager.UserDataCardNode = card;
-                }
-            });
-        }
-    }
+    
 
     /**关注打点 */
     public static FollowPoint() {
         console.log('关注打点', 'game_click_user_follow');
         let obj = {
             eventName: "game_click_user_follow",
-            type: GameConfig.gameName + logManager.roomType,
-            game_type: GameConfig.gameName + logManager.roomType,
+            type: GameConfig.gameName + MessageData.gameType,
+            game_type: GameConfig.gameName + MessageData.gameType,
         }
         NDB.sendAutoJoinEvent(obj);
     }
@@ -148,8 +121,8 @@ export default class FrameImageManager {
         console.log('资料卡打点', 'game_show_user_info');
         let obj = {
             eventName: "game_show_user_info",
-            type: GameConfig.gameName  + logManager.roomType,
-            game_type: GameConfig.gameName  + logManager.roomType,
+            type: GameConfig.gameName  + MessageData.gameType,
+            game_type: GameConfig.gameName  + MessageData.gameType,
         }
         NDB.sendAutoJoinEvent(obj);
     }
