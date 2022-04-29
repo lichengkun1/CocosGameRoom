@@ -1,0 +1,68 @@
+{
+    "en":{
+        "title":"Rules",
+        "rule1":"Click on a track to place your animal",
+        "rule2":"The two teams of animals collided, and the heavier side moved forward",
+        "rule3":"When one animal reaches the end of the other side, it will cause damage. The side whose blood volume is reduced to zero fails",
+        "animals":"Animals Details",
+        "attack1":"Attack 1",
+        "attack2":"Attack 2",
+        "attack3":"Attack 4",
+        "attack4":"Attack 6"
+    },
+    "ar":{
+        "title":"قواعد",
+        "rule1":"انقر على مسار لوضع حيوانك",
+        "rule2":"اصطدم فريقا الحيوانات ، وتحرك الجانب الأثقل إلى الأمام",
+        "rule3":"عندما يصل أحد الحيوانات إلى نهاية الجانب الآخر ، فإنه سوف يسبب الضرر. الجانب الاكثر تضرراً الى حد الصفر سوف يفشل",
+        "animals":"تفاصيل الحيوانات",
+        "attack1":"الهجوم١",
+        "attack2":"الهجوم٢",
+        "attack3":"الهجوم ٤",
+        "attack4":"الهجوم ٦"
+    },
+    "hi":{
+        "title":"नियम",
+        "rule1":"अपने जानवर को रखने के लिए एक ट्रैक पर क्लिक करें।",
+        "rule2":"जानवरों की दो टीमें टकरा गईं, और भारी पक्ष आगे बढ़ गया।",
+        "rule3":"जब एक जानवर दूसरे पक्ष के अंत तक पहुंचता है, तो इससे नुकसान होगा। जिस पक्ष की रक्त की मात्रा शून्य हो जाती है वह विफल हो जाता है।",
+        "animals":"जानवरों का विवरण",
+        "attack1":"हमला 1",
+        "attack2":"हमला 2",
+        "attack3":"हमला 4",
+        "attack4":"हमला 6"
+    },
+    "te":{
+        "title":"నియమాలు",
+        "rule1":"మీ జంతువులను ఏ ట్రాక్ పైన పెట్టాలి అనుకుంటున్నారో అక్కడ చేయండి",
+        "rule2":"రెండు టీమ్స్ జంతువులు డీ కొని, బలమైన జంతువులు ఉన్న టీం ముందుకు కదులుతుంది",
+        "rule3":"ఒక టీం జంతువు మరొక వైపు  లైన్ దాటి వెళ్లినట్టు అయితే ప్రత్యర్థి జట్టు యొక్క హెల్త్ పైన ప్రభావం చూపుతుంది, ఎవరి హెల్త్ అయితే '0' కి చేసురుకుంటుందో వారు ఓటమి చెందుతారు",
+        "animals":"జంతువుల వివరాలు",
+        "attack1":"ఎటాక్ 1",
+        "attack2":"ఎటాక్ 2",
+        "attack3":"ఎటాక్ 4",
+        "attack4":"ఎటాక్ 6"
+    },
+    "ta":{
+        "title":"விதிகள்",
+        "rule1":"உங்கள் விலங்கை வைக்க ஒரு பாதையில் கிளிக் செய்க",
+        "rule2":"விலங்குகளின் இரு அணிகளும் மோதிக்கொண்டன,பலமான பக்கம் முன்னோக்கி நகர்ந்தது",
+        "rule3":"ஒரு விலங்கு, மறுபக்கத்தின் முடிவை அடையும் போது, ​​அது சேதத்தை ஏற்படுத்தும். இரத்ததின் அளவு பூஜ்ஜியமாகக் குறைக்கப்படும் பக்கம் தோல்வியடைகிறது",
+        "animals":"விலங்குகளின் விவரம்",
+        "attack1":"தாக்குதல் 1",
+        "attack2":"தாக்குதல் 2",
+        "attack3":"தாக்குதல் 4",
+        "attack4":"தாக்குதல் 6"
+    },
+    "id":{
+        "title":"Aturan",
+        "rule1":"Klik pada trek untuk menempatkan satwa Anda",
+        "rule2":"Kedua tim satwa bertabrakan, dan tim yang lebih berat bergerak maju",
+        "rule3":"Ketika satu satwa mencapai ujung sisi yang lain, itu akan menyebabkan kerusakan. Sisi yang volume darahnya dikurangi menjadi nol gagal",
+        "animals":"Detail Satwa",
+        "attack1":"Menyerang1",
+        "attack2":"Menyerang2",
+        "attack3":"Menyerang4",
+        "attack4":"Menyerang6"
+    }
+}

@@ -15,6 +15,9 @@ export default class MessageType {
 
     public static SINGLE_JOIN_GAME = `v1/${MessageData.gameName}/single/join` 
 
+    public static ADDSHEEP = 'v1/sf/fire/';
+    public static QUICKEN = 'v1/sf/quicken/';
+
     /**所有的socket消息 */
     public static readonly MESSAGE_MAIN_SOCKET = 'emit_message';
 

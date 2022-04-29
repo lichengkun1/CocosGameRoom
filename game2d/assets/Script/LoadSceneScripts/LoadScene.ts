@@ -57,11 +57,12 @@ export default class LoadScene extends cc.Component {
         let vcode = getUrlParameterValue('vcode');
         console.log('vcode is ',vcode);
 
+        // @ts-ignore
         if ((cc.sys.os === cc.sys.OS_ANDROID && Number(vcode) < 17300) || (cc.sys.os === cc.sys.OS_IOS && Number(vcode) <= 16200) && GameConfig.gameName == 'ludo') {
             cc.find('Canvas/BG').active = true;
             MessageData.gameType = GameType.room;
         }
-
+        // @ts-ignore
         if((cc.sys.os === cc.sys.OS_ANDROID && Number(vcode) < 17300) || (cc.sys.os === cc.sys.OS_IOS && Number(vcode) <= 16200) && GameConfig.gameName === 'dominoe') {
             const bgNode = this.node.getChildByName('bg_dominoe');
             MessageData.gameType = GameType.room;

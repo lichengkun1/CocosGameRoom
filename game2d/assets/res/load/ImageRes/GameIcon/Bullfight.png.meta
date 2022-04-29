@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "b76ac23e-53fb-4c1a-8230-4d529ebb9fa2",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 488,
+  "height": 121,
+  "platformSettings": {},
+  "subMetas": {
+    "Bullfight": {
+      "ver": "1.0.6",
+      "uuid": "e550cacc-5ed2-4a55-96e9-27678d633120",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "b76ac23e-53fb-4c1a-8230-4d529ebb9fa2",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": -1,
+      "trimX": 3,
+      "trimY": 3,
+      "width": 484,
+      "height": 117,
+      "rawWidth": 488,
+      "rawHeight": 121,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
