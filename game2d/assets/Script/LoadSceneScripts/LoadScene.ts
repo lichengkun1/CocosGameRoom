@@ -117,7 +117,7 @@ export default class LoadScene extends cc.Component {
 
     private setMessageData() {
         MessageData.gameName = GameConfig.gameName;
-
+        console.log('gameName is ',MessageData.gameName);
         this.gameName.string = MessageData.gameName;
         let is_lobby = MessageManager.getUrlParameterValue('is_lobby')
         if (is_lobby == "true") {

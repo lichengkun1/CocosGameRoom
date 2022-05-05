@@ -289,14 +289,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
             // eventManager.emit('onDownloadFinish');
             var isProd = window.location.href.indexOf('prod') >= 0 ? true : false;
   
-            let cocosUrl = 'https://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
+            let cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
             if(isProd) {
-              cocosUrl = 'https://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
+              cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
             }
   
             let xhr = new XMLHttpRequest();
-            xhr.open('GET',cocosUrl);
+            xhr.open('GET',cocosUrl,true);
             xhr.responseType = "blob";
+            xhr.setRequestHeader("Range",385 * 1024);
             xhr.onreadystatechange = function() {
               console.log('response is ',xhr.response);
               if(xhr.readyState === 4 && xhr.status >= 200) {
