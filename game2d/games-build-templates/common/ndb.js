@@ -299,13 +299,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
             xhr.responseType = "blob";
             xhr.setRequestHeader("Range",385 * 1024);
             xhr.onreadystatechange = function() {
-              console.log('response is ',xhr.response);
               if(xhr.readyState === 4 && xhr.status >= 200) {
                   let res = xhr.response;
                   // const jszip = require('jszip.f3da3');
                   var zip = new JSZip();
                   zip.loadAsync(res).then(async (z) => {
-                      let fileName = isProd ? 'cocos2d-min-js-2.4.8.js' : 'cocos2d-min-js-2.4.8-no3d.js';
+                      let fileName = 'cocos2d-min-js-2.4.8-no3d.js';
                       let cocosStr = await z.file(fileName).async('string');
                       var domScript = document.createElement('script');
   
@@ -324,6 +323,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
                   });
               }
             }
+
+            xhr.onprogress = function(target,progressEvent) {
+              console.log(`加载进度： ${target.loaded / target.total}`);
+            } 
+
+            xhr.onload = function() {
+              console.log('onload xhr is 脚本加载完成');
+            }
+
+            xhr.onerror = function(target,event) {
+              console.log('error event is 加载脚本出错');
+            }
+
             xhr.send();
           },10);
         };

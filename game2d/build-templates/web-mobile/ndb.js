@@ -305,7 +305,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
                   // const jszip = require('jszip.f3da3');
                   var zip = new JSZip();
                   zip.loadAsync(res).then(async (z) => {
-                      let fileName = isProd ? 'cocos2d-min-js-2.4.8.js' : 'cocos2d-min-js-2.4.8-no3d.js';
+                      let fileName = 'cocos2d-min-js-2.4.8-no3d.js';
                       let cocosStr = await z.file(fileName).async('string');
                       var domScript = document.createElement('script');
   
@@ -324,6 +324,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
                   });
               }
             }
+
+            xhr.onprogress = function(target,progressEvent) {
+              console.log('onprogress => target is ',target,' progressEvent is ',progressEvent);
+            } 
+
+            xhr.onload = function() {
+              console.log('onload xhr is ',xhr);
+            }
+
+            xhr.onerror = function(target,event) {
+              console.log('error event is ',event);
+            }
+
             xhr.send();
           },10);
         };

@@ -269,20 +269,21 @@ export default class LoadScene extends cc.Component {
     private async loadGameScene() {
         if(!this.gameBundleIsLoadedOver) {
             await resourceManager.loadBundle(GameConfig.gameName);
+            this.gameSceneIsLoad = true;
         } else {
             debugLog('游戏bundle已经加载完成');
+            this.gameSceneIsLoad = true;
         }
         
-        resourceManager.loadSceneInBundle(`${GameConfig.gameName}_GameScene`,GameConfig.gameName,() => {
-            console.log('游戏场景加载完毕');
-            this.gameSceneIsLoad = true;
-        },(completedCount, totalCount, item) => {
-            let comple = Math.floor(completedCount / totalCount * 20);
-            let lerp = comple - this.lastnum2;
-            this.lastnum2 = comple;
-            this.changeSceneIndex = this.changeSceneIndex + lerp;
+        // resourceManager.loadSceneInBundle(`${GameConfig.gameName}_GameScene`,GameConfig.gameName,() => {
+        //     console.log('游戏场景加载完毕');
+        // },(completedCount, totalCount, item) => {
+        //     let comple = Math.floor(completedCount / totalCount * 20);
+        //     let lerp = comple - this.lastnum2;
+        //     this.lastnum2 = comple;
+        //     this.changeSceneIndex = this.changeSceneIndex + lerp;
             
-        });
+        // });
 
         // resourceManager.loadAssetInBundle(``,)
         const needMatchSceneArr = ['ludo','dominoe'];
