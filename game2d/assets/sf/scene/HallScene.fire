@@ -1739,7 +1739,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
       }
     ],
     "_srcBlendFactor": 770,
@@ -3077,7 +3077,9 @@
     },
     "_enabled": true,
     "_materials": [
-      null
+      {
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
+      }
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
@@ -3680,7 +3682,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
       }
     ],
     "_srcBlendFactor": 770,
@@ -3873,7 +3875,9 @@
     },
     "_enabled": true,
     "_materials": [
-      null
+      {
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
+      }
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
@@ -4503,7 +4507,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
       }
     ],
     "_srcBlendFactor": 770,
@@ -4829,7 +4833,9 @@
     },
     "_enabled": true,
     "_materials": [
-      null
+      {
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
+      }
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
@@ -5524,7 +5530,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
       }
     ],
     "_srcBlendFactor": 770,
@@ -5714,7 +5720,9 @@
     },
     "_enabled": true,
     "_materials": [
-      null
+      {
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
+      }
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
@@ -6317,7 +6325,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+        "__uuid__": "34605766-9d80-4632-bc89-9a5706ca4d4f"
       }
     ],
     "_srcBlendFactor": 770,

@@ -6,7 +6,7 @@ import MessageType from "../../../Script/CommonScripts/Utils/MessageType";
 import MyEvent from "../../../Script/CommonScripts/Utils/MyEvent";
 import NDB from "../../../Script/CommonScripts/Utils/NDBTS";
 import ResourcesManager from "../../../Script/CommonScripts/Utils/ResourcesManager";
-import Global from "../Global/GlobalGameData";
+import Global from "../Global/SFGlobalGameData";
 import { SFMessageManager } from "../sfMessageManager";
 
 
@@ -122,6 +122,9 @@ export default class gameLogic extends cc.Component {
 
     @property(cc.Node)
     emojiNode: cc.Node = null;
+
+    @property(cc.Node)
+    emojiBtn: cc.Node = null;
 
     @property(cc.Node)
     timeImg:cc.Node = null;
@@ -251,6 +254,7 @@ export default class gameLogic extends cc.Component {
         this.HPBlueProgressBar.node.zIndex = 5;
         this.node.getChildByName('BD').zIndex = 5;
         this.node.getChildByName('BT').zIndex = 5;
+        // this.node.getChildByName('')
         this.coinLabel = this.node.getChildByName('coinLabel').getComponent(cc.Label);
 
         if (!Global.gameRoomId || Global.gameRoomId == '') {
@@ -441,8 +445,10 @@ export default class gameLogic extends cc.Component {
         let code = Number(MessageManager.getUrlParameterValue('vcode'));
         if(Global.nowGameType != Global.gameType.GodSoloMode && 
             Global.nowGameType != Global.gameType.GodMultiplayerMode && code >= 13100){
-            this.emojiNode.active = true;
+            // this.emojiNode.active = true;
             this.emojiNode.zIndex = 8;
+            this.emojiBtn.zIndex = 8;
+            
         }
     }
 
@@ -975,7 +981,7 @@ export default class gameLogic extends cc.Component {
     //设置表情显示;
     setEmojiShow(displayId, msg) {
         if (displayId == Global.userId) {
-            Message.showEmoji([-270, -327], [74, 74], msg);
+            Message.showEmoji([-270, -290], [74, 74], msg);
             return;
         }
         let headArr = [this.user1UI, this.user2UI, this.user3UI, this.user4UI];

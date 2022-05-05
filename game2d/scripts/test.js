@@ -65,5 +65,8 @@ const path = require('path');
     uuidsToBuilderJson(uuids);
 }
 
-setBuildSettings();
+// setBuildSettings();
+
+// const sfData = fs.readFileSync('../games-build-templates/icons/sf.png',{encoding: 'binary'});
+// fs.writeFileSync('../build-templates/web-mobile/icon.png',sfData,{encoding: 'binary'});
 

@@ -8,8 +8,8 @@ import MessageType from '../../../Script/CommonScripts/Utils/MessageType';
 import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
 import NDB from '../../../Script/CommonScripts/Utils/NDBTS';
 import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
-
-
+import GlobalGameData from '../Global/SFGlobalGameData';
+import { SFMessageManager } from '../sfMessageManager';
 
 const { ccclass, property } = cc._decorator;
 
@@ -61,7 +61,7 @@ export default class hallLogic extends cc.Component {
     private exitBtn: cc.Node = null;                             //退出按钮；
     private countDown: cc.Node = null;                          //倒计时模块；
     private countLabel: cc.Label = null;                         //倒计时label；
-    private globalDT: number = 0;                                //倒计时时间;
+    private GlobalGameDataDT: number = 0;                                //倒计时时间;
     private isUpdata: boolean = false;                           //是否开启倒计时;
     private selfIsJoin: boolean = false;                         //自己是否已经加入游戏;
     private joinNumber: number = 0;                              //当前游戏加入的人数;
@@ -95,8 +95,8 @@ export default class hallLogic extends cc.Component {
             cc.audioEngine.playMusic(this.hallBGM, true);
         }
         //是点击了再次游戏进入的大厅;
-        if (Global.isPlayerAgain) {
-            Global.isPlayerAgain = false;
+        if (GlobalGameData.isPlayerAgain) {
+            GlobalGameData.isPlayerAgain = false;
             this.join_callback();
         }
         SFMessageManager.isStartContinue = false;
@@ -139,8 +139,8 @@ export default class hallLogic extends cc.Component {
         this.loadScene();
 
         this.head.on(cc.Node.EventType.TOUCH_START, () => {
-            if (Global.userId) {
-                MessageManager.showPlayerInfo(Global.userId);
+            if (GlobalGameData.userId) {
+                MessageManager.showPlayerInfo(GlobalGameData.userId);
             }
         }, this);
 
@@ -150,7 +150,7 @@ export default class hallLogic extends cc.Component {
             if (data) {
                 //第一名数据;
                 if (data.leaderboard && data.leaderboard[0]) {
-                    let name = Global.subNickName(data.leaderboard[0].name);
+                    let name = GlobalGameData.subNickName(data.leaderboard[0].name);
                     this.firstLabel.string = name;
                 }
 
@@ -200,13 +200,13 @@ export default class hallLogic extends cc.Component {
     //获取个人信息；
     getUserinfo() {
         //先获取个人信息，然后获取房间信息，然后获取游戏信息;
-        if (Global.UserInfo) {
-            this.setUserInfo(Global.UserInfo);
+        if (GlobalGameData.UserInfo) {
+            this.setUserInfo(GlobalGameData.UserInfo);
             this.getRoomInfo();
         } else {
             MessageForRoom.getUserInfo((userInfo) => {
-                Global.UserInfo = userInfo;
-                Global.userId = Number(userInfo.userId);
+                GlobalGameData.UserInfo = userInfo;
+                GlobalGameData.userId = Number(userInfo.userId);
                 this.getRoomInfo();
                 this.setUserInfo(userInfo);
             });
@@ -236,28 +236,28 @@ export default class hallLogic extends cc.Component {
             this.head.scaleX = 64 / this.head.width;
             this.head.scaleY = 64 / this.head.height;
         });
-        this.nameLabel.string = Global.subNickName(name, 10);
+        this.nameLabel.string = GlobalGameData.subNickName(name, 10);
     }
 
     //获取房间信息;
     getRoomInfo() {
-        if (Global.RoomInfo) {
-            let roomId = Global.RoomInfo['room_id'];
+        if (GlobalGameData.RoomInfo) {
+            let roomId = GlobalGameData.RoomInfo['room_id'];
             this.eventDispatchFunc();
             if (!this.isReceiveMatchMessage) {
                 SFMessageManager.getStatus(roomId);
             }
         } else {
             MessageForRoom.getRoomInfo((roomInfo) => {
-                Global.RoomInfo = roomInfo;
+                GlobalGameData.RoomInfo = roomInfo;
                 let roomId = roomInfo['room_id'];
                 this.eventDispatchFunc();
-                Global.gameRoomId = roomId;
+                GlobalGameData.gameRoomId = roomId;
                 if (!this.isReceiveMatchMessage) {
                     SFMessageManager.getStatus(roomId);
                 }
-                if (Global.isCanAutoJoinGame) {
-                    Global.isCanAutoJoinGame = false;
+                if (GlobalGameData.isCanAutoJoinGame) {
+                    GlobalGameData.isCanAutoJoinGame = false;
                     let source = MessageManager.getUrlParameterValue('source');
                     if (source.match('gaming_') || source.match('trending_') || source.match('quickly_match_games')
                         || source.match('suggest_switch_match_') || source.match('channel_popup_') || source.match('popup_chatroom_')) {
@@ -287,8 +287,8 @@ export default class hallLogic extends cc.Component {
                         this.stopTimeOut();
                         let channelId = data.data.channel.id;
                         this.matchFunc(data.data.data, false, 'playing');
-                        if (!Global.channelId || Global.channelId != channelId) {
-                            Global.channelId = channelId;
+                        if (!GlobalGameData.channelId || GlobalGameData.channelId != channelId) {
+                            GlobalGameData.channelId = channelId;
                         }
                         if (!this.isChangeScene) {
                             this.isChangeScene = true;
@@ -344,7 +344,7 @@ export default class hallLogic extends cc.Component {
                 return;
             }
             if (uid == 0) {
-                uid = Global.userId;
+                uid = GlobalGameData.userId;
             }
 
             let redLen = this.playerHeadData.red.length;
@@ -405,8 +405,8 @@ export default class hallLogic extends cc.Component {
         if (keys.length == 0 || data.status == "completed") {
             this.startTimeOut();
             this.joinBtn.active = true;
-            if (Global.isCanAutoJoinGame) {
-                Global.isCanAutoJoinGame = false;
+            if (GlobalGameData.isCanAutoJoinGame) {
+                GlobalGameData.isCanAutoJoinGame = false;
                 let source = MessageManager.getUrlParameterValue('source');
                 if (source.match('gaming_') || source.match('trending_') || source.match('quickly_match_games')
                     || source.match('suggest_switch_match_') || source.match('channel_popup_') || source.match('popup_chatroom_')) {
@@ -418,8 +418,8 @@ export default class hallLogic extends cc.Component {
         if (data.status == "matching") {
             this.startTimeOut();
             this.matchFunc(data, true, 'matching');
-            if (Global.isCanAutoJoinGame) {
-                Global.isCanAutoJoinGame = false;
+            if (GlobalGameData.isCanAutoJoinGame) {
+                GlobalGameData.isCanAutoJoinGame = false;
                 let source = MessageManager.getUrlParameterValue('source');
                 if (source.match('gaming_') || source.match('trending_') || source.match('quickly_match_games')
                     || source.match('suggest_switch_match_') || source.match('channel_popup_') || source.match('popup_chatroom_')) {
@@ -529,7 +529,7 @@ export default class hallLogic extends cc.Component {
             if (blueTeam[i]) {
                 let id = blueTeam[i].id;
                 playerNum++;
-                if (id == Global.userId) {
+                if (id == GlobalGameData.userId) {
                     selfIsJoin = true;
                 }
             }
@@ -539,7 +539,7 @@ export default class hallLogic extends cc.Component {
             if (redTeam[i]) {
                 let id = redTeam[i].id;
                 playerNum++;
-                if (id == Global.userId) {
+                if (id == GlobalGameData.userId) {
                     selfIsJoin = true;
                 }
             }
@@ -547,22 +547,22 @@ export default class hallLogic extends cc.Component {
 
         if (selfIsJoin) {
             if (playerNum < 4) {
-                Global.nowGameType = Global.gameType.SoloMode;
+                GlobalGameData.nowGameType = GlobalGameData.gameType.SoloMode;
             } else if (playerNum == 4) {
-                Global.nowGameType = Global.gameType.MultiplayerMode;
+                GlobalGameData.nowGameType = GlobalGameData.gameType.MultiplayerMode;
             }
         } else {
             if (playerNum < 4) {
-                Global.nowGameType = Global.gameType.GodSoloMode;
+                GlobalGameData.nowGameType = GlobalGameData.gameType.GodSoloMode;
             } else if (playerNum == 4) {
-                Global.nowGameType = Global.gameType.GodMultiplayerMode;
+                GlobalGameData.nowGameType = GlobalGameData.gameType.GodMultiplayerMode;
             }
         }
     }
 
     //分享回调；
     share_callback() {
-        let shareText: string = 'Come to join this chatroom and play incredible game!' + Global.shareUrl;
+        let shareText: string = 'Come to join this chatroom and play incredible game!' + GlobalGameData.shareUrl;
         let shareUrl = 'http://static.funshareapp.com/atlas_op_common_file/1591264876058231.png';
         MessageManager.shareGameOrImage(shareText, shareUrl, (event) => {
         });
@@ -570,11 +570,11 @@ export default class hallLogic extends cc.Component {
 
     //加载场景;
     loadScene() {
-        cc.director.preloadScene('gameScene', (completedCount, totalCount, item) => {
+        cc.director.preloadScene('sf_GameScene', (completedCount, totalCount, item) => {
             // cc.log('加载进度显示');
             let comple = Math.floor(completedCount / totalCount * 100);
             if (comple == 100) {
-                Global.gameSceneIsLoad = true;
+                GlobalGameData.gameSceneIsLoad = true;
             }
         }, (error) => {
             // //console.log('加载场景Err：'+error);
@@ -589,7 +589,7 @@ export default class hallLogic extends cc.Component {
         this.playerHeadData.blue = [];
         let fadeOut = cc.fadeOut(3);
         let func = cc.callFunc(() => {
-            cc.director.loadScene("gameScene");
+            cc.director.loadScene("sf_GameScene");
         });
         this.node.runAction(cc.sequence(fadeOut, func));
     }
@@ -602,8 +602,8 @@ export default class hallLogic extends cc.Component {
                 this.joinNumber++;
                 let avatar = playersData[i].avatar;
                 let playerId = playersData[i].id;
-                if (playerId == Global.userId) {
-                    Global.userCamp = 'red';
+                if (playerId == GlobalGameData.userId) {
+                    GlobalGameData.userCamp = 'red';
                     this.selfIsJoin = true;
                     this.showSelfAciton(this.redPlayers[i]);
                 } else {
@@ -632,7 +632,7 @@ export default class hallLogic extends cc.Component {
                     }
                 });
 
-                if (playerId == Global.userId) {
+                if (playerId == GlobalGameData.userId) {
                     this.redPlayers[i].getChildByName('follow').active = false;
                     this.redPlayers[i].getChildByName('follow').off(cc.Node.EventType.TOUCH_START);
                     this.redPlayers[i].getChildByName('followAction').active = false;
@@ -640,7 +640,7 @@ export default class hallLogic extends cc.Component {
                     let follow = this.redPlayers[i].getChildByName('follow');
                     let followAction = this.redPlayers[i].getChildByName('followAction');
                     follow.active = false;
-                    if (Global.followedObj[playerId] == undefined) {
+                    if (GlobalGameData.followedObj[playerId] == undefined) {
                         MessageForRoom.isFollowedPlayer(playerId, (pid, flag) => {
                             if (this.node && this.node.active && pid == this.playerHeadData.red[i]) {
                                 follow.active = true;
@@ -655,7 +655,7 @@ export default class hallLogic extends cc.Component {
                                         MessageForRoom.followedPlayer(playerId, (uid, flag: boolean) => {
                                             if (this.node && this.node.active) {
                                                 if (playerId == uid && flag) {
-                                                    Global.setChangeSpriteFrameAction(follow, followAction);
+                                                    GlobalGameData.setChangeSpriteFrameAction(follow, followAction);
                                                     follow.getComponent(cc.Sprite).spriteFrame = this.followed;
                                                     follow.off(cc.Node.EventType.TOUCH_START);
                                                 }
@@ -665,7 +665,7 @@ export default class hallLogic extends cc.Component {
                                 }
                             }
                         });
-                    } else if (Global.followedObj[playerId] == false) {
+                    } else if (GlobalGameData.followedObj[playerId] == false) {
                         follow.active = true;
                         follow.getComponent(cc.Sprite).spriteFrame = this.follow;
                         follow.on(cc.Node.EventType.TOUCH_START, (event) => {
@@ -675,12 +675,12 @@ export default class hallLogic extends cc.Component {
                                     if (playerId == uid && flag) {
                                         follow.getComponent(cc.Sprite).spriteFrame = this.followed;
                                         follow.off(cc.Node.EventType.TOUCH_START);
-                                        Global.setChangeSpriteFrameAction(follow, followAction);
+                                        GlobalGameData.setChangeSpriteFrameAction(follow, followAction);
                                     }
                                 }
                             });
                         }, this);
-                    } else if (Global.followedObj[playerId]) {
+                    } else if (GlobalGameData.followedObj[playerId]) {
                         follow.active = true;
                         follow.getComponent(cc.Sprite).spriteFrame = this.followed;
                         follow.off(cc.Node.EventType.TOUCH_START);
@@ -710,8 +710,8 @@ export default class hallLogic extends cc.Component {
                 this.joinNumber++;
                 let avatar = playersData[i].avatar;
                 let playerId = playersData[i].id;
-                if (playerId == Global.userId) {
-                    Global.userCamp = 'blue';
+                if (playerId == GlobalGameData.userId) {
+                    GlobalGameData.userCamp = 'blue';
                     this.selfIsJoin = true;
                     this.showSelfAciton(this.bluePlayers[i]);
                 } else {
@@ -738,7 +738,7 @@ export default class hallLogic extends cc.Component {
                         head.scaleY = 96 / head.height;
                     }
                 });
-                if (playerId == Global.userId) {
+                if (playerId == GlobalGameData.userId) {
                     this.bluePlayers[i].getChildByName('follow').active = false;
                     this.bluePlayers[i].getChildByName('follow').off(cc.Node.EventType.TOUCH_START);
                     this.bluePlayers[i].getChildByName('followAction').active = false;
@@ -746,7 +746,7 @@ export default class hallLogic extends cc.Component {
                     let follow = this.bluePlayers[i].getChildByName('follow');
                     let followAction = this.bluePlayers[i].getChildByName('followAction');
                     follow.active = false;
-                    if (Global.followedObj[playerId] == undefined) {
+                    if (GlobalGameData.followedObj[playerId] == undefined) {
                         MessageForRoom.isFollowedPlayer(playerId, (pid, flag) => {
                             if (this.node && this.node.active && pid == this.playerHeadData.blue[i]) {
                                 follow.active = true;
@@ -761,7 +761,7 @@ export default class hallLogic extends cc.Component {
                                         MessageForRoom.followedPlayer(playerId, (uid, flag: boolean) => {
                                             if (this.node && this.node.active) {
                                                 if (playerId == uid && flag) {
-                                                    Global.setChangeSpriteFrameAction(follow, followAction);
+                                                    GlobalGameData.setChangeSpriteFrameAction(follow, followAction);
                                                     follow.getComponent(cc.Sprite).spriteFrame = this.followed;
                                                     follow.off(cc.Node.EventType.TOUCH_START);
                                                 }
@@ -771,7 +771,7 @@ export default class hallLogic extends cc.Component {
                                 }
                             }
                         });
-                    } else if (Global.followedObj[playerId] == false) {
+                    } else if (GlobalGameData.followedObj[playerId] == false) {
                         follow.active = true;
                         follow.getComponent(cc.Sprite).spriteFrame = this.follow;
                         follow.on(cc.Node.EventType.TOUCH_START, (event) => {
@@ -781,12 +781,12 @@ export default class hallLogic extends cc.Component {
                                     if (playerId == uid && flag) {
                                         follow.getComponent(cc.Sprite).spriteFrame = this.followed;
                                         follow.off(cc.Node.EventType.TOUCH_START);
-                                        Global.setChangeSpriteFrameAction(follow, followAction);
+                                        GlobalGameData.setChangeSpriteFrameAction(follow, followAction);
                                     }
                                 }
                             });
                         }, this);
-                    } else if (Global.followedObj[playerId]) {
+                    } else if (GlobalGameData.followedObj[playerId]) {
                         follow.active = true;
                         follow.getComponent(cc.Sprite).spriteFrame = this.followed;
                         follow.off(cc.Node.EventType.TOUCH_START);
@@ -926,9 +926,9 @@ export default class hallLogic extends cc.Component {
     update(dt) {
         if (this.isUpdata) {
             this.countLabel.string = String(this.match_time);
-            this.globalDT += dt;
-            if (this.globalDT >= 1) {
-                this.globalDT = 0;
+            this.GlobalGameDataDT += dt;
+            if (this.GlobalGameDataDT >= 1) {
+                this.GlobalGameDataDT = 0;
                 if (MessageSoundManager.audioEngineOn) {
                     cc.audioEngine.playEffect(this.readyAudio, false);
                 }

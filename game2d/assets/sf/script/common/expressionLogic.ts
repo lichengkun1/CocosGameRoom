@@ -1,6 +1,5 @@
 
-import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
-import MessageType from '../../../Script/CommonScripts/Utils/MessageType';
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass

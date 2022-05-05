@@ -56,7 +56,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 750,
-      "height": 790
+      "height": 860
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -68,7 +68,7 @@
       "ctor": "Float64Array",
       "array": [
         375,
-        395,
+        430,
         0,
         0,
         0,
@@ -123,7 +123,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 750,
-      "height": 790
+      "height": 860
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -224,7 +224,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "16981176-51fb-4e6a-bc5c-d6b361ba7011"
+      "__id__": 0
     },
     "fileId": "6etri8/tNCM6rOlFCiICiD",
     "sync": false
@@ -333,7 +333,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "16981176-51fb-4e6a-bc5c-d6b361ba7011"
+      "__id__": 0
     },
     "fileId": "7czCpLLI9Ps5NP8VY9Ml2i",
     "sync": false
@@ -415,7 +415,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Coming soon",
     "_N$string": "Coming soon",
     "_fontSize": 28,
@@ -442,7 +443,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "16981176-51fb-4e6a-bc5c-d6b361ba7011"
+      "__id__": 0
     },
     "fileId": "70Azdaoa5JJJiVuOBFPtaK",
     "sync": false
@@ -474,7 +475,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 162.26,
+      "width": 162.86,
       "height": 42.84
     },
     "_anchorPoint": {
@@ -524,14 +525,15 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Game Mall",
     "_N$string": "Game Mall",
     "_fontSize": 34,
     "_lineHeight": 34,
     "_enableWrapText": true,
     "_N$file": {
-      "__uuid__": "204afc2e-c22e-46cc-89af-1f3f21d928e4"
+      "__uuid__": "ff276028-4fcf-4634-875f-1dbe74212bb5"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -551,7 +553,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "16981176-51fb-4e6a-bc5c-d6b361ba7011"
+      "__id__": 0
     },
     "fileId": "4ahIyqCVFI4pX5c6WFxA9T",
     "sync": false
@@ -745,7 +747,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "16981176-51fb-4e6a-bc5c-d6b361ba7011"
+      "__id__": 0
     },
     "fileId": "07CBrnua5CopEKPWlF1/bM",
     "sync": false
@@ -793,9 +795,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "16981176-51fb-4e6a-bc5c-d6b361ba7011"
+      "__id__": 0
     },
-    "fileId": "c6EyS1GIlORaMQ9iy1t/rg",
+    "fileId": "",
     "sync": false
   }
 ]

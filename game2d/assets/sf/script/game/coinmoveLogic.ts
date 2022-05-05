@@ -25,7 +25,7 @@ export default class coinmoveLogic extends cc.Component {
                 let coinDrag = coin.getComponent(dragonBones.ArmatureDisplay);
                 let timeRand = Math.random() + 1;
                 coinDrag.timeScale = timeRand;
-                coinDrag.playAnimation('zhuan', 0);
+                coinDrag.playAnimation('game_zhuan', 0);
                 let pos1 = cc.v2(startPos.x,startPos.y);
                 coin.x = pos1.x;
                 coin.y = pos1.y;
@@ -44,7 +44,7 @@ export default class coinmoveLogic extends cc.Component {
                     coinDrag.addEventListener(dragonBones.EventObject.COMPLETE, () => {
                         coin.scale = 0;
                     }, this);
-                    coinDrag.playAnimation('shanguang', 1);
+                    coinDrag.playAnimation('yoyo_shanguang', 1);
                 });
                 coin.runAction(cc.sequence(spawB, call));
             }, waitNum);

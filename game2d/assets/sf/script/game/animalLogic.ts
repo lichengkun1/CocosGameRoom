@@ -1,7 +1,7 @@
 
 import MessageSoundManager from '../../../Script/CommonScripts/Utils/MessageSoundManager';
 import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
-import GlobalGameData from '../Global/GlobalGameData';
+import GlobalGameData from '../Global/SFGlobalGameData';
 
 const {ccclass, property} = cc._decorator;
 

@@ -3,7 +3,7 @@ import Message from '../../../Script/CommonScripts/Utils/Message';
 import MessageForRoom from '../../../Script/CommonScripts/Utils/MessageForRoom';
 import MessageManager from '../../../Script/CommonScripts/Utils/MessageManager';
 import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
-import GlobalGameData from '../Global/GlobalGameData';
+import GlobalGameData from '../Global/SFGlobalGameData';
 
 const { ccclass, property } = cc._decorator;
 

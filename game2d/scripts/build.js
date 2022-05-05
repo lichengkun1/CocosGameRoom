@@ -41,6 +41,11 @@ const unlinkDir = (dirUrl) => {
     });
 }
 
+/**
+ * 源文件拷贝到目标文件夹 流的方式实现copy
+ * @param  {string} sourceUrl
+ * @param  {string} targetUrl
+ */
 const moveFileToTargetDir = (sourceUrl,targetUrl) => {
     const sourceFiles = fs.readdirSync(sourceUrl);
     sourceFiles.forEach(item => {
@@ -50,7 +55,11 @@ const moveFileToTargetDir = (sourceUrl,targetUrl) => {
         readData.pipe(writeData);
     });
 }
-
+/**
+ * 改变bundle是否开启的开关
+ * @param  {boolean} tag
+ * @param  {string} item
+ */
 const setBundleTag = (tag,item) => {
     const metaData = fs.readFileSync(bundlesPath + item,{encoding: 'utf-8'});
     const metaJsonData = JSON.parse(metaData);
@@ -88,6 +97,70 @@ const walkBundles = (targetBundleName,excludeRoomCommon) => {
         }
     })
 }   
+/**
+ * 将源文件夹里面的文件拷贝到目标文件夹内
+ * @param  {string} srcDir 源文件夹路径
+ * @param  {string} targetDir 目标文件夹路径
+ */
+const writeFileToDir = (srcDir,targetDir) => {
+    const textPrefixs = ['.js','.atlas','.css','.json','.plist'];
+    const assetPrefixs = ['.jpg','.jpeg','.ico','.png'];
+
+    const files = fs.readdirSync(srcDir);
+    console.log('files is ',files);
+    console.log('taregtDir is ',targetDir);
+
+    files.forEach(item => {
+        const targetFilePath = srcDir + '/' + item;
+        if(assetPrefixs.some(it => item.indexOf(it) >= 0)) {
+            console.log('二进制文件',item);
+            // 二进制文件
+            const readData = fs.readFileSync(targetFilePath,{encoding: 'binary'});
+            fs.writeFileSync(targetDir + '/' + item,readData,{encoding: 'binary'});
+        }
+        if(textPrefixs.some(it => item.indexOf(it) >= 0)) {
+            console.log('文本文件：',item);
+            const readData = fs.readFileSync(targetFilePath,{encoding: 'utf-8'});
+            fs.writeFileSync(targetDir + '/' + item,readData,{encoding: 'utf-8'});
+        }
+    });
+}
+
+/**
+ * 将想要的文件复制到web-mobile下面去
+ * @param  {string} srcDir 原始文件路径
+ * @param  {string} targetName 目标文件的名字
+ */
+const addPngToWebmobile = (srcDir,targetName) => {
+    const icons = fs.readdirSync(srcDir);
+
+    icons.forEach(item => {
+        const iconPath = srcDir + '/' + item;
+        if(item.indexOf(gameName) >= 0) {
+            const extStr = path.extname(item);
+            const pictureData = fs.readFileSync(iconPath,{encoding: 'binary'});
+
+            const targetFilePath = `../build-templates/web-mobile/${targetName}.png`;
+            fs.writeFileSync(targetFilePath,pictureData,{encoding: 'binary'});
+        }
+    });
+}
+
+/**
+ * web-mobile文件夹存在 将common文件夹（打包需要的公共资源文件）的所有文件复制到目标web-mobile文件夹
+ * 
+ */
+const moveCommonAndIconToGame = () => {
+    // common文件夹路径
+    const rootDirPath = '../games-build-templates/common';
+    // 公共资源移动到哪个文件夹下
+    const targetDirPath = '../build-templates/web-mobile';
+
+    // 移动源文件到目标文件夹内
+    moveFileToTargetDir(rootDirPath,targetDirPath);
+
+    
+}
 
 /**
  * 设置settings/builder.json 里面的内容 里面设置了启动场景参与打包的场景，剔除没有参与打包的游戏场景
@@ -167,20 +240,39 @@ console.log('==========✅ 删除没有用的bundle success ✅==========\n\n');
 
 
 console.log('========== 三：各个游戏构建模板略有不同：更新游戏构建模板==========');
-// 改变构建build-templates文件
-const targetGameTemplates = `../games-build-templates/${gameName}/web-mobile/`;
-// 删除原来的web-mobile
-const templateUrl = '../build-templates/web-mobile/';
-unlinkDir(templateUrl);
-moveFileToTargetDir(targetGameTemplates,templateUrl);
-console.log('==========✅ 各个游戏构建模板略有不同：更新游戏构建模板 success✅==========\n\n');
+// const targetDir = `../games-build-templates/${gameName}`;
+// let targetDirIsExist = fs.existsSync(targetDir);
 
+// const checkWebmobile = () => {
+//     console.log('web-mobile 文件夹不存在创建');
+//     let readTargetDir = `../games-build-templates/${gameName}/web-mobile/`;
+//     if(!fs.existsSync(readTargetDir)) {
+//         fs.mkdirSync(readTargetDir);
+//     }
+// }
+// if(!targetDirIsExist) {
+//     console.log(`${gameName} 文件夹不存在创建`);
+//     fs.mkdirSync(targetDir);
+//     checkWebmobile();
+// } else {
+//     checkWebmobile();
+// }
+unlinkDir('../build-templates/web-mobile/');
+
+moveCommonAndIconToGame();
+
+// 读取游戏的icon加入到targetDirPath下
+const iconRoot = '../games-build-templates/icons'
+addPngToWebmobile(iconRoot,'icon');
+addPngToWebmobile('../games-build-templates/bgs','bg');
+console.log('==========✅ 各个游戏构建模板略有不同：更新游戏构建模板 success✅==========\n\n');
 
 console.log('========== 四：构建设置: 没有用的场景需要从构建列表里面移除==========');
 setBuildSettings();
 console.log('===============✅ 构建设置: 没有用的场景需要从构建列表里面移除 success ✅===================\n\n');
 
 console.log('==================== 五: 开始构建项目 ====================');
+
 const cocosTerminal = spawn(cocosExePath,cocosExeArgs);
 cocosTerminal.stdout.on('data',(data) => {
     console.log(data.toString());
@@ -194,6 +286,7 @@ cocosTerminal.on('close',(code) => {
     console.log('code is ',code);
     console.log('====================✅ build success 奥利给 ✅====================');
 });
+
 
 
 

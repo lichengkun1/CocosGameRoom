@@ -1,7 +1,7 @@
 import MessageManager from "../../Script/CommonScripts/Utils/MessageManager";
 import MyEvent from "../../Script/CommonScripts/Utils/MyEvent";
 import NDB from "../../Script/CommonScripts/Utils/NDBTS";
-import GlobalGameData from "./Global/GlobalGameData";
+import GlobalGameData from "./Global/SFGlobalGameData";
 
 /***
  * 

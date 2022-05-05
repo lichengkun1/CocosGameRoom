@@ -59,7 +59,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 750,
-      "height": 946
+      "height": 860
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -71,7 +71,7 @@
       "ctor": "Float64Array",
       "array": [
         375,
-        473,
+        430,
         0,
         0,
         0,
@@ -126,7 +126,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 750,
-      "height": 946
+      "height": 860
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -227,7 +227,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "2ee112f6-8171-4e91-a552-ea50321fadfa"
+      "__id__": 0
     },
     "fileId": "9fe9G6TYJPtZgc+PXBcI7q",
     "sync": false
@@ -334,7 +334,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "2ee112f6-8171-4e91-a552-ea50321fadfa"
+      "__id__": 0
     },
     "fileId": "93T6t4DtxLk6GGV/kpKTqJ",
     "sync": false
@@ -526,7 +526,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "2ee112f6-8171-4e91-a552-ea50321fadfa"
+      "__id__": 0
     },
     "fileId": "f6rGgj9aROXJkB8KpnGO3D",
     "sync": false
@@ -718,7 +718,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "2ee112f6-8171-4e91-a552-ea50321fadfa"
+      "__id__": 0
     },
     "fileId": "9a5nLGvOFG8odoQsib+YFO",
     "sync": false
@@ -800,7 +800,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "200 game coins required",
     "_N$string": "200 game coins required",
     "_fontSize": 24,
@@ -827,7 +828,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "2ee112f6-8171-4e91-a552-ea50321fadfa"
+      "__id__": 0
     },
     "fileId": "67ZleSC2FI7I0FsILyddM7",
     "sync": false
@@ -909,7 +910,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Cancel",
     "_N$string": "Cancel",
     "_fontSize": 32,
@@ -936,7 +938,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "2ee112f6-8171-4e91-a552-ea50321fadfa"
+      "__id__": 0
     },
     "fileId": "adt/EqkHdHV4qmEWyziup8",
     "sync": false
@@ -1018,7 +1020,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "Deposit",
     "_N$string": "Deposit",
     "_fontSize": 32,
@@ -1045,7 +1048,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "2ee112f6-8171-4e91-a552-ea50321fadfa"
+      "__id__": 0
     },
     "fileId": "22cGbuDVROkKXj5+YOr1Lk",
     "sync": false
@@ -1083,9 +1086,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "2ee112f6-8171-4e91-a552-ea50321fadfa"
+      "__id__": 0
     },
-    "fileId": "d2A7qMhddJkJ4Bpp2JDSNk",
+    "fileId": "",
     "sync": false
   }
 ]

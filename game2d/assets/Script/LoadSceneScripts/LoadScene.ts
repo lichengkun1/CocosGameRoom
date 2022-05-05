@@ -53,7 +53,7 @@ export default class LoadScene extends cc.Component {
         this.setIcon();
         // this.setExtra();
         this.loadLanguage();
-        FrameImageManager.Init()
+        FrameImageManager.Init();
         let vcode = getUrlParameterValue('vcode');
         console.log('vcode is ',vcode);
 
@@ -168,13 +168,18 @@ export default class LoadScene extends cc.Component {
             default:
                 break;
         }
-        let url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`
-        if(MessageData.gameName === 'dominoe') {
-            url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`;
+        let url = '';
+        if(MessageData.gameName === 'sf') {
+            url = 'http://a.fslk.co/games/Bullfight/staging/BullFightZip03051532.zip';
         } else {
-            url = `http://a.fslk.co/games/zips/${path}/${MessageData.gameName}${zipVCodeID}.zip`
+            url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`
+            if(MessageData.gameName === 'dominoe') {
+                url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`;
+            } else {
+                url = `http://a.fslk.co/games/zips/${path}/${MessageData.gameName}${zipVCodeID}.zip`
+            }
         }
-        console.log("load zip URL:" + url);
+
         let data = await NDB.isGameSourceExisted(url);
         console.log('data is ',data);
         if (data['isHave']) {
@@ -265,7 +270,7 @@ export default class LoadScene extends cc.Component {
         if(!this.gameBundleIsLoadedOver) {
             await resourceManager.loadBundle(GameConfig.gameName);
         } else {
-
+            debugLog('游戏bundle已经加载完成');
         }
         
         resourceManager.loadSceneInBundle(`${GameConfig.gameName}_GameScene`,GameConfig.gameName,() => {
@@ -280,20 +285,41 @@ export default class LoadScene extends cc.Component {
         });
 
         // resourceManager.loadAssetInBundle(``,)
-        resourceManager.loadBundleDir(GameConfig.gameName,`resources_${GameConfig.gameName}/${GameConfig.gameName}_matchingScene_Res`,cc.Prefab,(completedCount, totalCount, item) => {
-            let comple = Math.floor(completedCount / totalCount * 5);
-            let lerp = comple - this.lastnum3;
-            this.lastnum3 = comple;
-            this.changeSceneIndex = this.changeSceneIndex + lerp;
-            if (comple == 5) {
-                debugLog(`加载${GameConfig.gameName}游戏完成`);
+        const needMatchSceneArr = ['ludo','dominoe'];
+        if(needMatchSceneArr.indexOf(GameConfig.gameName) >= 0) {
+            resourceManager.loadBundleDir(GameConfig.gameName,`resources_${GameConfig.gameName}/${GameConfig.gameName}_matchingScene_Res`,cc.Prefab,(completedCount, totalCount, item) => {
+                let comple = Math.floor(completedCount / totalCount * 5);
+                let lerp = comple - this.lastnum3;
+                this.lastnum3 = comple;
+                this.changeSceneIndex = this.changeSceneIndex + lerp;
+                if (comple == 5) {
+                    debugLog(`加载${GameConfig.gameName}游戏完成`);
+                    this.matchingResIsLoad = true;
+                }
+            }, (err, resource) => {
+                debugLog('加载匹配场景预制体完毕',resource);
                 this.matchingResIsLoad = true;
-            }
-        }, (err, resource) => {
-            debugLog('加载匹配场景预制体完毕',resource);
-            this.matchingResIsLoad = true;
-            MathcResData.matchSceneResource = resource
-        });
+                MathcResData.matchSceneResource = resource;
+            });
+        }
+
+        // @ts-ignore
+        if(GameConfig.gameName == 'sf') {
+            resourceManager.loadBundleDir(GameConfig.gameName,`res/prefab`,cc.Prefab,(completedCount, totalCount, item) => {
+                let comple = Math.floor(completedCount / totalCount * 5);
+                let lerp = comple - this.lastnum3;
+                this.lastnum3 = comple;
+                this.changeSceneIndex = this.changeSceneIndex + lerp;
+                if (comple == 5) {
+                    debugLog(`加载${GameConfig.gameName}游戏完成`);
+                    this.matchingResIsLoad = true;
+                }
+            }, (err, resource) => {
+                debugLog('加载匹配场景预制体完毕',resource);
+                this.matchingResIsLoad = true;
+                MathcResData.matchSceneResource = resource;
+            });
+        }
     }
     private loadLanguage() {
         let lang = MessageManager.getUrlParameterValue('ui_lang');
@@ -337,7 +363,12 @@ export default class LoadScene extends cc.Component {
                 // ludo和多米诺都进入模式选择场景
                 cc.director.loadScene(`${MessageData.gameName}_ModeScene`);
             } else {
-                cc.director.loadScene('MatchScene');
+                if(MessageData.gameName === 'ludo' || MessageData.gameName === 'dominoe') {
+                    cc.director.loadScene('MatchScene');
+                } 
+                if(MessageData.gameName === 'sf') {
+                    cc.director.loadScene('HallScene');
+                }
                 
             }
         }

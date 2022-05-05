@@ -24,14 +24,22 @@ export default class showEmoji extends cc.Component {
 
     showEmojiBG() {
         this.emojiNode.active = true;
-        cc.tween(this.emojiNode).to(0.2, { position: cc.v3(145, -288.916, 0) }).start();
+        let targetY = -288.916;
+        if(MessageData.gameName === 'sf') {
+            targetY = -365;
+        }
+        cc.tween(this.emojiNode).to(0.2, { position: cc.v3(145, targetY, 0) }).start();
         cc.find("Canvas/showBtn").active = false;
         this.scheduleOnce(this.closeEmojiBg, 3);
     }
 
     closeEmojiBg() {
         this.unschedule(this.closeEmojiBg);
-        cc.tween(this.emojiNode).to(0.2, { position: cc.v3(515, -288.916, 0) }).call(() => {
+        let targetY = -288.916;
+        if(MessageData.gameName == 'sf') {
+            targetY = -365;
+        }
+        cc.tween(this.emojiNode).to(0.2, { position: cc.v3(515, targetY, 0) }).call(() => {
             this.emojiNode.active = false;
             cc.find("Canvas/showBtn").active = true;
         }).start();
