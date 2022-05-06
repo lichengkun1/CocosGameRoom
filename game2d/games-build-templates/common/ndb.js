@@ -285,59 +285,63 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         //下载完成；
         this.onDownloadFinish = function (data) {
           console.log('===========onDownloadFinish=============');
-          setTimeout(() => {
+          // setTimeout(() => {
             // eventManager.emit('onDownloadFinish');
-            var isProd = window.location.href.indexOf('prod') >= 0 ? true : false;
-  
-            let cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
-            if(isProd) {
-              cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
-            }
-  
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET',cocosUrl,true);
-            xhr.responseType = "blob";
-            xhr.setRequestHeader("Range",385 * 1024);
-            xhr.onreadystatechange = function() {
-              if(xhr.readyState === 4 && xhr.status >= 200) {
-                  let res = xhr.response;
-                  // const jszip = require('jszip.f3da3');
-                  var zip = new JSZip();
-                  zip.loadAsync(res).then(async (z) => {
-                      let fileName = 'cocos2d-min-js-2.4.8-no3d.js';
-                      let cocosStr = await z.file(fileName).async('string');
-                      var domScript = document.createElement('script');
-  
-                      function scriptLoaded() {
-                          document.body.removeChild(domScript);
-                          domScript.removeEventListener('load', scriptLoaded, false);
-                          cb && cb();
-  
-                      };
-                      domScript.async = true;
-                      domScript.text = cocosStr;
-                      domScript.addEventListener('load', scriptLoaded, false);
-                      document.body.appendChild(domScript);
-                      console.log('开始执行main.9d234.js');
-                      window.boot && window.boot();
-                  });
-              }
-            }
+          var isProd = window.location.href.indexOf('prod') >= 0 ? true : false;
 
-            xhr.onprogress = function(target,progressEvent) {
-              console.log(`加载进度： ${target.loaded / target.total}`);
-            } 
+          let cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
+          if(isProd) {
+            cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
+          }
 
-            xhr.onload = function() {
-              console.log('onload xhr is 脚本加载完成');
-            }
+          this.request('get',cocosUrl).then((res) => {
+            console.log('res is ',res);
+          });
+  
+            // let xhr = new XMLHttpRequest();
+            // xhr.open('GET',cocosUrl,true);
+            // xhr.responseType = "blob";
+            // xhr.setRequestHeader("Range",385 * 1024);
+            // xhr.onreadystatechange = function() {
+            //   if(xhr.readyState === 4 && xhr.status >= 200) {
+            //       let res = xhr.response;
+            //       // const jszip = require('jszip.f3da3');
+            //       var zip = new JSZip();
+            //       zip.loadAsync(res).then(async (z) => {
+            //           let fileName = 'cocos2d-min-js-2.4.8-no3d.js';
+            //           let cocosStr = await z.file(fileName).async('string');
+            //           var domScript = document.createElement('script');
+  
+            //           function scriptLoaded() {
+            //               document.body.removeChild(domScript);
+            //               domScript.removeEventListener('load', scriptLoaded, false);
+            //               cb && cb();
+  
+            //           };
+            //           domScript.async = true;
+            //           domScript.text = cocosStr;
+            //           domScript.addEventListener('load', scriptLoaded, false);
+            //           document.body.appendChild(domScript);
+            //           console.log('开始执行main.9d234.js');
+            //           window.boot && window.boot();
+            //       });
+            //   }
+            // }
 
-            xhr.onerror = function(target,event) {
-              console.log('error event is 加载脚本出错');
-            }
+            // xhr.onprogress = function(target,progressEvent) {
+            //   console.log(`加载进度： ${target.loaded / target.total}`);
+            // } 
 
-            xhr.send();
-          },10);
+            // xhr.onload = function() {
+            //   console.log('onload xhr is 脚本加载完成');
+            // }
+
+            // xhr.onerror = function(target,event) {
+            //   console.log('error event is 加载脚本出错');
+            // }
+
+            // xhr.send();
+          // },10);
         };
         //当前zip下载进度;
         this.onDownloadProgress = function (data) {
