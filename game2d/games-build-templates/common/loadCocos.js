@@ -9,7 +9,7 @@
     var splash = document.getElementById('splash');
     splash.style.display = 'block';
 
-    
+    var isProd = window.location.href.indexOf('prod') >= 0 ? true : false;
 
     const NDBLoadRemoteCocos = function() {
         let ndb = window.NDB;
