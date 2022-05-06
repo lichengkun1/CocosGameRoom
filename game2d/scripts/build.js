@@ -316,10 +316,9 @@ cocosTerminal.on('close',(code) => {
         const remoteIp = '18.166.154.55';
         // 将build出来的文件存进本地，nginx直接访问
         if(fs.existsSync(targetDir)) {
-            unLinkDir(targetDir);
-        } else {
-            fs.mkdirSync(targetDir,{recursive: true});
+            unLinkDirWithDelete(targetDir);
         }
+        fs.mkdirSync(targetDir,{recursive: true});
         
         let sourceDir = '../build/web-mobile';
         
