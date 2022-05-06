@@ -353,6 +353,7 @@ export default class MatchingScene extends cc.Component {
 
     private gamePlaying(data) {
         if (MessageData.gameType == GameType.single && MessageData.switch_room_id != data.data.data.source_id) {
+            console.log(`拦截 gameplaying switch_room_id is ${MessageData.switch_room_id} source_id is ${data.data.data.source_id}`);
             return;
         }
         console.log('@进入 playing 改变麦位');
@@ -556,9 +557,7 @@ export default class MatchingScene extends cc.Component {
     /**设置麦位上的人 */
     setMcPlayer(players, keys, nowPlayerIsJoin) {
         for (let i = 0; i < this.joinPlayers.length; i++) {
-            
-
-            debugLog('设置麦位上的人 i is ',i);
+            console.log('设置麦位上的人 i is ',i);
             const element = players[keys[i]];
             if(!element.id) continue;
             

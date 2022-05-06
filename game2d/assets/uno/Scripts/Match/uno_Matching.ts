@@ -355,8 +355,6 @@ export default class UNOMatching extends cc.Component {
                     if(this.isFristReveiveMessage && GlobalGameData.isCanAutoJoinGame && this.getIsAutoJoin()) {
                         // this.gameJoinComplete();
                     }
-
-                    
                 }
             }
         }
