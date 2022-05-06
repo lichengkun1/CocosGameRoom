@@ -306,7 +306,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
               document.body.removeChild(domScript);
               domScript.removeEventListener('load', scriptLoaded, false);
           };
-          domScript.src = 'cocos2d-min-js-2.4.8-no3d.js'
+          domScript.src = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js'
           domScript.async = true;
           domScript.addEventListener('load', scriptLoaded, false);
           document.body.appendChild(domScript);
