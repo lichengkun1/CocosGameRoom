@@ -72,6 +72,7 @@ export default class LoadScene extends cc.Component {
 
     private async loadBundleByGameName() {
         resourceManager.loadBundle(GameConfig.gameName).then(() => {
+            console.log('游戏bundle加载完成');
             // 资源加载完毕
             this.gameBundleIsLoadedOver = true;
         });
@@ -276,19 +277,9 @@ export default class LoadScene extends cc.Component {
             debugLog('游戏bundle已经加载完成');
             this.gameSceneIsLoad = true;
         }
-        
-        // resourceManager.loadSceneInBundle(`${GameConfig.gameName}_GameScene`,GameConfig.gameName,() => {
-        //     console.log('游戏场景加载完毕');
-        // },(completedCount, totalCount, item) => {
-        //     let comple = Math.floor(completedCount / totalCount * 20);
-        //     let lerp = comple - this.lastnum2;
-        //     this.lastnum2 = comple;
-        //     this.changeSceneIndex = this.changeSceneIndex + lerp;
-            
-        // });
 
         // resourceManager.loadAssetInBundle(``,)
-        const needMatchSceneArr = ['ludo','dominoe'];
+        const needMatchSceneArr = ['ludo','dominoe','uno'];
         if(needMatchSceneArr.indexOf(GameConfig.gameName) >= 0) {
             resourceManager.loadBundleDir(GameConfig.gameName,`resources_${GameConfig.gameName}/${GameConfig.gameName}_matchingScene_Res`,cc.Prefab,(completedCount, totalCount, item) => {
                 let comple = Math.floor(completedCount / totalCount * 5);
