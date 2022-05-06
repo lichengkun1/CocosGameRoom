@@ -47,14 +47,14 @@
 
     const NDBLoadRemoteCocos = function() {
         let ndb = window.NDB;
-        let cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip'
+        let cocosUrl = 'https://a.fslk.co/games/zips/staging/cocos2d-min-js-2.4.8-no3d.zip.gz'
         if(isProd) {
-          cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip'
+          cocosUrl = 'https://a.fslk.co/games/zips/staging/cocos2d-min-js-2.4.8-no3d.zip.gz'
         }
         ndb.isGameSourceExisted(cocosUrl);
     }
 
-    loadScript(debug ? 'cocos2d-js.js' : 'cocos2d-min-js-v2.4.8.js', function () {
+    loadScript('https://a.fslk.co/games/zips/staging/cocos2d-min-js-2.4.8.js', function () {
       if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON) {
         loadScript(debug ? 'physics.js' : 'physics-min.js', window.boot);
       }
