@@ -54,7 +54,7 @@
         ndb.isGameSourceExisted(cocosUrl);
     }
 
-    loadScript('https://a.fslk.co/games/zips/staging/cocos2d-min-js-2.4.8.js', function () {
+    loadScript('https://a.fslk.co/games/cocos2d-min-js-2.4.8-no3d.js', function () {
       if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON) {
         loadScript(debug ? 'physics.js' : 'physics-min.js', window.boot);
       }
