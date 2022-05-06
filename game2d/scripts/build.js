@@ -59,7 +59,7 @@ const unLinkDirWithDelete = (dirPath) => {
     filesArr.forEach(item => {
         let itemPath = dirPath + '/' + item;
         if(fs.statSync(itemPath).isDirectory()) {
-            unLinkDir(itemPath);
+            unLinkDirWithDelete(itemPath);
         } else {
             fs.unlinkSync(dirPath + '/' + item);
         }
