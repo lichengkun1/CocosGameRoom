@@ -353,11 +353,12 @@ export default class LoadScene extends cc.Component {
         // 匹配资源预加载完成 && 匹配场景预加载完成 && 游戏场景预加载完毕 
         if (this.isGotoMatchScene && this.matchingResIsLoad && this.matchSceneIsLoad && this.gameSceneIsLoad && this.gameBundleIsLoadedOver) {
             this.isGotoMatchScene = false;
+            console.log('加载场景的下一个场景可以进入了');
             if (MessageData.gameType == GameType.single && (MessageData.gameName == "ludo" || MessageData.gameName === 'dominoe')) {
                 // ludo和多米诺都进入模式选择场景
                 cc.director.loadScene(`${MessageData.gameName}_ModeScene`);
             } else {
-                if(MessageData.gameName === 'ludo' || MessageData.gameName === 'dominoe') {
+                if(MessageData.gameName === 'ludo' || MessageData.gameName === 'dominoe' || MessageData.gameName ==='uno') {
                     cc.director.loadScene('MatchScene');
                 } 
                 if(MessageData.gameName === 'sf') {
