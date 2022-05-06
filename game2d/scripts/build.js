@@ -8,6 +8,10 @@ const os = require('os');
 const plateform = os.platform();
 console.log('plateform is ',plateform);
 
+let targetDir = null;
+
+
+
 /** 根据参数决定构建哪个游戏 */
 
 console.log(process.argv);
@@ -18,6 +22,11 @@ const env = args[3];
 
 const assetsPath = '../assets/';
 console.log(process.cwd())
+
+
+if(plateform.indexOf('win32') >= 0) {
+    targetDir = `C:\\nginx-1.20.2\\html\\games\\${gameName}\\${env}\\web-mobile`;
+}
 
 // 房间游戏列表
 const roomGames = ['ludo','dominoe','uno'];
@@ -39,6 +48,24 @@ const unlinkDir = (dirUrl) => {
     filesArr.forEach(item => {
         fs.unlinkSync(dirUrl + '/' + item);
     });
+}
+
+/**
+ * 删除文件顺带删除文件夹
+ * @param  {string} dirPath
+ */
+const unLinkDirWithDelete = (dirPath) => {
+    const filesArr = fs.readdirSync(dirPath);
+    filesArr.forEach(item => {
+        let itemPath = dirPath + '/' + item;
+        if(fs.statSync(itemPath).isDirectory()) {
+            unLinkDir(itemPath);
+        } else {
+            fs.unlinkSync(dirPath + '/' + item);
+        }
+    });
+
+    fs.rmdirSync(dirPath);
 }
 
 /**
@@ -238,7 +265,6 @@ if(roomGames.indexOf(gameName) >= 0) {
 }
 console.log('==========✅ 删除没有用的bundle success ✅==========\n\n');
 
-
 console.log('========== 三：各个游戏构建模板略有不同：更新游戏构建模板==========');
 // const targetDir = `../games-build-templates/${gameName}`;
 // let targetDirIsExist = fs.existsSync(targetDir);
@@ -285,6 +311,23 @@ cocosTerminal.stderr.on('data',(data) => {
 cocosTerminal.on('close',(code) => {
     console.log('code is ',code);
     console.log('====================✅ build success 奥利给 ✅====================');
+
+    if(plateform.indexOf('win32') >= 0) {
+        const remoteIp = '18.166.154.55';
+        // 将build出来的文件存进本地，nginx直接访问
+        if(fs.existsSync(targetDir)) {
+            unLinkDir(targetDir);
+        } else {
+            fs.mkdirSync(targetDir,{recursive: true});
+        }
+        
+        let sourceDir = '../build/web-mobile';
+        
+        fs.cpSync(sourceDir,targetDir,{recursive: true});
+        console.log(`打出的包放进远程服务器，请访问： http://${remoteIp}/games/${gameName}/${env}/web-mobile/index.html`);
+    } else {
+
+    }
 });
 
 
