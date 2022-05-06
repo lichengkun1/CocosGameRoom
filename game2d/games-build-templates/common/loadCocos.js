@@ -54,27 +54,12 @@
         ndb.isGameSourceExisted(cocosUrl);
     }
 
-    if(isAndroid) {
-        if(vCode < 15600) {
-            // 不支持下载压缩包
-            if (vCode < 13800) {
-                loadJs = "cocos2d-js-min.00e95.js";
-            }
-            loadScript(debug ? 'cocos2d-js.js' : loadJs, function () {
-                window.boot();
-            });
-        } else {
-            NDBLoadRemoteCocos();
-        }
-    } else if(isIOS) {
-        if(vCode < 13801) {
-            loadJs = "cocos2d-js-min.00e95.js";
-            loadScript(debug ? 'cocos2d-js.js' : loadJs, function () {
-                window.boot();
-            });
-        } else {
-            NDBLoadRemoteCocos();
-        }
-    }
-    
+    loadScript(debug ? 'cocos2d-js.js' : 'cocos2d-min-js-v2.4.8.js', function () {
+      if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON) {
+        loadScript(debug ? 'physics.js' : 'physics-min.js', window.boot);
+      }
+      else {
+        window.boot();
+      }
+    });
 })();
