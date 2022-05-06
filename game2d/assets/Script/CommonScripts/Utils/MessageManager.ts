@@ -200,7 +200,9 @@ export default class MessageManager {
         if (method == `${MessageData.gameName}_completed`) {
             MyEvent.I.emit(MessageType.MESSAGE_COMPLETED, { data: message });
         }
-
+        if(MessageData.gameName === 'uno') {
+            console.log('Uno 游戏 method is ',method);
+        }
         if (method == `uno_match`) {
             MyEvent.I.emit(MessageType.MESSAGE_MATCHING, { data: message });
         }
