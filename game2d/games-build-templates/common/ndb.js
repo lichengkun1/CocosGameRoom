@@ -294,9 +294,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
             cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
           }
 
-          this.request('get',cocosUrl).then((res) => {
+          this.request('get',cocosUrl,{}).then((res) => {
             console.log('res is ',res);
           });
+
+          var domScript = document.createElement('script');
+  
+          function scriptLoaded() {
+              console.log('开始执行main.js');
+              window.boot && window.boot();
+              document.body.removeChild(domScript);
+              domScript.removeEventListener('load', scriptLoaded, false);
+          };
+          domScript.src = 'cocos2d-min-js-2.4.8-no3d.js'
+          domScript.async = true;
+          domScript.addEventListener('load', scriptLoaded, false);
+          document.body.appendChild(domScript);
   
             // let xhr = new XMLHttpRequest();
             // xhr.open('GET',cocosUrl,true);
