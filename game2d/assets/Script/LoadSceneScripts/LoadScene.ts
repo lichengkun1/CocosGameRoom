@@ -171,13 +171,15 @@ export default class LoadScene extends cc.Component {
         let url = '';
         if(MessageData.gameName === 'sf') {
             url = 'http://a.fslk.co/games/Bullfight/staging/BullFightZip03051532.zip';
-        } else {
+        } else if(MessageData.gameName == 'ludo' || MessageData.gameName =='dominoe') {
             url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`
             if(MessageData.gameName === 'dominoe') {
                 url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`;
             } else {
                 url = `http://a.fslk.co/games/zips/${path}/${MessageData.gameName}${zipVCodeID}.zip`
             }
+        } else {
+            url = 'http://a.fslk.co/games/UNO/staging/UNOZip202104084010.zip';
         }
 
         let data = await NDB.isGameSourceExisted(url);
