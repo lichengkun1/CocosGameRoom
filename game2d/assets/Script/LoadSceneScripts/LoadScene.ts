@@ -1,5 +1,6 @@
 
 import { GameConfig } from "../../gameConfig";
+import { Load } from "../../uno/Scripts/Matching/Load";
 import { resourceManager } from "../common/managers/resourceManager";
 import { debugLog, getUrlParameterValue } from "../common/utils/util";
 import MathcResData from "../CommonScripts/MatchSceneScripts/MatchResData";
@@ -25,7 +26,9 @@ export default class LoadScene extends cc.Component {
     private versionLabel: cc.Node = null;
     private coinType: cc.Sprite = null;
 
-    /** 是否切换到匹配场景 */
+    public static height: number = 0;
+
+    /** 是否切换到匹配场景 */ 
     public isGotoMatchScene = true;
 
     private isChange: boolean = false;
@@ -345,6 +348,7 @@ export default class LoadScene extends cc.Component {
     }
 
     update(dt) {
+        LoadScene.height = this.node.height;
         if (this.proLabel)
             this.proLabel.string = this.changeSceneIndex.toString() + '%';
         if (this.progressBar)
