@@ -300,9 +300,6 @@ export default class MatchingScene extends cc.Component {
         },true);
     }
 
-    public systemFix
-
-
     private chatroomStatus(data) {
         console.log('@房间状态改变时候改变麦位',data);
         if(data && data.status && data.status.err_code) return;

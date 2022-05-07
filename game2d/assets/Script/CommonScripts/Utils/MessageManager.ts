@@ -207,6 +207,7 @@ export default class MessageManager {
             MyEvent.I.emit(MessageType.MESSAGE_MATCHING, { data: message });
         }
         if (method == `uno_play`) {
+            console.log('socket uno_play');
             MyEvent.I.emit(MessageType.MESSAGE_PLAYER, { data: message });
         }
         if (method == `uno_completed`) {
