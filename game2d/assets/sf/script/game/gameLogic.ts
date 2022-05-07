@@ -991,7 +991,7 @@ export default class gameLogic extends cc.Component {
             if (playerId == displayId) {
                 let di = headArr[i].getChildByName('userDi');
                 console.log('di position is ',di.x,di.y);
-                Message.showEmoji([di.x, di.y], [58, 58], msg);
+                Message.showEmoji([di.x, di.y - 20], [58, 58], msg);
                 break;
             }
         }
