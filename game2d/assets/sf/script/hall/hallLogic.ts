@@ -571,7 +571,7 @@ export default class hallLogic extends cc.Component {
 
     //加载场景;
     loadScene() {
-        cc.director.preloadScene('sf_GameScene', (completedCount, totalCount, item) => {
+        cc.director.preloadScene('sf_gameScene', (completedCount, totalCount, item) => {
             // cc.log('加载进度显示');
             let comple = Math.floor(completedCount / totalCount * 100);
             if (comple == 100) {
@@ -590,7 +590,7 @@ export default class hallLogic extends cc.Component {
         this.playerHeadData.blue = [];
         let fadeOut = cc.fadeOut(3);
         let func = cc.callFunc(() => {
-            cc.director.loadScene("sf_GameScene");
+            cc.director.loadScene("sf_gameScene");
         });
         this.node.runAction(cc.sequence(fadeOut, func));
     }
