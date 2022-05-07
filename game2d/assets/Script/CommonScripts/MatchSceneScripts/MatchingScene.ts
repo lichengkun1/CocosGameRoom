@@ -349,6 +349,9 @@ export default class MatchingScene extends cc.Component {
     }
 
     private gamePlaying(data) {
+        if(MessageData.gameName === 'uno') {
+            console.log('uno 游戏接收到play消息了');
+        }
         if (MessageData.gameType == GameType.single && MessageData.switch_room_id != data.data.data.source_id) {
             console.log(`拦截 gameplaying switch_room_id is ${MessageData.switch_room_id} source_id is ${data.data.data.source_id}`);
             return;
