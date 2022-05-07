@@ -458,6 +458,7 @@ export default class UNOMatching extends cc.Component {
         console.log('游戏开始重置所有的玩家头像数据');
         // this.matchingPlayers.resetAllPlayers();
 
+        MatchingScene.I.setPlayersData(GameData.message.data.players,false);
         for (let i = 0; i < GameData.message.data.players.length; i++) {
             const element = GameData.message.data.players[i];
             if(!element.id) continue;
@@ -492,7 +493,6 @@ export default class UNOMatching extends cc.Component {
         // playernode.headImage.spriteFrame = this.PlayerHeadImage;
         if (!player.user_headImage) {
             console.log(player.user_avatar, player.user_id);
-            
         }
     }
 
