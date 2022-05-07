@@ -981,6 +981,7 @@ export default class gameLogic extends cc.Component {
     //设置表情显示;
     setEmojiShow(displayId, msg) {
         if (displayId == Global.userId) {
+            // 
             Message.showEmoji([-270, -290], [74, 74], msg);
             return;
         }
