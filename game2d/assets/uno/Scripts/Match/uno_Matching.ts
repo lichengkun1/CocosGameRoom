@@ -118,8 +118,12 @@ export default class UNOMatching extends cc.Component {
         turn_duration: 12
     }
 
-    onLoad () {
+    __preload() {
         MessageData.extra = {extra: "bet_type=diamond&bet_limit=100&player_count=4"};
+    }
+
+    onLoad () {
+        
         GlobalGameData.enterGameScene = false;
         MessageManager.setNetworkConfiguration();
         PopupManager.LoadPopups();
@@ -458,7 +462,7 @@ export default class UNOMatching extends cc.Component {
         console.log('游戏开始重置所有的玩家头像数据');
         // this.matchingPlayers.resetAllPlayers();
 
-        MatchingScene.I.setPlayersData(GameData.message.data.players,false);
+        // MatchingScene.I.setPlayersData(GameData.message.data.players,false);
         for (let i = 0; i < GameData.message.data.players.length; i++) {
             const element = GameData.message.data.players[i];
             if(!element.id) continue;
