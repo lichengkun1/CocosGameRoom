@@ -8,7 +8,7 @@ import { debugLog } from "../utils/util";
  export class ResourceManager {
     
     /**
-     * 加载本地bundle
+     * 加载本地bundle loadBundle只会加载配置文件和index.js没有必要加入进度回调
      * @param  {string} bundleName bundle名称
      * @returns Promise<cc.AssetManager.Bundle>
      */

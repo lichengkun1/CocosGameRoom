@@ -73,8 +73,12 @@ export default class LoadScene extends cc.Component {
         }
     }
 
+    /** 加载bundle进度显示 */
     private async loadBundleByGameName() {
+
+        // cc.assetManager.preloadAny()
         resourceManager.loadBundle(GameConfig.gameName).then((bundle: cc.AssetManager.Bundle) => {
+            // bundle.deps.length
             console.log('游戏bundle加载完成',bundle);
             // 资源加载完毕
             this.gameBundleIsLoadedOver = true;
@@ -162,28 +166,25 @@ export default class LoadScene extends cc.Component {
             path = 'staging';
         }
         let zipVCodeID = '';
+        let url = '';
+
         switch (MessageData.gameName) {
             case 'ludo':
                 zipVCodeID = "v2.0.1";
+                url = `http://a.fslk.co/games/zips/${path}/${MessageData.gameName}${zipVCodeID}.zip`;
                 break;
             case 'dominoe':
                 zipVCodeID = "06082027"
+                url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`;
+                break;
+            case 'sf':
+                url = 'http://a.fslk.co/games/Bullfight/staging/BullFightZip03051532.zip';
+                break;
+            case 'uno':
+                url = 'http://a.fslk.co/games/UNO/staging/UNOZip202104084010.zip';
                 break;
             default:
                 break;
-        }
-        let url = '';
-        if(MessageData.gameName === 'sf') {
-            url = 'http://a.fslk.co/games/Bullfight/staging/BullFightZip03051532.zip';
-        } else if(MessageData.gameName == 'ludo' || MessageData.gameName =='dominoe') {
-            url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`
-            if(MessageData.gameName === 'dominoe') {
-                url = `http://a.fslk.co/games/${MessageData.gameName}/${path}/${MessageData.gameName}${zipVCodeID}.zip`;
-            } else {
-                url = `http://a.fslk.co/games/zips/${path}/${MessageData.gameName}${zipVCodeID}.zip`
-            }
-        } else {
-            url = 'http://a.fslk.co/games/UNO/staging/UNOZip202104084010.zip';
         }
 
         let data = await NDB.isGameSourceExisted(url);
@@ -285,11 +286,11 @@ export default class LoadScene extends cc.Component {
         const needMatchSceneArr = ['ludo','dominoe','uno'];
         if(needMatchSceneArr.indexOf(GameConfig.gameName) >= 0) {
             resourceManager.loadBundleDir(GameConfig.gameName,`resources_${GameConfig.gameName}/${GameConfig.gameName}_matchingScene_Res`,cc.Prefab,(completedCount, totalCount, item) => {
-                let comple = Math.floor(completedCount / totalCount * 5);
+                let comple = Math.floor(completedCount / totalCount);
                 let lerp = comple - this.lastnum3;
                 this.lastnum3 = comple;
                 this.changeSceneIndex = this.changeSceneIndex + lerp;
-                if (comple == 5) {
+                if (comple == 1) {
                     debugLog(`加载${GameConfig.gameName}游戏完成`);
                     this.matchingResIsLoad = true;
                 }
@@ -303,11 +304,11 @@ export default class LoadScene extends cc.Component {
         // @ts-ignore
         if(GameConfig.gameName == 'sf') {
             resourceManager.loadBundleDir(GameConfig.gameName,`res/prefab`,cc.Prefab,(completedCount, totalCount, item) => {
-                let comple = Math.floor(completedCount / totalCount * 5);
+                let comple = Math.floor(completedCount / totalCount);
                 let lerp = comple - this.lastnum3;
                 this.lastnum3 = comple;
                 this.changeSceneIndex = this.changeSceneIndex + lerp;
-                if (comple == 5) {
+                if (comple == 1) {
                     debugLog(`加载${GameConfig.gameName}游戏完成`);
                     this.matchingResIsLoad = true;
                 }
