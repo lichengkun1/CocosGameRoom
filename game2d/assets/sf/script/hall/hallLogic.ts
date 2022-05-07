@@ -8,6 +8,7 @@ import MessageType from '../../../Script/CommonScripts/Utils/MessageType';
 import MyEvent from '../../../Script/CommonScripts/Utils/MyEvent';
 import NDB from '../../../Script/CommonScripts/Utils/NDBTS';
 import ResourcesManager from '../../../Script/CommonScripts/Utils/ResourcesManager';
+import SFRuleLogic from '../game/sf_ruleLogic';
 import GlobalGameData from '../Global/SFGlobalGameData';
 import { SFMessageManager } from '../sfMessageManager';
 
@@ -106,7 +107,7 @@ export default class hallLogic extends cc.Component {
         if (!isShowRule) {
             let node = cc.instantiate(this.rulePrefab);
             cc.sys.localStorage.setItem('isShowRule', true);
-            node.getComponent('ruleLogic').setShowType(true);
+            node.getComponent(SFRuleLogic).setShowType(true);
             this.node.addChild(node);
         }
 

@@ -71,8 +71,8 @@ export default class LoadScene extends cc.Component {
     }
 
     private async loadBundleByGameName() {
-        resourceManager.loadBundle(GameConfig.gameName).then(() => {
-            console.log('游戏bundle加载完成');
+        resourceManager.loadBundle(GameConfig.gameName).then((bundle: cc.AssetManager.Bundle) => {
+            console.log('游戏bundle加载完成',bundle);
             // 资源加载完毕
             this.gameBundleIsLoadedOver = true;
         });
