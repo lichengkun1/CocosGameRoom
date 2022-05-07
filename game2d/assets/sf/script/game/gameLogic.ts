@@ -982,7 +982,7 @@ export default class gameLogic extends cc.Component {
     setEmojiShow(displayId, msg) {
         if (displayId == Global.userId) {
             // 
-            Message.showEmoji([-270, -290], [74, 74], msg);
+            Message.showEmoji([-270, -327], [74, 74], msg);
             return;
         }
         let headArr = [this.user1UI, this.user2UI, this.user3UI, this.user4UI];
@@ -990,6 +990,7 @@ export default class gameLogic extends cc.Component {
             let playerId = headArr[i].getComponent('userHeadLogic').getPlayerId();
             if (playerId == displayId) {
                 let di = headArr[i].getChildByName('userDi');
+                console.log('di position is ',di.x,di.y);
                 Message.showEmoji([di.x, di.y], [58, 58], msg);
                 break;
             }
