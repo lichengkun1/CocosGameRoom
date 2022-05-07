@@ -285,76 +285,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         //下载完成；
         this.onDownloadFinish = function (data) {
           console.log('===========onDownloadFinish=============');
-          // setTimeout(() => {
-            // eventManager.emit('onDownloadFinish');
+
+          //获取页面参数值;
+          // function getUrlParameterValue(name) {
+          //   let href = window.location.href;
+          //   var query = href.substring(1);
+          //   var vars = query.split("?");
+          //   if (!vars[1]) {
+          //     return '';
+          //   }
+          //   var argment = vars[1].split("&");;
+          //   for (var i = 0; i < argment.length; i++) {
+          //     var pair = argment[i].split("=");
+          //     if (pair[0] == name) { return pair[1]; }
+          //   }
+          //   return '';
+          // }
+          // let u = navigator.userAgent;
+          // let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;   //判断是否是 android终端
+          // let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);     //判断是否是 iOS终端
+          // var vCode = Number(getUrlParameterValue('vcode'));
+          // var loadJs = "cocos2d-min-js-" + "v2.4.8.js";
+
           // var isProd = window.location.href.indexOf('prod') >= 0 ? true : false;
 
-          // let cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
-          // if(isProd) {
-          //   cocosUrl = 'http://a.fslk.co/games/cocos-source-no3d/staging/web-mobile/cocos2d-min-js-2.4.8-no3d.js.zip';
-          // }
-
-          // this.request('get',cocosUrl,{}).then((res) => {
-          //   console.log('res is ',res);
-          // });
-
-          // var domScript = document.createElement('script');
-  
-          // function scriptLoaded() {
-          //     console.log('开始执行main.js');
-          //     window.boot && window.boot();
-          //     document.body.removeChild(domScript);
-          //     domScript.removeEventListener('load', scriptLoaded, false);
-          // };
-          // domScript.src = 'cocos2d-min-js-2.4.8-no3d.js'
-          // domScript.async = true;
-          // domScript.addEventListener('load', scriptLoaded, false);
-          // document.body.appendChild(domScript);
-  
-            // let xhr = new XMLHttpRequest();
-            // xhr.open('GET',cocosUrl,true);
-            // xhr.responseType = "blob";
-            // xhr.setRequestHeader("Range",385 * 1024);
-            // xhr.onreadystatechange = function() {
-            //   if(xhr.readyState === 4 && xhr.status >= 200) {
-            //       let res = xhr.response;
-            //       // const jszip = require('jszip.f3da3');
-            //       var zip = new JSZip();
-            //       zip.loadAsync(res).then(async (z) => {
-            //           let fileName = 'cocos2d-min-js-2.4.8-no3d.js';
-            //           let cocosStr = await z.file(fileName).async('string');
-            //           var domScript = document.createElement('script');
-  
-            //           function scriptLoaded() {
-            //               document.body.removeChild(domScript);
-            //               domScript.removeEventListener('load', scriptLoaded, false);
-            //               cb && cb();
-  
-            //           };
-            //           domScript.async = true;
-            //           domScript.text = cocosStr;
-            //           domScript.addEventListener('load', scriptLoaded, false);
-            //           document.body.appendChild(domScript);
-            //           console.log('开始执行main.9d234.js');
-            //           window.boot && window.boot();
-            //       });
-            //   }
-            // }
-
-            // xhr.onprogress = function(target,progressEvent) {
-            //   console.log(`加载进度： ${target.loaded / target.total}`);
-            // } 
-
-            // xhr.onload = function() {
-            //   console.log('onload xhr is 脚本加载完成');
-            // }
-
-            // xhr.onerror = function(target,event) {
-            //   console.log('error event is 加载脚本出错');
-            // }
-
-            // xhr.send();
-          // },10);
+          
+          
         };
         //当前zip下载进度;
         this.onDownloadProgress = function (data) {
