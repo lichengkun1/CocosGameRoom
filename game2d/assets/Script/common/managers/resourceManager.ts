@@ -27,6 +27,8 @@ import { debugLog } from "../utils/util";
 
     public async loadBundleDir(bundleName: string,url: string,type: typeof cc.Asset,progressFunc: (finished,total,item) => void,finishFunc: (err,res) => void) {
         const bundle = await this.loadBundle(bundleName);
+        debugLog('bundle的依赖数量: ',bundle.deps.length);
+        // debugLog('资源数量：',bundle.getAssetInfo());
         debugLog('加载bundle dir: ',bundle);
         bundle.loadDir(url,type,progressFunc,finishFunc);
     }
@@ -94,6 +96,37 @@ import { debugLog } from "../utils/util";
         // if(!bundleName) return;
         const asset = await this.loadAssetInBundle<T>(url,type,bundleName);
         return asset;
+    }
+
+    public async getBundleDirDepsCount(bundleName: string,bundleDir: string): Promise<void> {
+        let res = [];
+        const bundle = await this.loadBundle(bundleName);
+        // @ts-ignore
+        const bundleMap = bundle._config.paths._map;
+
+        // uuid数组
+        const targetRes = [];
+        const bundleMapKeys = Object.keys(bundleMap);
+        for(let i = 0; i < bundleMapKeys.length; i++) {
+            let keyItem = bundleMapKeys[i];
+            if(keyItem.indexOf(bundleDir) >= 0) {
+                targetRes.push(bundleMap[keyItem].map(it => it.uuid));
+            }
+        }
+
+        // console.log('depends is ',cc.assetManager.dependUtil._depends);
+        // @ts-ignore
+        const depsArr = cc.assetManager.dependUtil._depends;
+        targetRes.forEach(item => {
+            const assetInfo = bundle.getAssetInfo(item);
+            // getNativeDep
+            // getDepsRecursively
+            const deps = depsArr._map[item];
+            // const deps = cc.assetManager.dependUtil.getNativeDep(item);
+            // res.concat(deps.)
+        });
+        return void 0;
+        
     }
 
     /**

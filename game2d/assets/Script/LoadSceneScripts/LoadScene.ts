@@ -43,6 +43,8 @@ export default class LoadScene extends cc.Component {
     /** 游戏资源bundle是否加载完毕 */
     private gameBundleIsLoadedOver = false;
 
+    private bundleResCount: number = 0;
+
     onLoad() {
         /** 开启动态合图 */
         console.log('开启动态合图');
@@ -80,6 +82,9 @@ export default class LoadScene extends cc.Component {
         resourceManager.loadBundle(GameConfig.gameName).then((bundle: cc.AssetManager.Bundle) => {
             // bundle.deps.length
             console.log('游戏bundle加载完成',bundle);
+            // @ts-ignore
+            this.bundleResCount = bundle._config.assetInfos.count;
+            console.log('budnle 依赖的资源总量为：',this.bundleResCount);
             // 资源加载完毕
             this.gameBundleIsLoadedOver = true;
         });
@@ -275,23 +280,33 @@ export default class LoadScene extends cc.Component {
 
     private async loadGameScene() {
         if(!this.gameBundleIsLoadedOver) {
-            await resourceManager.loadBundle(GameConfig.gameName);
+            const gameBundle = await resourceManager.loadBundle(GameConfig.gameName);
+            
             this.gameSceneIsLoad = true;
         } else {
             debugLog('游戏bundle已经加载完成');
             this.gameSceneIsLoad = true;
         }
 
-        // resourceManager.loadAssetInBundle(``,)
         const needMatchSceneArr = ['ludo','dominoe','uno'];
+
+        // resourceManager.loadAssetInBundle(``,)
+        resourceManager.getBundleDirDepsCount(GameConfig.gameName,`resources_${GameConfig.gameName}/${GameConfig.gameName}_matchingScene_Res`);
         if(needMatchSceneArr.indexOf(GameConfig.gameName) >= 0) {
+            cc.director.preloadScene('MatchScene',(completed,total,item) => {
+                
+            });
+
             resourceManager.loadBundleDir(GameConfig.gameName,`resources_${GameConfig.gameName}/${GameConfig.gameName}_matchingScene_Res`,cc.Prefab,(completedCount, totalCount, item) => {
-                let comple = Math.floor(completedCount / totalCount);
+                console.log(`completed is ${completedCount} and totalCount is ${totalCount}`);
+                let comple = Math.floor((completedCount / totalCount) * 100);
                 let lerp = comple - this.lastnum3;
                 this.lastnum3 = comple;
-                this.changeSceneIndex = this.changeSceneIndex + lerp;
-                if (comple == 1) {
-                    debugLog(`加载${GameConfig.gameName}游戏完成`);
+                // this.changeSceneIndex = this.changeSceneIndex + lerp;
+                this.changeSceneIndex = comple;
+                console.log('changeSceneIndex is ',this.changeSceneIndex, " lerp is ",lerp);
+                if (comple == 100) {
+                    debugLog(`加载${GameConfig.gameName}游戏完成`);     
                     this.matchingResIsLoad = true;
                 }
             }, (err, resource) => {
@@ -304,7 +319,7 @@ export default class LoadScene extends cc.Component {
         // @ts-ignore
         if(GameConfig.gameName == 'sf') {
             resourceManager.loadBundleDir(GameConfig.gameName,`res/prefab`,cc.Prefab,(completedCount, totalCount, item) => {
-                let comple = Math.floor(completedCount / totalCount);
+                let comple = Math.floor((completedCount / totalCount) * 98);
                 let lerp = comple - this.lastnum3;
                 this.lastnum3 = comple;
                 this.changeSceneIndex = this.changeSceneIndex + lerp;
