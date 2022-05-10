@@ -17,7 +17,9 @@
         if(isProd) {
           cocosUrl = 'https://a.fslk.co/games/zips/staging/cocos2d-min-js-2.4.8-no3d.zip.gz'
         }
-        ndb.isGameSourceExisted(cocosUrl);
+        ndb.isGameSourceExisted(cocosUrl).then((obj) => {
+          console.log('请求cocos源码===>obj is ',obj);
+        });
     }
 
     NDBLoadRemoteCocos();
