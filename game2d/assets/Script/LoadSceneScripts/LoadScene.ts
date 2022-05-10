@@ -298,7 +298,6 @@ export default class LoadScene extends cc.Component {
             });
 
             resourceManager.loadBundleDir(GameConfig.gameName,`resources_${GameConfig.gameName}/${GameConfig.gameName}_matchingScene_Res`,cc.Prefab,(completedCount, totalCount, item) => {
-                console.log(`completed is ${completedCount} and totalCount is ${totalCount}`);
                 let comple = Math.floor((completedCount / totalCount) * 100);
                 let lerp = comple - this.lastnum3;
                 if(lerp >= 0) {

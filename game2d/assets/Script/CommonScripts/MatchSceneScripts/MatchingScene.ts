@@ -75,6 +75,8 @@ export default class MatchingScene extends cc.Component {
 
     onLoad() {
         
+        this.joinLobbyGameErr();
+        
         MessageData.gameSource_Id = '';
         MatchingScene.I = this.node.getComponent(MatchingScene);
         this.init();
