@@ -301,14 +301,18 @@ export default class LoadScene extends cc.Component {
                 console.log(`completed is ${completedCount} and totalCount is ${totalCount}`);
                 let comple = Math.floor((completedCount / totalCount) * 100);
                 let lerp = comple - this.lastnum3;
-                this.lastnum3 = comple;
-                // this.changeSceneIndex = this.changeSceneIndex + lerp;
-                this.changeSceneIndex = comple;
-                console.log('changeSceneIndex is ',this.changeSceneIndex, " lerp is ",lerp);
-                if (comple == 100) {
-                    debugLog(`加载${GameConfig.gameName}游戏完成`);     
-                    this.matchingResIsLoad = true;
+                if(lerp >= 0) {
+                    this.lastnum3 = comple;
+
+                    this.changeSceneIndex = comple;
+                    console.log('changeSceneIndex is ',this.changeSceneIndex, " lerp is ",lerp);
+                    if (comple == 100) {
+                        debugLog(`加载${GameConfig.gameName}游戏完成`);     
+                        this.matchingResIsLoad = true;
+                    }
                 }
+                // this.changeSceneIndex = this.changeSceneIndex + lerp;
+                
             }, (err, resource) => {
                 debugLog('加载匹配场景预制体完毕',resource);
                 this.matchingResIsLoad = true;
@@ -321,11 +325,13 @@ export default class LoadScene extends cc.Component {
             resourceManager.loadBundleDir(GameConfig.gameName,`res/prefab`,cc.Prefab,(completedCount, totalCount, item) => {
                 let comple = Math.floor((completedCount / totalCount) * 98);
                 let lerp = comple - this.lastnum3;
-                this.lastnum3 = comple;
-                this.changeSceneIndex = this.changeSceneIndex + lerp;
-                if (comple == 1) {
-                    debugLog(`加载${GameConfig.gameName}游戏完成`);
-                    this.matchingResIsLoad = true;
+                if(lerp >= 0) {
+                    this.lastnum3 = comple;
+                    this.changeSceneIndex = this.changeSceneIndex + lerp;
+                    if (comple == 1) {
+                        debugLog(`加载${GameConfig.gameName}游戏完成`);
+                        this.matchingResIsLoad = true;
+                    }
                 }
             }, (err, resource) => {
                 debugLog('加载匹配场景预制体完毕',resource);
