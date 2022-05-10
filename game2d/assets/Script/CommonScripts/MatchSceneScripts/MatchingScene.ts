@@ -884,7 +884,7 @@ export default class MatchingScene extends cc.Component {
     joinLobbyGameErr() {
         if (MessageData.gameName == 'ludo') {
             const matchFailed = this.formatLang('matchFail','ludo');
-            const okStr = this.formatLang('resetGameMode','ludo');
+            const okStr = this.formatLang('ok','ludo');
             const tryAgainStr = this.formatLang('tryAgain','ludo');
 
             this.showTipPopup(matchFailed, okStr, tryAgainStr, () => {
