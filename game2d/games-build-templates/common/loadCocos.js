@@ -23,7 +23,9 @@
     NDBLoadRemoteCocos();
 
     function loadScript(moduleName, cb) {
+      console.time('loadCocos');
       function scriptLoaded() {
+        console.timeEnd('loadCocos');
         document.body.removeChild(domScript);
         domScript.removeEventListener('load', scriptLoaded, false);
         cb && cb();
@@ -31,6 +33,7 @@
       var domScript = document.createElement('script');
       domScript.async = true;
       domScript.src = moduleName;
+      
       domScript.addEventListener('load', scriptLoaded, false);
       document.body.appendChild(domScript);
     }
