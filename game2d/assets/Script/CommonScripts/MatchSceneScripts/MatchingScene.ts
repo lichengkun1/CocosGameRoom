@@ -650,6 +650,7 @@ export default class MatchingScene extends cc.Component {
                     return MessageData.lang.reset_game_model ? MessageData.lang.reset_game_model : MessageData.langEnglish.reset_game_model;
                 case "tryAgain":
                     return MessageData.lang.try_again ? MessageData.lang.try_again : MessageData.langEnglish.try_again;
+                    
             }
         }
     }
@@ -887,7 +888,7 @@ export default class MatchingScene extends cc.Component {
     joinLobbyGameErr() {
         if (MessageData.gameName == 'ludo') {
             const matchFailed = this.formatLang('matchFail','ludo');
-            const okStr = this.formatLang('ok','ludo');
+            const okStr = this.formatLang('resetGameMode','ludo');
             const tryAgainStr = this.formatLang('tryAgain','ludo');
 
             this.showTipPopup(matchFailed, okStr, tryAgainStr, () => {
@@ -903,7 +904,7 @@ export default class MatchingScene extends cc.Component {
             }, true);
         } else {
             const matchFailed = this.formatLang('matchFail');
-            const okStr = this.formatLang('ok');
+            const okStr = this.formatLang('tryAgain');
             const tryAgainStr = this.formatLang('tryAgain');
             this.showTipPopup(matchFailed, okStr, tryAgainStr, () => {
                 this.isstartChronography = true;

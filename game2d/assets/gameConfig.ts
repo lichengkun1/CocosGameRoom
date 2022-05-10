@@ -1,1 +1,1 @@
-export class GameConfig { public static readonly gameName = "dominoe";}
+export class GameConfig { public static readonly gameName = "ludo";}
