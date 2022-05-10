@@ -376,8 +376,6 @@ export default class MatchingScene extends cc.Component {
         this.showBtnUI()
         this.getUserInfo();
 
-        this.joinLobbyGameErr();
-
     }
 
     /**初始化需要加载资源的结点 */
