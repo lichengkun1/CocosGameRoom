@@ -56,7 +56,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 750,
-      "height": 860
+      "height": 1300
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -123,7 +123,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 750,
-      "height": 860
+      "height": 1300
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -224,7 +224,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "003a3697-85d4-405e-b0ed-36a1b102ef76"
+      "__id__": 0
     },
     "fileId": "7a+6X8m2xAcZ5QW2Un9/yM",
     "sync": false
@@ -333,7 +333,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "003a3697-85d4-405e-b0ed-36a1b102ef76"
+      "__id__": 0
     },
     "fileId": "69l/db15ZFLbaY4mk3LfsU",
     "sync": false
@@ -527,7 +527,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "003a3697-85d4-405e-b0ed-36a1b102ef76"
+      "__id__": 0
     },
     "fileId": "b4BW3YNV9Jb7MwB79p4TJ6",
     "sync": false
@@ -609,7 +609,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "The seats are full and you cannot join the game. Please communicate with the owner",
     "_N$string": "The seats are full and you cannot join the game. Please communicate with the owner",
     "_fontSize": 28,
@@ -636,7 +637,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "003a3697-85d4-405e-b0ed-36a1b102ef76"
+      "__id__": 0
     },
     "fileId": "778m97kI5O54i2cOtU/y+K",
     "sync": false
@@ -718,7 +719,8 @@
         "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
       }
     ],
-    "_useOriginalSize": false,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_string": "ok",
     "_N$string": "ok",
     "_fontSize": 28,
@@ -745,7 +747,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "003a3697-85d4-405e-b0ed-36a1b102ef76"
+      "__id__": 0
     },
     "fileId": "50xJ1q5xhG/rnq7v37v8N/",
     "sync": false
@@ -763,8 +765,8 @@
     "_alignFlags": 45,
     "_left": 0,
     "_right": 0,
-    "_top": 0,
-    "_bottom": 0,
+    "_top": -220,
+    "_bottom": -220,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -799,9 +801,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "003a3697-85d4-405e-b0ed-36a1b102ef76"
+      "__id__": 0
     },
-    "fileId": "aaG7kQ3OJHXoSuKO75gCAG",
+    "fileId": "",
     "sync": false
   }
 ]

@@ -150,7 +150,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 750,
-      "height": 860
+      "height": 1300
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -205,7 +205,7 @@
       "__uuid__": "d7cfefd4-0e8a-4985-8367-f9bc7b57b274"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
