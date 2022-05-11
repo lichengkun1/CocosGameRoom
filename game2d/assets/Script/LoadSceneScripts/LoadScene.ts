@@ -50,6 +50,12 @@ export default class LoadScene extends cc.Component {
         console.log('开启动态合图');
         cc.dynamicAtlasManager.enabled = true;
         cc.macro.CLEANUP_IMAGE_CACHE = false;
+
+        /** 最大下载并发连接数 */
+        cc.assetManager.downloader.maxConcurrency = 10;
+        /** 每帧最大请求数量平摊cpu开销 */
+        cc.assetManager.downloader.maxRequestsPerFrame = 6;
+        
         this.loadBundleByGameName();
 
         this.initNode();
