@@ -55,7 +55,7 @@ export default class LoadScene extends cc.Component {
         cc.assetManager.downloader.maxConcurrency = 10;
         /** 每帧最大请求数量平摊cpu开销 */
         cc.assetManager.downloader.maxRequestsPerFrame = 6;
-        
+
         this.loadBundleByGameName();
 
         this.initNode();
@@ -331,7 +331,7 @@ export default class LoadScene extends cc.Component {
                 let lerp = comple - this.lastnum3;
                 if(lerp >= 0) {
                     this.lastnum3 = comple;
-                    this.changeSceneIndex = this.changeSceneIndex + lerp;
+                    this.changeSceneIndex = comple;
                     if (comple >= 100) {
                         debugLog(`加载${GameConfig.gameName}游戏完成`);
                         this.matchingResIsLoad = true;
