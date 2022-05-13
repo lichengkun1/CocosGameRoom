@@ -1,3 +1,4 @@
+import { GameConfig } from "../../../gameConfig";
 import { getUrlParameterValue } from "../../common/utils/util";
 import LoadScene from "../../LoadSceneScripts/LoadScene";
 import MessageData, { GameType } from "./MessageData";
@@ -72,13 +73,16 @@ export default class Message {
             posX = pos[0];
         }
         let newPos;
-        let vcode = getUrlParameterValue('vcode');
-        if (Number(vcode) < 17300) {
-            newPos = [(posX + 375) + 2, (375 - pos[1]) + 2 + 20];
-        }
-        else {
-            console.log(cc.find("hightNode"));
-            newPos = [(posX + 375) + 2, (LoadScene.height / 2 - pos[1]) - 35];
+        // @ts-ignore
+        if(GameConfig.gameName === 'sf') {
+            let vcode = getUrlParameterValue('vcode');
+            if (Number(vcode) < 17300) {
+                newPos = [(posX + 375) + 2, (375 - pos[1]) + 2 + 20];
+            }
+            else {
+                console.log(cc.find("hightNode"));
+                newPos = [(posX + 375) + 2, (LoadScene.height / 2 - pos[1]) - 35];
+            }
         }
         let proportion = document.body.clientWidth;
         size = [size[0] / 750 * proportion, size[1] / 750 * proportion];
