@@ -72,7 +72,7 @@ export default class Message {
         } else {
             posX = pos[0];
         }
-        let newPos;
+        let newPos = [(posX + 375) + 2, (cc.find("Canvas").height / 2 - pos[1])];
         // @ts-ignore
         if(GameConfig.gameName === 'sf') {
             let vcode = getUrlParameterValue('vcode');
