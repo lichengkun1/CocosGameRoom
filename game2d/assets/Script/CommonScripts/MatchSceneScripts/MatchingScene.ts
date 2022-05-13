@@ -560,11 +560,10 @@ export default class MatchingScene extends cc.Component {
         for (let i = 0; i < this.joinPlayers.length; i++) {
             console.log('设置麦位上的人 i is ',i);
             const element = players[keys[i]];
-            if (!element) {
+            if (!element || (element && !element.id)) {
                 this.joinPlayers[i].clearPlayerData(i + 1);
                 continue;
             }
-            if(!element.id) continue;
             
             if ((element.id || element.user_id) == MessageData.userId) {
                 nowPlayerIsJoin = true;

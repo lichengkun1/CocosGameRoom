@@ -120,7 +120,7 @@ window.boot = function () {
             });
         }
     }
-
+    
     cc.assetManager.loadScript(settings.jsList.map(function (x) { return 'src/' + x;}), cb);
 
     for (var i = 0; i < bundleRoot.length; i++) {

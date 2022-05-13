@@ -121,8 +121,9 @@ window.boot = function () {
         }
     }
 
+    // 加载插件脚本 加载管线第一个任务的源头
     cc.assetManager.loadScript(settings.jsList.map(function (x) { return 'src/' + x;}), cb);
-
+    // 加载bundle
     for (var i = 0; i < bundleRoot.length; i++) {
         cc.assetManager.loadBundle(bundleRoot[i], cb);
     }

@@ -429,7 +429,7 @@ export default class UNOMatching extends cc.Component {
      * @param gameName 游戏名称
      */
     public GameLoad(gameName: string = 'UNO'): void {
-        let oldtime = Number(localStorage.getItem("UNOPointTime"))
+        let oldtime = Number(localStorage.getItem("UNOPointTime"));
         let nowtime = Date.now();
         let lerptime = nowtime - oldtime;
         let time = (lerptime / 1000).toFixed(1);
