@@ -28,6 +28,7 @@ export default class showEmoji extends cc.Component {
         if(MessageData.gameName === 'sf') {
             targetY = -365;
         }
+        console.log('targetY is ',targetY);
         cc.tween(this.emojiNode).to(0.2, { position: cc.v3(145, targetY, 0) }).start();
         cc.find("Canvas/showBtn").active = false;
         this.scheduleOnce(this.closeEmojiBg, 3);
@@ -39,6 +40,7 @@ export default class showEmoji extends cc.Component {
         if(MessageData.gameName == 'sf') {
             targetY = -365;
         }
+        console.log('targetY is ',targetY);
         cc.tween(this.emojiNode).to(0.2, { position: cc.v3(515, targetY, 0) }).call(() => {
             this.emojiNode.active = false;
             cc.find("Canvas/showBtn").active = true;
