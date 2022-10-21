@@ -47,6 +47,7 @@ import { GameStatusModel, PlayerInfoModel } from '../models/gameStatusModel';
 import RankComp from '../rank/rankComp';
 import { PockerObj } from '../rank/rankItem';
 import Global, { GameModeDominoe } from '../Utils/Dominoe_GlobalGameData';
+import { pockerMap } from './Dominoe_Const';
 import Dominoe_ExitPopup from './Dominoe_ExitPopup';
 import Dominoe_paiLayerLogic from './Dominoe_paiLayerLogic';
 import Dominoe_paiLogic from './Dominoe_paiLogic';
@@ -194,7 +195,7 @@ export default class Dominoe_gameLogic extends cc.Component {
     private midPaiY: number = 45;                             //中间牌的坐标;
     private isShowPopLayer: boolean = false;                  //是否已经显示过了，系统3次弹窗;
     private loadingTimeCount: number = -1;                    //显示loading的倒计时;  
-    
+
     private roundIndex: number = 1;
 
     // channel.id
@@ -208,28 +209,28 @@ export default class Dominoe_gameLogic extends cc.Component {
     private lastSelfPlayerPockerPoints: number[] = [];
 
     // 每个玩家的分数map
-    public playerScoreMap: {[key: string]: number} = {
-        
+    public playerScoreMap: { [key: string]: number } = {
+
     };
 
     private bgmId: number = -1;
 
     onLoad(): void {
 
-        if(MessageSoundManager.audioEngineOn) {
+        if (MessageSoundManager.audioEngineOn) {
             cc.audioEngine.stopMusic();
             this.bgmId = MessageSoundManager.playBgm(this.gameAudio);
         }
 
         const bgmNode = cc.find("Canvas/bgm");
         const bgmComp = bgmNode.getComponent(BgmSettings);
-        let self = this;    
-        bgmComp.updateMusic = function() {
-            if(MessageSoundManager.audioEngineOn) {
-                if(self.bgmId === -1) {
+        let self = this;
+        bgmComp.updateMusic = function () {
+            if (MessageSoundManager.audioEngineOn) {
+                if (self.bgmId === -1) {
                     console.log('播放音频');
                     cc.audioEngine.stopMusic();
-                    self.bgmId = cc.audioEngine.playMusic(self.gameAudio,true);
+                    self.bgmId = cc.audioEngine.playMusic(self.gameAudio, true);
                 } else {
                     MessageSoundManager.resumeMusic();
                 }
@@ -262,16 +263,16 @@ export default class Dominoe_gameLogic extends cc.Component {
     }
 
     private drawingDebugPokerRange(): void {
-        if(CC_DEBUG) {
-            if(!this.pokerRanger) return;
-            
+        if (CC_DEBUG) {
+            if (!this.pokerRanger) return;
+
             const penNode = new cc.Node();
             this.pokerRanger.addChild(penNode);
             const pen: cc.Graphics = penNode.addComponent(cc.Graphics);
             pen.lineWidth = 6;
             pen.strokeColor = new cc.Color().fromHEX('#ffaa33');
             const box: cc.Rect = this.pokerRanger.getBoundingBox();
-            pen.rect(box.x,box.y,box.width,box.height);
+            pen.rect(box.x, box.y, box.width, box.height);
             pen.stroke();
         }
     }
@@ -305,7 +306,7 @@ export default class Dominoe_gameLogic extends cc.Component {
         this.scheduleOnce(() => {
             // 设置背景长度
             modelLabelNode.width = modelLabelNode.width + 10;
-        },0.01);
+        }, 0.01);
     }
     /** 游戏打点 */
     gameStartEvent() {
@@ -332,7 +333,7 @@ export default class Dominoe_gameLogic extends cc.Component {
             this.paiLayer.getChildByName('boom').active = true;
             this.initPlayerModelUI(message);
         }
-        if(execPlayingMessage) {
+        if (execPlayingMessage) {
             this.addMKEventDispatch();
         }
         let poker_played = message.poker_played;
@@ -346,7 +347,7 @@ export default class Dominoe_gameLogic extends cc.Component {
         } else {
             messageData = message;
         }
-        if(execPlayingMessage) {
+        if (execPlayingMessage) {
             this.scheduleOnce(() => {
                 this.playingMessage(messageData);
             }, 0.2);
@@ -427,7 +428,7 @@ export default class Dominoe_gameLogic extends cc.Component {
             }
         }
         // this.scheduleOnce(() => {
-            
+
         // }, 0.15)
         this.initMyPai(message.player_current.user_id);
 
@@ -562,7 +563,7 @@ export default class Dominoe_gameLogic extends cc.Component {
 
     addMKEventDispatch() {
         console.log('注册事件');
-        if(Global.isGameEnd) {
+        if (Global.isGameEnd) {
             // 游戏结束了直接回到大厅
             // this.goHallScene();
         }
@@ -585,11 +586,11 @@ export default class Dominoe_gameLogic extends cc.Component {
 
         MyEvent.I.on('showPoint_end', this.showPoint_end.bind(this), this.node);
 
-        MyEvent.I.on('replayMusic',this.replayMusic.bind(this),this.node);
+        MyEvent.I.on('replayMusic', this.replayMusic.bind(this), this.node);
     }
 
     replayMusic() {
-        if(cc.sys.isBrowser && cc.sys.os === cc.sys.OS_IOS && MessageSoundManager.audioEngineOn) {
+        if (cc.sys.isBrowser && cc.sys.os === cc.sys.OS_IOS && MessageSoundManager.audioEngineOn) {
             console.log('replaymusic');
             MessageSoundManager.pauseMusic();
             MessageSoundManager.resumeMusic();
@@ -609,8 +610,8 @@ export default class Dominoe_gameLogic extends cc.Component {
             let displayId = mData.data.data.user.display_id;
             let msg = mData.data.data.msg;
             let name = mData.data.data.emoji_name;
-            if(!msg) {
-                const emojiObjs = Object.values(this.emojiJson.json) as {name: string,image: string,svga: string,svga_o: string}[];
+            if (!msg) {
+                const emojiObjs = Object.values(this.emojiJson.json) as { name: string, image: string, svga: string, svga_o: string }[];
                 msg = emojiObjs.find(item => item.name === name).svga;
 
             }
@@ -641,7 +642,7 @@ export default class Dominoe_gameLogic extends cc.Component {
 
     // 游戏消息处理;
     playingMessage(messageData: GameStatusModel) {
-        if(messageData.action === 'reset') {
+        if (messageData.action === 'reset') {
             this.scheduleOnce(() => {
                 let players = messageData.players;
                 let playerKeys = Object.keys(players);
@@ -655,15 +656,15 @@ export default class Dominoe_gameLogic extends cc.Component {
                 for (let i = 0, len = playerKeys.length; i < len; i++) {
                     let key = playerKeys[i];
                     let id = players[key].id;
-                    
+
                     this.playerScoreMap[id] = players[key].total_score;
                 }
-                this.showRoundRank(messageData.rounds,Object.values(messageData.players));
-            },2);
-            
+                this.showRoundRank(messageData.rounds, Object.values(messageData.players));
+            }, 2);
+
             return;
         }
-        if(messageData.action === 'start') {
+        if (messageData.action === 'start') {
             Global.setpocker_object();
             const dynamicAddedNodes = this.paiLayer.children.filter(item => item.name !== 'boom' && item.name !== 'Selected');
             dynamicAddedNodes.forEach((item) => {
@@ -856,8 +857,8 @@ export default class Dominoe_gameLogic extends cc.Component {
             this.showGuang(endPos, startPos);
         }
 
-        
-        
+
+
     }
 
     /**
@@ -887,11 +888,11 @@ export default class Dominoe_gameLogic extends cc.Component {
      * @param  {PlayerInfoModel} players 当前小局玩家信息
      * @returns void
      */
-    private showRoundRank(roundIndex: number,players: PlayerInfoModel[]): void {
+    private showRoundRank(roundIndex: number, players: PlayerInfoModel[]): void {
         const rankNode = this.node.getChildByName('rankNode');
 
         /** 根据ranking字段进行排序 */
-        players.sort((a,b) => a.ranking - b.ranking > 0 ? 1 : a.ranking - b.ranking === 0 ? 0 : -1);
+        players.sort((a, b) => a.ranking - b.ranking > 0 ? 1 : a.ranking - b.ranking === 0 ? 0 : -1);
         rankNode.active = true;
         const rankComp = rankNode.getComponent(RankComp);
         rankComp.roundIndex = roundIndex;
@@ -1024,7 +1025,7 @@ export default class Dominoe_gameLogic extends cc.Component {
      * @param  {PockerObj[]} middle
      * @param  {PockerObj[]}}} right
      */
-    initPocker(pocker: {left: PockerObj[],middle: PockerObj,right: PockerObj[]}) {
+    initPocker(pocker: { left: PockerObj[], middle: PockerObj, right: PockerObj[] }) {
         //左边的牌；
         let leftPockerArr: number[][] = [];
         let leftKeys: number[] = [];
@@ -1563,7 +1564,7 @@ export default class Dominoe_gameLogic extends cc.Component {
                         angle = 180;
                     }
                     break;
-            case Dominoe_POSTYPE.BOTTOMLEFT:
+                case Dominoe_POSTYPE.BOTTOMLEFT:
                     if (points[0] == rightPoint) {
                         angle = -90;
                     } else if (points[1] == rightPoint) {
@@ -1601,7 +1602,7 @@ export default class Dominoe_gameLogic extends cc.Component {
             this.updateAllPaiYPos();
             this.selfPlayPocker.getComponent(Dominoe_paiLogic).moveEnd();
         });
-        this.selfPlayPocker.runAction(cc.sequence(cc.spawn(move, ro,sca), call));
+        this.selfPlayPocker.runAction(cc.sequence(cc.spawn(move, ro, sca), call));
     }
 
     //取消选择框;
@@ -1624,16 +1625,16 @@ export default class Dominoe_gameLogic extends cc.Component {
      * @param  {number=0.2} time 缩放所需要的时间
      * @returns void
      */
-    private scaleNodeByTween(node: cc.Node,time: number = 0.2): void {
+    private scaleNodeByTween(node: cc.Node, time: number = 0.2): void {
         const nodeComp = node.getComponent(Dominoe_paiLogic);
-        if(this.lastSelfPlayerPockerPoints.length > 0 && nodeComp.points[0] === this.lastSelfPlayerPockerPoints[0] && nodeComp.points[1] === this.lastSelfPlayerPockerPoints[1]) {
+        if (this.lastSelfPlayerPockerPoints.length > 0 && nodeComp.points[0] === this.lastSelfPlayerPockerPoints[0] && nodeComp.points[1] === this.lastSelfPlayerPockerPoints[1]) {
             node.scale = this.scaleNum;
             return;
         }
-        if(node.scale === this.scaleNum) {
+        if (node.scale === this.scaleNum) {
             return;
         }
-        cc.tween(node).to(time,{
+        cc.tween(node).to(time, {
             scale: this.scaleNum
         }).start();
     }
@@ -1643,7 +1644,7 @@ export default class Dominoe_gameLogic extends cc.Component {
         if (!this.midPai) {
             return;
         }
-        
+
         // this.midPai.scale = this.scaleNum;
         this.scaleNodeByTween(this.midPai);
 
@@ -2074,7 +2075,7 @@ export default class Dominoe_gameLogic extends cc.Component {
 
         // 显示结算界面;
         setTimeout(() => {
-            if(this.node && this.node.active) {
+            if (this.node && this.node.active) {
                 this.winNode.active = false;
                 this.caidai.active = false;
                 this.addSettingLayer(data);
@@ -2097,6 +2098,8 @@ export default class Dominoe_gameLogic extends cc.Component {
         let url = MessageType.PLAYPOCKER + id + '/' + `?game_id=${MessageData.gameid}`;
         let pockerKey = paiNode.getComponent(Dominoe_paiLogic).key;
         let points = paiNode.getComponent(Dominoe_paiLogic).points;
+        pockerKey = pockerMap[points.toString()];
+        console.log("key is ", pockerKey);
         let postData = {}
         // if (MessageData.gameType == GameType.room) {
         postData = {
@@ -2168,10 +2171,10 @@ export default class Dominoe_gameLogic extends cc.Component {
         const bgmNode = cc.find("Canvas/bgm");
         const bgmComp = bgmNode.getComponent(BgmSettings);
 
-        if(bgmComp.bgmOffNode.active) {
+        if (bgmComp.bgmOffNode.active) {
             MessageSoundManager.audioEngineOn = false;
         }
-        if(bgmComp.bgmOnNode.active){
+        if (bgmComp.bgmOnNode.active) {
             MessageSoundManager.audioEngineOn = true;
         }
 
@@ -2200,9 +2203,9 @@ export default class Dominoe_gameLogic extends cc.Component {
             this.playingMessage(data);
             this.initShowUI(false);
         } else if (data.status == "matching" || data.status == "completed") {
-            console.log('返回大厅',' id is ',data.id, ' and ',MessageData.gameid);
+            console.log('返回大厅', ' id is ', data.id, ' and ', MessageData.gameid);
             // if(data.id === MessageData.gameid) {
-                // }
+            // }
             this.goHallScene();
         }
     }
@@ -2392,7 +2395,7 @@ export default class Dominoe_gameLogic extends cc.Component {
     }
     showRuleLogic() {
         this.RuleLogic.active = true;
-        if(Global.gameMode === GameModeDominoe.ROUND) {
+        if (Global.gameMode === GameModeDominoe.ROUND) {
             this.oneRoundRuleNode.active = true;
             this.scoreRuleNode.active = false;
         } else {
@@ -2404,9 +2407,9 @@ export default class Dominoe_gameLogic extends cc.Component {
     protected onDestroy(): void {
         cc.audioEngine.stopMusic();
 
-        if(cc.sys.isBrowser && cc.sys.os === cc.sys.OS_IOS) {
+        if (cc.sys.isBrowser && cc.sys.os === cc.sys.OS_IOS) {
             //@ts-ignore
-            if(cc.sys.__audioSupport.context && cc.sys.__audioSupport.context['suspend']) {
+            if (cc.sys.__audioSupport.context && cc.sys.__audioSupport.context['suspend']) {
                 //@ts-ignore
                 cc.sys.__audioSupport.context.suspend();
             }
